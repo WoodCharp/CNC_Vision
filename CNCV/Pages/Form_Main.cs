@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 using CCL;
@@ -903,10 +904,6 @@ namespace CNCV.Pages
             cLabel_overrideSpindle.Text = GRBLFramework.OverrideSpindle.ToString();
             cLabel_overrideRapid.Text = GRBLFramework.OverrideRapid.ToString();
 
-            //If spindle is on and not set to on, power it off.
-            if (GRBLFramework.currentSpindleSpeed > 0 && !cSwitch_enableSpindle.IsOn)
-                GRBLFramework.PowerOffSpindle();
-
             //If tool has to be changed
             if (GRBLFramework.DoToolChange && GRBLFramework.MachineState == eMachineState.Idle
                 && !ToolChangeWindowVisible && !GRBLFramework.CheckInProgress)
@@ -1016,68 +1013,81 @@ namespace CNCV.Pages
             //Clear found tools in list view
             cListView_fileTools.Items.Clear();
 
-            //Loop found tools
-            foreach(int i in GRBLFramework.GetToolIDsFromFile())
+            try
             {
-                //As default too is unknown
-                toolFound = false;
-
-                //Try to found tool in saved tools
-                foreach (CNCTool ct in Manager.CNCTools)
+                //Loop found tools
+                foreach (int i in GRBLFramework.GetToolIDsFromFile())
                 {
-                    //If tool ID is match add it to list view
-                    if(ct.ID == i)
-                    {
-                        ListViewItem item = new ListViewItem(ct.ID.ToString());
-                        item.SubItems.Add(ct.Name);
-                        item.SubItems.Add(ct.CD.ToString());
-                        item.SubItems.Add(ct.SD.ToString());
+                    //As default too is unknown
+                    toolFound = false;
 
-                        if(toolsCount == 0)
+                    //Try to found tool in saved tools
+                    foreach (CNCTool ct in Manager.CNCTools)
+                    {
+                        //If tool ID is match add it to list view
+                        if (ct.ID == i)
+                        {
+                            ListViewItem item = new ListViewItem(ct.ID.ToString());
+                            item.SubItems.Add(ct.Name);
+                            item.SubItems.Add(ct.CD.ToString());
+                            item.SubItems.Add(ct.SD.ToString());
+
+                            if (toolsCount == 0)
+                                item.SubItems.Add("First");
+                            else
+                                item.SubItems.Add("Queue");
+
+                            cListView_fileTools.Items.Add(item);
+
+                            toolsCount++;
+                            toolFound = true;
+                        }
+                    }
+
+                    //If tool has not been found in saved tools
+                    if (!toolFound)
+                    {
+                        ListViewItem item = new ListViewItem("?");
+                        item.SubItems.Add("Unknown Tool");
+                        item.SubItems.Add("?");
+                        item.SubItems.Add("?");
+
+                        if (toolsCount == 0)
                             item.SubItems.Add("First");
                         else
                             item.SubItems.Add("Queue");
 
-                        cListView_fileTools.Items.Add(item);
-
                         toolsCount++;
-                        toolFound = true;
+                        cListView_fileTools.Items.Add(item);
                     }
                 }
-
-                //If tool has not been found in saved tools
-                if(!toolFound)
-                {
-                    ListViewItem item = new ListViewItem("?");
-                    item.SubItems.Add("Unknown Tool");
-                    item.SubItems.Add("?");
-                    item.SubItems.Add("?");
-
-                    if (toolsCount == 0)
-                        item.SubItems.Add("First");
-                    else
-                        item.SubItems.Add("Queue");
-
-                    toolsCount++;
-                    cListView_fileTools.Items.Add(item);
-                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error while finding tools from file.", MessageBoxButtons.OK);
             }
 
             cButton_sendFile.Enabled = true;
             cButtonCheckMode.Enabled = true;
 
-            /*
-            //Calculate approximate machining time in seconds
-            double seconds = MachiningTimeCalculator.GetMachiningTimeInSeconds(GRBLFramework.FileLines,
-                Manager.Machines[cDropDown_machineProfiles.SelectedIndex],
-                GRBLFramework.WPos.X, GRBLFramework.WPos.Y, GRBLFramework.WPos.Z);
+            try
+            {
+                //Calculate approximate machining time in seconds
+                double seconds = MachiningTimeCalculator.GetMachiningTimeInSeconds(GRBLFramework.FileLines,
+                    Manager.Machines[cDropDown_machineProfiles.SelectedIndex],
+                    GRBLFramework.WPos.X, GRBLFramework.WPos.Y, GRBLFramework.WPos.Z);
 
-            //Adding tool change time
-            seconds += Manager.Machines[cDropDown_machineProfiles.SelectedIndex].ToolChangeTime * (toolsCount + 1);
+                //Adding tool change time
+                seconds += Manager.Machines[cDropDown_machineProfiles.SelectedIndex].ToolChangeTime * (toolsCount + 1);
 
-            //Set approximate label text
-            TimeSpan ts = TimeSpan.FromSeconds(seconds);
-            cLabel_approximate.Text = string.Format("Approximate machining time: {0}", ts.ToString("mm\\:ss"));*/
+                //Set approximate label text
+                TimeSpan ts = TimeSpan.FromSeconds(seconds);
+                cLabel_approximate.Text = string.Format("Approximate machining time: {0}", ts.ToString("mm\\:ss"));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error in machining time calculation.", MessageBoxButtons.OK);
+            }
         }
 
         private void cButton_sendFile_Click(object sender, EventArgs e)
@@ -1146,14 +1156,23 @@ namespace CNCV.Pages
         /// </summary>
         private void UpdateFileToolsList()
         {
-            for (int i = 0; i < cListView_fileTools.Items.Count; i++)
+            try
             {
-                if (i == GRBLFramework.CurrentToolID)
-                    cListView_fileTools.Items[i].SubItems[4].Text = "Current"; //Current tool
-                else if (i < ToolChangeIndex)
-                    cListView_fileTools.Items[i].SubItems[4].Text = "X"; //Already used tool
-                else
-                    cListView_fileTools.Items[i].SubItems[4].Text = "Queue"; //To be used tool
+                for (int i = 0; i < cListView_fileTools.Items.Count; i++)
+                {
+                    if (i == GRBLFramework.CurrentToolID)
+                        cListView_fileTools.Items[i].SubItems[4].Text = "Current"; //Current tool
+                    else if (i < ToolChangeIndex)
+                        cListView_fileTools.Items[i].SubItems[4].Text = "X"; //Already used tool
+                    else
+                        cListView_fileTools.Items[i].SubItems[4].Text = "Queue"; //To be used tool
+                }
+
+                cListView_fileTools.Invalidate();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error in tool list update.", MessageBoxButtons.OK);
             }
         }
 

@@ -49,7 +49,7 @@
             this.cLabelID = new CCL.Controls.CLabel();
             this.cLabelCD = new CCL.Controls.CLabel();
             this.cLabelSD = new CCL.Controls.CLabel();
-            this.cButton1 = new CCL.Controls.CButton();
+            this.cButtonToolChanged = new CCL.Controls.CButton();
             this.SuspendLayout();
             // 
             // cRadioButton_g1
@@ -152,7 +152,7 @@
             this.cTextBox_distance.Size = new System.Drawing.Size(122, 18);
             this.cTextBox_distance.TabIndex = 52;
             this.cTextBox_distance.TabStop = false;
-            this.cTextBox_distance.Text = "50";
+            this.cTextBox_distance.Text = "10";
             this.cTextBox_distance.TextStyle = CCL.eTextStyle.Normal;
             this.cTextBox_distance.UseSystemPasswordChar = false;
             // 
@@ -368,24 +368,25 @@
             this.cLabelSD.TextStyle = CCL.eTextStyle.Normal;
             this.cLabelSD.UseFontSizeOverride = true;
             // 
-            // cButton1
+            // cButtonToolChanged
             // 
-            this.cButton1.DrawBorder = true;
-            this.cButton1.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton1.Location = new System.Drawing.Point(12, 589);
-            this.cButton1.Name = "cButton1";
-            this.cButton1.Size = new System.Drawing.Size(272, 47);
-            this.cButton1.TabIndex = 63;
-            this.cButton1.Text = "Tool Changed";
-            this.cButton1.TextStyle = CCL.eTextStyle.Title5;
-            this.cButton1.UseVisualStyleBackColor = true;
+            this.cButtonToolChanged.DrawBorder = true;
+            this.cButtonToolChanged.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
+            this.cButtonToolChanged.Location = new System.Drawing.Point(12, 589);
+            this.cButtonToolChanged.Name = "cButtonToolChanged";
+            this.cButtonToolChanged.Size = new System.Drawing.Size(272, 47);
+            this.cButtonToolChanged.TabIndex = 63;
+            this.cButtonToolChanged.Text = "Tool Changed";
+            this.cButtonToolChanged.TextStyle = CCL.eTextStyle.Title5;
+            this.cButtonToolChanged.UseVisualStyleBackColor = true;
+            this.cButtonToolChanged.Click += new System.EventHandler(this.cButtonToolChanged_Click);
             // 
             // Form_ToolChangeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(296, 648);
-            this.Controls.Add(this.cButton1);
+            this.Controls.Add(this.cButtonToolChanged);
             this.Controls.Add(this.cLabelSD);
             this.Controls.Add(this.cLabelCD);
             this.Controls.Add(this.cLabelID);
@@ -439,6 +440,6 @@
         private CCL.Controls.CLabel cLabelID;
         private CCL.Controls.CLabel cLabelCD;
         private CCL.Controls.CLabel cLabelSD;
-        private CCL.Controls.CButton cButton1;
+        private CCL.Controls.CButton cButtonToolChanged;
     }
 }

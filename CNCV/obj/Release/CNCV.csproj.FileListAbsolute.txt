@@ -7,7 +7,6 @@ D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\bin\Rel
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\bin\Release\CCL.pdb
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\bin\Release\GRBL.pdb
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\bin\Release\Newtonsoft.Json.xml
-D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Release\CNCV.csprojAssemblyReference.cache
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Release\CNCV.Pages.Form_CheckFile.resources
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Release\CNCV.Pages.Form_Machine.resources
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Release\CNCV.Pages.Form_Main.resources

@@ -95,5 +95,10 @@ namespace CNCV.Pages
             GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
 
         }
+
+        private void cButtonToolChanged_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
