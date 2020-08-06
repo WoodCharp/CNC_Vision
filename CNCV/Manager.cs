@@ -38,9 +38,8 @@ namespace CNCV
         /// <summary>
         /// Load settings from file
         /// </summary>
-        public void LoadAppSettings()
+        public bool LoadAppSettings()
         {
-           // MessageBox.Show("Loading");
             if(FileManager.AppSettingsExist())
             {
                 using(TextReader tr = File.OpenText(FileManager.AppSettingsFile))
@@ -51,7 +50,10 @@ namespace CNCV
                     Properties.Settings.Default.Save();
                     Properties.Settings.Default.Reload();
                 }
+                return true;
             }
+
+            return false;
         }
 
         //Save new setting file
@@ -95,6 +97,9 @@ namespace CNCV
                 CNCTools = new List<CNCTool>();
 
             CNCTools.Clear();
+
+            if (!FileManager.ToolsFolderExist())
+                FileManager.CreateToolsDirectory();
 
             string[] files = FileManager.GetToolFiles();
 
@@ -180,7 +185,6 @@ namespace CNCV
             item.SubItems.Add("0");
 
             listView.Items.Add(item);
-            listView.Invalidate();
         }
 
         /// <summary>
@@ -213,6 +217,9 @@ namespace CNCV
                 Machines = new List<Machine>();
 
             Machines.Clear();
+
+            if (!FileManager.MachinesFolderExist())
+                FileManager.CreateMachinesDirectory();
 
             string[] files = FileManager.GetMachineFiles();
 
@@ -275,7 +282,6 @@ namespace CNCV
             item.SubItems.Add("VER*");
             item.SubItems.Add("OPT*");
             listView.Items.Add(item);
-            listView.Invalidate();
         }
 
         public void DeleteMachine(CListView listView)

@@ -1,6 +1,8 @@
 ﻿using CNCV.Pages;
+using CNCV.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +19,10 @@ namespace CNCV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            /*if (Debugger.IsAttached)
+                Settings.Default.Reset();*/
+
             Application.Run(new Form_Main());
         }
     }

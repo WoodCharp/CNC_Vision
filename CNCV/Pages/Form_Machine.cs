@@ -28,6 +28,8 @@ namespace CNCV.Pages
             InitializeComponent();
             SelectedMachineIndex = index;
 
+            cTextBoxMoveUp.KeyPress += new KeyPressEventHandler(cTextBox_touchPlateHeight_KeyPress);
+
             Text = string.Format("Editing Machine ID:{0}", Manager.Machines[SelectedMachineIndex].ID);
 
             GRBLFramework.CurrentForm = this;
@@ -62,6 +64,7 @@ namespace CNCV.Pages
 
             cTextBox_toolChangeTime.Text = CurMachine.ToolChangeTime.ToString();
             cTextBox_touchPlateHeight.Text = CurMachine.TouchPlateHeight.ToString();
+            cTextBoxMoveUp.Text = CurMachine.MoveUpDistance.ToString();
 
             GRBLFramework.ScannedOPT = CurMachine.OPT;
 
@@ -73,7 +76,6 @@ namespace CNCV.Pages
                 cListView_grblSettings.Items.Add(item);
             }
         }
-
 
 
         private void cButton_cancel_Click(object sender, EventArgs e)
@@ -89,6 +91,7 @@ namespace CNCV.Pages
             CurMachine.PortData.BaudRate = int.Parse(cTextBox_baudRate.Text);
             CurMachine.ToolChangeTime = int.Parse(cTextBox_toolChangeTime.Text);
             CurMachine.TouchPlateHeight = float.Parse(cTextBox_touchPlateHeight.Text);
+            CurMachine.MoveUpDistance = float.Parse(cTextBoxMoveUp.Text);
 
             CurMachine.GRBLSettings.Clear();
 
@@ -181,7 +184,6 @@ namespace CNCV.Pages
 
             foreach(ListViewItem item in cListView_grblSettings.Items)
             {
-                //MessageBox.Show(string.Format("${0}={1}", item.Text, Converters.DotToFloat(item.SubItems[1].Text)));
                 settings.Add(string.Format("${0}={1}", item.Text, Converters.DotToFloat(item.SubItems[1].Text)));
             }
 

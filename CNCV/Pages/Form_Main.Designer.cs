@@ -47,7 +47,6 @@
             this.cPanel_manualMove = new CCL.Controls.CPanel();
             this.cCheckBox_lockX = new CCL.Controls.CCheckBox();
             this.cCheckBox_lockY = new CCL.Controls.CCheckBox();
-            this.joggingKnob1 = new GRBL.Controls.JoggingKnob();
             this.cLabel7 = new CCL.Controls.CLabel();
             this.cDropDown_workSpace = new CCL.Controls.CDropDown();
             this.cRadioButton_g1 = new CCL.Controls.CRadioButton();
@@ -70,9 +69,9 @@
             this.cButton_Xm = new CCL.Controls.CButton();
             this.tabPage_spindle = new System.Windows.Forms.TabPage();
             this.cTabControl_spindleLaser = new CCL.Controls.CTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage_spindleControls = new System.Windows.Forms.TabPage();
-            this.cLabel14 = new CCL.Controls.CLabel();
-            this.cLabel10 = new CCL.Controls.CLabel();
+            this.cLabelSliderSpindleRPM = new CCL.Controls.CLabel();
             this.cLabel9 = new CCL.Controls.CLabel();
             this.cButton_touchThePlate = new CCL.Controls.CButton();
             this.cSwitch_enableSpindle = new CCL.Controls.CSwitch();
@@ -99,13 +98,22 @@
             this.cRadioButton_overrideFeedAddTen = new CCL.Controls.CRadioButton();
             this.cRadioButton_overrideFeedAddOne = new CCL.Controls.CRadioButton();
             this.tabPage_file = new System.Windows.Forms.TabPage();
+            this.cListViewMessages = new CCL.Controls.CListView();
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cContextMenuStripMessages = new CCL.Controls.CContextMenuStrip();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cButtonCheckMode = new CCL.Controls.CButton();
             this.cLabel_approximate = new CCL.Controls.CLabel();
             this.cListView_fileTools = new CCL.Controls.CListView();
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cLabel_usedTime = new CCL.Controls.CLabel();
             this.cButton_openFile = new CCL.Controls.CButton();
             this.cLabel_endTime = new CCL.Controls.CLabel();
@@ -216,6 +224,11 @@
             this.ch_Tool_W = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.schemeComponent1 = new CCL.SchemeComponent(this.components);
             this.schemeComponent2 = new CCL.SchemeComponent(this.components);
+            this.cSliderRouterRPM = new CCL.Controls.CSlider();
+            this.cButtonSetRPM = new CCL.Controls.CButton();
+            this.joggingKnob1 = new GRBL.Controls.JoggingKnob();
+            this.cLabel10 = new CCL.Controls.CLabel();
+            this.cLabelSpindleRPM = new CCL.Controls.CLabel();
             this.cTabControl1.SuspendLayout();
             this.tabPage_Controls.SuspendLayout();
             this.cTabControl2.SuspendLayout();
@@ -230,6 +243,7 @@
             this.cGroupBox_overrideSpindle.SuspendLayout();
             this.cGroupBox_overrideFeed.SuspendLayout();
             this.tabPage_file.SuspendLayout();
+            this.cContextMenuStripMessages.SuspendLayout();
             this.tabPage_Machines.SuspendLayout();
             this.cContextMenuStrip_editMachine.SuspendLayout();
             this.tabPage_Tools.SuspendLayout();
@@ -257,6 +271,8 @@
             // tabPage_Controls
             // 
             this.tabPage_Controls.BackColor = System.Drawing.Color.Silver;
+            this.tabPage_Controls.Controls.Add(this.cLabel10);
+            this.tabPage_Controls.Controls.Add(this.cLabelSpindleRPM);
             this.tabPage_Controls.Controls.Add(this.cButton_clear);
             this.tabPage_Controls.Controls.Add(this.cLabel_wcoZ);
             this.tabPage_Controls.Controls.Add(this.cLabel_wcoY);
@@ -302,7 +318,7 @@
             // 
             // cButton_clear
             // 
-            this.cButton_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cButton_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cButton_clear.DrawBorder = true;
             this.cButton_clear.Font = new System.Drawing.Font("Armata", 12F);
             this.cButton_clear.Location = new System.Drawing.Point(318, 587);
@@ -395,7 +411,7 @@
             // 
             // cButton_sendCommand
             // 
-            this.cButton_sendCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cButton_sendCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cButton_sendCommand.DrawBorder = true;
             this.cButton_sendCommand.Enabled = false;
             this.cButton_sendCommand.Font = new System.Drawing.Font("Armata", 12F);
@@ -410,7 +426,8 @@
             // 
             // cTextBox_command
             // 
-            this.cTextBox_command.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cTextBox_command.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cTextBox_command.Depth = 0;
             this.cTextBox_command.Enabled = false;
             this.cTextBox_command.Font = new System.Drawing.Font("Armata", 12F);
@@ -433,8 +450,9 @@
             // 
             // cRichTextBox1
             // 
-            this.cRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cRichTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.cRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cRichTextBox1.Font = new System.Drawing.Font("Armata", 10F);
@@ -464,7 +482,7 @@
             // 
             // cTabControl2
             // 
-            this.cTabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cTabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cTabControl2.Controls.Add(this.tabPage_move);
             this.cTabControl2.Controls.Add(this.tabPage_spindle);
@@ -554,16 +572,6 @@
             this.cCheckBox_lockY.Underline = false;
             this.cCheckBox_lockY.UnderlineYOffset = 0;
             this.cCheckBox_lockY.UseVisualStyleBackColor = true;
-            // 
-            // joggingKnob1
-            // 
-            this.joggingKnob1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.joggingKnob1.Enabled = false;
-            this.joggingKnob1.Location = new System.Drawing.Point(101, 336);
-            this.joggingKnob1.Name = "joggingKnob1";
-            this.joggingKnob1.Size = new System.Drawing.Size(160, 160);
-            this.joggingKnob1.TabIndex = 60;
-            this.joggingKnob1.Text = "joggingKnob1";
             // 
             // cLabel7
             // 
@@ -886,6 +894,7 @@
             this.cTabControl_spindleLaser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cTabControl_spindleLaser.Controls.Add(this.tabPage1);
             this.cTabControl_spindleLaser.Controls.Add(this.tabPage_spindleControls);
             this.cTabControl_spindleLaser.Controls.Add(this.tabPage_laserControls);
             this.cTabControl_spindleLaser.Location = new System.Drawing.Point(3, 3);
@@ -894,11 +903,21 @@
             this.cTabControl_spindleLaser.Size = new System.Drawing.Size(369, 565);
             this.cTabControl_spindleLaser.TabIndex = 22;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(361, 539);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // tabPage_spindleControls
             // 
             this.tabPage_spindleControls.BackColor = System.Drawing.Color.Silver;
-            this.tabPage_spindleControls.Controls.Add(this.cLabel14);
-            this.tabPage_spindleControls.Controls.Add(this.cLabel10);
+            this.tabPage_spindleControls.Controls.Add(this.cButtonSetRPM);
+            this.tabPage_spindleControls.Controls.Add(this.cSliderRouterRPM);
+            this.tabPage_spindleControls.Controls.Add(this.cLabelSliderSpindleRPM);
             this.tabPage_spindleControls.Controls.Add(this.cLabel9);
             this.tabPage_spindleControls.Controls.Add(this.cButton_touchThePlate);
             this.tabPage_spindleControls.Controls.Add(this.cSwitch_enableSpindle);
@@ -909,35 +928,20 @@
             this.tabPage_spindleControls.TabIndex = 0;
             this.tabPage_spindleControls.Text = "Spindle";
             // 
-            // cLabel14
+            // cLabelSliderSpindleRPM
             // 
-            this.cLabel14.AutoSize = true;
-            this.cLabel14.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel14.Font = new System.Drawing.Font("Armata", 12F);
-            this.cLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel14.Location = new System.Drawing.Point(129, 53);
-            this.cLabel14.Name = "cLabel14";
-            this.cLabel14.OverrideFontSize = 12F;
-            this.cLabel14.Size = new System.Drawing.Size(101, 20);
-            this.cLabel14.TabIndex = 45;
-            this.cLabel14.Text = "Slider here";
-            this.cLabel14.TextStyle = CCL.eTextStyle.Medium;
-            this.cLabel14.UseFontSizeOverride = false;
-            // 
-            // cLabel10
-            // 
-            this.cLabel10.AutoSize = true;
-            this.cLabel10.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel10.Font = new System.Drawing.Font("Armata", 12F);
-            this.cLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel10.Location = new System.Drawing.Point(272, 53);
-            this.cLabel10.Name = "cLabel10";
-            this.cLabel10.OverrideFontSize = 12F;
-            this.cLabel10.Size = new System.Drawing.Size(69, 20);
-            this.cLabel10.TabIndex = 44;
-            this.cLabel10.Text = "00000";
-            this.cLabel10.TextStyle = CCL.eTextStyle.Medium;
-            this.cLabel10.UseFontSizeOverride = false;
+            this.cLabelSliderSpindleRPM.AutoSize = true;
+            this.cLabelSliderSpindleRPM.BackColor = System.Drawing.Color.Transparent;
+            this.cLabelSliderSpindleRPM.Font = new System.Drawing.Font("Armata", 12F);
+            this.cLabelSliderSpindleRPM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabelSliderSpindleRPM.Location = new System.Drawing.Point(281, 53);
+            this.cLabelSliderSpindleRPM.Name = "cLabelSliderSpindleRPM";
+            this.cLabelSliderSpindleRPM.OverrideFontSize = 12F;
+            this.cLabelSliderSpindleRPM.Size = new System.Drawing.Size(69, 20);
+            this.cLabelSliderSpindleRPM.TabIndex = 44;
+            this.cLabelSliderSpindleRPM.Text = "00000";
+            this.cLabelSliderSpindleRPM.TextStyle = CCL.eTextStyle.Medium;
+            this.cLabelSliderSpindleRPM.UseFontSizeOverride = false;
             // 
             // cLabel9
             // 
@@ -1009,7 +1013,7 @@
             this.cSwitch_enableStrongLaser.Font = new System.Drawing.Font("Armata", 10F);
             this.cSwitch_enableStrongLaser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cSwitch_enableStrongLaser.IsOn = false;
-            this.cSwitch_enableStrongLaser.Location = new System.Drawing.Point(6, 4);
+            this.cSwitch_enableStrongLaser.Location = new System.Drawing.Point(80, 4);
             this.cSwitch_enableStrongLaser.Name = "cSwitch_enableStrongLaser";
             this.cSwitch_enableStrongLaser.OffIcon = ((System.Drawing.Image)(resources.GetObject("cSwitch_enableStrongLaser.OffIcon")));
             this.cSwitch_enableStrongLaser.OnIcon = ((System.Drawing.Image)(resources.GetObject("cSwitch_enableStrongLaser.OnIcon")));
@@ -1019,18 +1023,20 @@
             this.cSwitch_enableStrongLaser.Text = "Enable Strong Laser";
             this.cSwitch_enableStrongLaser.TextStyle = CCL.eTextStyle.Normal;
             this.cSwitch_enableStrongLaser.UseIcons = false;
+            this.cSwitch_enableStrongLaser.Click += new System.EventHandler(this.cSwitch_enableStrongLaser_Click);
             // 
             // cButton_showLaserArea
             // 
             this.cButton_showLaserArea.DrawBorder = true;
             this.cButton_showLaserArea.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton_showLaserArea.Location = new System.Drawing.Point(6, 83);
+            this.cButton_showLaserArea.Location = new System.Drawing.Point(110, 83);
             this.cButton_showLaserArea.Name = "cButton_showLaserArea";
             this.cButton_showLaserArea.Size = new System.Drawing.Size(140, 35);
             this.cButton_showLaserArea.TabIndex = 21;
             this.cButton_showLaserArea.Text = "Show Area";
             this.cButton_showLaserArea.TextStyle = CCL.eTextStyle.Title5;
             this.cButton_showLaserArea.UseVisualStyleBackColor = true;
+            this.cButton_showLaserArea.Click += new System.EventHandler(this.cButton_showLaserArea_Click);
             // 
             // cSwitch_enableWeakLaser
             // 
@@ -1040,7 +1046,7 @@
             this.cSwitch_enableWeakLaser.Font = new System.Drawing.Font("Armata", 10F);
             this.cSwitch_enableWeakLaser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cSwitch_enableWeakLaser.IsOn = false;
-            this.cSwitch_enableWeakLaser.Location = new System.Drawing.Point(6, 35);
+            this.cSwitch_enableWeakLaser.Location = new System.Drawing.Point(80, 35);
             this.cSwitch_enableWeakLaser.Name = "cSwitch_enableWeakLaser";
             this.cSwitch_enableWeakLaser.OffIcon = ((System.Drawing.Image)(resources.GetObject("cSwitch_enableWeakLaser.OffIcon")));
             this.cSwitch_enableWeakLaser.OnIcon = ((System.Drawing.Image)(resources.GetObject("cSwitch_enableWeakLaser.OnIcon")));
@@ -1050,6 +1056,7 @@
             this.cSwitch_enableWeakLaser.Text = "Enable Weak Laser";
             this.cSwitch_enableWeakLaser.TextStyle = CCL.eTextStyle.Normal;
             this.cSwitch_enableWeakLaser.UseIcons = false;
+            this.cSwitch_enableWeakLaser.Click += new System.EventHandler(this.cSwitch_enableWeakLaser_Click);
             // 
             // tabPage_override
             // 
@@ -1337,6 +1344,8 @@
             // tabPage_file
             // 
             this.tabPage_file.BackColor = System.Drawing.Color.Silver;
+            this.tabPage_file.Controls.Add(this.cListViewMessages);
+            this.tabPage_file.Controls.Add(this.cButtonCheckMode);
             this.tabPage_file.Controls.Add(this.cLabel_approximate);
             this.tabPage_file.Controls.Add(this.cListView_fileTools);
             this.tabPage_file.Controls.Add(this.cLabel_usedTime);
@@ -1353,6 +1362,94 @@
             this.tabPage_file.Size = new System.Drawing.Size(375, 571);
             this.tabPage_file.TabIndex = 4;
             this.tabPage_file.Text = "File";
+            // 
+            // cListViewMessages
+            // 
+            this.cListViewMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cListViewMessages.ColumnHeaderTextStyle = CCL.eTextStyle.Normal;
+            this.cListViewMessages.ColumnHeight = 24;
+            this.cListViewMessages.Columns.Add(this.columnHeader23);
+            this.cListViewMessages.Columns.Add(this.columnHeader24);
+            this.cListViewMessages.Columns.Add(this.columnHeader25);
+            this.cListViewMessages.ContentTextStyle = CCL.eTextStyle.Normal;
+            this.cListViewMessages.ContextMenuStrip = this.cContextMenuStripMessages;
+            this.cListViewMessages.DrawBorder = true;
+            this.cListViewMessages.EnableItemEdit = false;
+            this.cListViewMessages.FullRowHoverEffect = true;
+            this.cListViewMessages.HorizontalLines = true;
+            this.cListViewMessages.ItemHeight = 24;
+            this.cListViewMessages.ItemHoverEffect = true;
+            this.cListViewMessages.Location = new System.Drawing.Point(3, 334);
+            this.cListViewMessages.MinColumnWidth = 20;
+            this.cListViewMessages.Name = "cListViewMessages";
+            this.cListViewMessages.NoItemsToShowText = "No Items To Show.";
+            this.cListViewMessages.NothingToShowText = "Nothing To Show.";
+            this.cListViewMessages.Size = new System.Drawing.Size(372, 237);
+            this.cListViewMessages.TabIndex = 52;
+            this.cListViewMessages.Text = "MESSAGES";
+            this.cListViewMessages.TitleTextStyle = CCL.eTextStyle.Title3;
+            this.cListViewMessages.VerticalLines = false;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Type";
+            this.columnHeader23.Width = 120;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "ID";
+            this.columnHeader24.Width = 100;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Message";
+            this.columnHeader25.Width = 200;
+            // 
+            // cContextMenuStripMessages
+            // 
+            this.cContextMenuStripMessages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem,
+            this.removeToolStripMenuItem,
+            this.clearToolStripMenuItem});
+            this.cContextMenuStripMessages.Name = "cContextMenuStripMessages";
+            this.cContextMenuStripMessages.Size = new System.Drawing.Size(118, 70);
+            this.cContextMenuStripMessages.TextStyle = CCL.eTextStyle.Normal;
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // cButtonCheckMode
+            // 
+            this.cButtonCheckMode.DrawBorder = true;
+            this.cButtonCheckMode.Enabled = false;
+            this.cButtonCheckMode.Font = new System.Drawing.Font("Armata", 12F);
+            this.cButtonCheckMode.Location = new System.Drawing.Point(3, 127);
+            this.cButtonCheckMode.Name = "cButtonCheckMode";
+            this.cButtonCheckMode.Size = new System.Drawing.Size(125, 27);
+            this.cButtonCheckMode.TabIndex = 51;
+            this.cButtonCheckMode.Text = "CHECK MODE";
+            this.cButtonCheckMode.TextStyle = CCL.eTextStyle.Medium;
+            this.cButtonCheckMode.UseVisualStyleBackColor = true;
+            this.cButtonCheckMode.Click += new System.EventHandler(this.cButtonCheckMode_Click);
             // 
             // cLabel_approximate
             // 
@@ -1376,21 +1473,23 @@
             this.cListView_fileTools.Columns.Add(this.columnHeader20);
             this.cListView_fileTools.Columns.Add(this.columnHeader21);
             this.cListView_fileTools.Columns.Add(this.columnHeader22);
-            this.cListView_fileTools.Columns.Add(this.columnHeader23);
-            this.cListView_fileTools.Columns.Add(this.columnHeader24);
+            this.cListView_fileTools.Columns.Add(this.columnHeader26);
+            this.cListView_fileTools.Columns.Add(this.columnHeader27);
             this.cListView_fileTools.ContentTextStyle = CCL.eTextStyle.Normal;
             this.cListView_fileTools.DrawBorder = true;
             this.cListView_fileTools.EnableItemEdit = false;
+            this.cListView_fileTools.FullRowHoverEffect = true;
             this.cListView_fileTools.HorizontalLines = true;
             this.cListView_fileTools.ItemHeight = 24;
             this.cListView_fileTools.ItemHoverEffect = true;
-            this.cListView_fileTools.Location = new System.Drawing.Point(6, 150);
+            this.cListView_fileTools.Location = new System.Drawing.Point(3, 155);
             this.cListView_fileTools.MinColumnWidth = 20;
             this.cListView_fileTools.Name = "cListView_fileTools";
-            this.cListView_fileTools.Size = new System.Drawing.Size(368, 421);
+            this.cListView_fileTools.NoItemsToShowText = "No Items To Show.";
+            this.cListView_fileTools.NothingToShowText = "Nothing To Show.";
+            this.cListView_fileTools.Size = new System.Drawing.Size(371, 173);
             this.cListView_fileTools.TabIndex = 48;
-            this.cListView_fileTools.Text = "cListView1";
-            this.cListView_fileTools.TitleText = "TOOLS IN FILE";
+            this.cListView_fileTools.Text = "TOOLS IN FILE";
             this.cListView_fileTools.TitleTextStyle = CCL.eTextStyle.Title3;
             this.cListView_fileTools.VerticalLines = false;
             // 
@@ -1407,13 +1506,13 @@
             // 
             this.columnHeader22.Text = "CD";
             // 
-            // columnHeader23
+            // columnHeader26
             // 
-            this.columnHeader23.Text = "SD";
+            this.columnHeader26.Text = "SD";
             // 
-            // columnHeader24
+            // columnHeader27
             // 
-            this.columnHeader24.Text = "Queue";
+            this.columnHeader27.Text = "Queue";
             // 
             // cLabel_usedTime
             // 
@@ -1602,9 +1701,9 @@
             this.cLabel15.Location = new System.Drawing.Point(1, 190);
             this.cLabel15.Name = "cLabel15";
             this.cLabel15.OverrideFontSize = 12F;
-            this.cLabel15.Size = new System.Drawing.Size(40, 27);
+            this.cLabel15.Size = new System.Drawing.Size(74, 27);
             this.cLabel15.TabIndex = 24;
-            this.cLabel15.Text = "FS";
+            this.cLabel15.Text = "Feed";
             this.cLabel15.TextStyle = CCL.eTextStyle.Title3;
             this.cLabel15.UseFontSizeOverride = false;
             // 
@@ -1614,7 +1713,7 @@
             this.cLabel_fs.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_fs.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_fs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_fs.Location = new System.Drawing.Point(40, 195);
+            this.cLabel_fs.Location = new System.Drawing.Point(81, 195);
             this.cLabel_fs.Name = "cLabel_fs";
             this.cLabel_fs.OverrideFontSize = 12F;
             this.cLabel_fs.Size = new System.Drawing.Size(85, 20);
@@ -1988,16 +2087,18 @@
             this.cListView_machines.ContextMenuStrip = this.cContextMenuStrip_editMachine;
             this.cListView_machines.DrawBorder = false;
             this.cListView_machines.EnableItemEdit = false;
-            this.cListView_machines.HorizontalLines = false;
+            this.cListView_machines.FullRowHoverEffect = true;
+            this.cListView_machines.HorizontalLines = true;
             this.cListView_machines.ItemHeight = 24;
             this.cListView_machines.ItemHoverEffect = true;
             this.cListView_machines.Location = new System.Drawing.Point(3, 3);
             this.cListView_machines.MinColumnWidth = 20;
             this.cListView_machines.Name = "cListView_machines";
+            this.cListView_machines.NoItemsToShowText = "No Items To Show.";
+            this.cListView_machines.NothingToShowText = "Nothing To Show.";
             this.cListView_machines.Size = new System.Drawing.Size(796, 587);
             this.cListView_machines.TabIndex = 0;
-            this.cListView_machines.Text = "cListView1";
-            this.cListView_machines.TitleText = "MACHINES";
+            this.cListView_machines.Text = "MACHINES";
             this.cListView_machines.TitleTextStyle = CCL.eTextStyle.Title3;
             this.cListView_machines.VerticalLines = false;
             // 
@@ -2218,16 +2319,18 @@
             this.cListView_tools.DropDownColumns.Add("2");
             this.cListView_tools.DropDownItems.Add("Flat Ball Carving Drill Chamfer Rounding Laser");
             this.cListView_tools.EnableItemEdit = false;
+            this.cListView_tools.FullRowHoverEffect = false;
             this.cListView_tools.HorizontalLines = true;
             this.cListView_tools.ItemHeight = 24;
             this.cListView_tools.ItemHoverEffect = true;
             this.cListView_tools.Location = new System.Drawing.Point(3, 3);
             this.cListView_tools.MinColumnWidth = 20;
             this.cListView_tools.Name = "cListView_tools";
+            this.cListView_tools.NoItemsToShowText = "No Items To Show.";
+            this.cListView_tools.NothingToShowText = "Nothing To Show.";
             this.cListView_tools.Size = new System.Drawing.Size(799, 562);
             this.cListView_tools.TabIndex = 0;
-            this.cListView_tools.Text = "cListView1";
-            this.cListView_tools.TitleText = "TOOLS";
+            this.cListView_tools.Text = "TOOLS";
             this.cListView_tools.TitleTextStyle = CCL.eTextStyle.Title3;
             this.cListView_tools.VerticalLines = false;
             // 
@@ -2370,14 +2473,13 @@
             this.cGroupBox2.Size = new System.Drawing.Size(453, 82);
             this.cGroupBox2.TabIndex = 4;
             this.cGroupBox2.TabStop = false;
-            this.cGroupBox2.Text = "Teema";
+            this.cGroupBox2.Text = "Theme";
             this.cGroupBox2.TextAlignment = System.Drawing.StringAlignment.Near;
             this.cGroupBox2.TextStyle = CCL.eTextStyle.Title5;
             // 
             // cRadioButtonSettingsTheme6
             // 
             this.cRadioButtonSettingsTheme6.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme6.Checked = true;
             this.cRadioButtonSettingsTheme6.CheckMarkSize = 10;
             this.cRadioButtonSettingsTheme6.Font = new System.Drawing.Font("Armata", 10F);
             this.cRadioButtonSettingsTheme6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -2386,7 +2488,6 @@
             this.cRadioButtonSettingsTheme6.RadioButtonHeight = 18;
             this.cRadioButtonSettingsTheme6.Size = new System.Drawing.Size(88, 18);
             this.cRadioButtonSettingsTheme6.TabIndex = 5;
-            this.cRadioButtonSettingsTheme6.TabStop = true;
             this.cRadioButtonSettingsTheme6.Text = "Theme 6";
             this.cRadioButtonSettingsTheme6.TextStyle = CCL.eTextStyle.Normal;
             this.cRadioButtonSettingsTheme6.UseVisualStyleBackColor = false;
@@ -2403,7 +2504,6 @@
             this.cRadioButtonSettingsTheme5.RadioButtonHeight = 18;
             this.cRadioButtonSettingsTheme5.Size = new System.Drawing.Size(86, 18);
             this.cRadioButtonSettingsTheme5.TabIndex = 4;
-            this.cRadioButtonSettingsTheme5.TabStop = true;
             this.cRadioButtonSettingsTheme5.Text = "Theme 5";
             this.cRadioButtonSettingsTheme5.TextStyle = CCL.eTextStyle.Normal;
             this.cRadioButtonSettingsTheme5.UseVisualStyleBackColor = false;
@@ -2420,7 +2520,6 @@
             this.cRadioButtonSettingsTheme4.RadioButtonHeight = 18;
             this.cRadioButtonSettingsTheme4.Size = new System.Drawing.Size(88, 18);
             this.cRadioButtonSettingsTheme4.TabIndex = 3;
-            this.cRadioButtonSettingsTheme4.TabStop = true;
             this.cRadioButtonSettingsTheme4.Text = "Theme 4";
             this.cRadioButtonSettingsTheme4.TextStyle = CCL.eTextStyle.Normal;
             this.cRadioButtonSettingsTheme4.UseVisualStyleBackColor = false;
@@ -2437,7 +2536,6 @@
             this.cRadioButtonSettingsTheme3.RadioButtonHeight = 18;
             this.cRadioButtonSettingsTheme3.Size = new System.Drawing.Size(86, 18);
             this.cRadioButtonSettingsTheme3.TabIndex = 2;
-            this.cRadioButtonSettingsTheme3.TabStop = true;
             this.cRadioButtonSettingsTheme3.Text = "Theme 3";
             this.cRadioButtonSettingsTheme3.TextStyle = CCL.eTextStyle.Normal;
             this.cRadioButtonSettingsTheme3.UseVisualStyleBackColor = false;
@@ -2454,7 +2552,6 @@
             this.cRadioButtonSettingsTheme2.RadioButtonHeight = 18;
             this.cRadioButtonSettingsTheme2.Size = new System.Drawing.Size(86, 18);
             this.cRadioButtonSettingsTheme2.TabIndex = 1;
-            this.cRadioButtonSettingsTheme2.TabStop = true;
             this.cRadioButtonSettingsTheme2.Text = "Theme 2";
             this.cRadioButtonSettingsTheme2.TextStyle = CCL.eTextStyle.Normal;
             this.cRadioButtonSettingsTheme2.UseVisualStyleBackColor = false;
@@ -2463,6 +2560,7 @@
             // cRadioButtonSettingsTheme1
             // 
             this.cRadioButtonSettingsTheme1.BackColor = System.Drawing.Color.Transparent;
+            this.cRadioButtonSettingsTheme1.Checked = true;
             this.cRadioButtonSettingsTheme1.CheckMarkSize = 10;
             this.cRadioButtonSettingsTheme1.Font = new System.Drawing.Font("Armata", 10F);
             this.cRadioButtonSettingsTheme1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -2651,6 +2749,77 @@
             this.schemeComponent2.SchemeColor = System.Drawing.Color.DeepSkyBlue;
             this.schemeComponent2.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             // 
+            // cSliderRouterRPM
+            // 
+            this.cSliderRouterRPM.DecimalPoints = 0;
+            this.cSliderRouterRPM.Enabled = false;
+            this.cSliderRouterRPM.KnobIcon = null;
+            this.cSliderRouterRPM.KnobSize = 18;
+            this.cSliderRouterRPM.Location = new System.Drawing.Point(85, 53);
+            this.cSliderRouterRPM.MaxValue = 100F;
+            this.cSliderRouterRPM.MinValue = 0F;
+            this.cSliderRouterRPM.Name = "cSliderRouterRPM";
+            this.cSliderRouterRPM.Size = new System.Drawing.Size(190, 20);
+            this.cSliderRouterRPM.SliderSize = new System.Drawing.Size(190, 20);
+            this.cSliderRouterRPM.TabIndex = 45;
+            this.cSliderRouterRPM.Text = "cSlider1";
+            this.cSliderRouterRPM.Value = 0F;
+            this.cSliderRouterRPM.ValueChanged += new System.EventHandler(this.cSliderRouterRPM_ValueChanged);
+            // 
+            // cButtonSetRPM
+            // 
+            this.cButtonSetRPM.DrawBorder = true;
+            this.cButtonSetRPM.Enabled = false;
+            this.cButtonSetRPM.Font = new System.Drawing.Font("Armata", 10F);
+            this.cButtonSetRPM.Location = new System.Drawing.Point(192, 79);
+            this.cButtonSetRPM.Name = "cButtonSetRPM";
+            this.cButtonSetRPM.Size = new System.Drawing.Size(83, 28);
+            this.cButtonSetRPM.TabIndex = 46;
+            this.cButtonSetRPM.Text = "Set RPM";
+            this.cButtonSetRPM.TextStyle = CCL.eTextStyle.Normal;
+            this.cButtonSetRPM.UseVisualStyleBackColor = true;
+            this.cButtonSetRPM.Click += new System.EventHandler(this.cButtonSetRPM_Click);
+            // 
+            // joggingKnob1
+            // 
+            this.joggingKnob1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.joggingKnob1.Enabled = false;
+            this.joggingKnob1.Location = new System.Drawing.Point(101, 336);
+            this.joggingKnob1.Name = "joggingKnob1";
+            this.joggingKnob1.Size = new System.Drawing.Size(160, 160);
+            this.joggingKnob1.TabIndex = 60;
+            this.joggingKnob1.Text = "joggingKnob1";
+            // 
+            // cLabel10
+            // 
+            this.cLabel10.AutoSize = true;
+            this.cLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel10.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
+            this.cLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel10.Location = new System.Drawing.Point(172, 190);
+            this.cLabel10.Name = "cLabel10";
+            this.cLabel10.OverrideFontSize = 12F;
+            this.cLabel10.Size = new System.Drawing.Size(106, 27);
+            this.cLabel10.TabIndex = 44;
+            this.cLabel10.Text = "Spindle";
+            this.cLabel10.TextStyle = CCL.eTextStyle.Title3;
+            this.cLabel10.UseFontSizeOverride = false;
+            // 
+            // cLabelSpindleRPM
+            // 
+            this.cLabelSpindleRPM.AutoSize = true;
+            this.cLabelSpindleRPM.BackColor = System.Drawing.Color.Transparent;
+            this.cLabelSpindleRPM.Font = new System.Drawing.Font("Armata", 12F);
+            this.cLabelSpindleRPM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabelSpindleRPM.Location = new System.Drawing.Point(276, 195);
+            this.cLabelSpindleRPM.Name = "cLabelSpindleRPM";
+            this.cLabelSpindleRPM.OverrideFontSize = 12F;
+            this.cLabelSpindleRPM.Size = new System.Drawing.Size(85, 20);
+            this.cLabelSpindleRPM.TabIndex = 43;
+            this.cLabelSpindleRPM.Text = "000.000";
+            this.cLabelSpindleRPM.TextStyle = CCL.eTextStyle.Medium;
+            this.cLabelSpindleRPM.UseFontSizeOverride = false;
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2683,6 +2852,7 @@
             this.cGroupBox_overrideFeed.PerformLayout();
             this.tabPage_file.ResumeLayout(false);
             this.tabPage_file.PerformLayout();
+            this.cContextMenuStripMessages.ResumeLayout(false);
             this.tabPage_Machines.ResumeLayout(false);
             this.cContextMenuStrip_editMachine.ResumeLayout(false);
             this.tabPage_Tools.ResumeLayout(false);
@@ -2830,8 +3000,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.ColumnHeader columnHeader21;
         private System.Windows.Forms.ColumnHeader columnHeader22;
-        private System.Windows.Forms.ColumnHeader columnHeader23;
-        private System.Windows.Forms.ColumnHeader columnHeader24;
         private CCL.Controls.CTabControl cTabControl_spindleLaser;
         private System.Windows.Forms.TabPage tabPage_spindleControls;
         private System.Windows.Forms.TabPage tabPage_laserControls;
@@ -2869,8 +3037,7 @@
         private GRBL.Controls.JoggingKnob joggingKnob1;
         private CCL.Controls.CButton cButton_touchThePlate;
         private CCL.Controls.CLabel cLabel9;
-        private CCL.Controls.CLabel cLabel10;
-        private CCL.Controls.CLabel cLabel14;
+        private CCL.Controls.CLabel cLabelSliderSpindleRPM;
         private CCL.Controls.CLabel cLabel_overrideRapid;
         private CCL.Controls.CLabel cLabel_overrideSpindle;
         private CCL.Controls.CLabel cLabel_overrideFeed;
@@ -2883,5 +3050,21 @@
         private CCL.Controls.CRadioButton cRadioButtonSettingsTheme1;
         private CCL.SchemeComponent schemeComponent1;
         private CCL.SchemeComponent schemeComponent2;
+        private CCL.Controls.CButton cButtonCheckMode;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private System.Windows.Forms.ColumnHeader columnHeader25;
+        private CCL.Controls.CListView cListViewMessages;
+        private System.Windows.Forms.ColumnHeader columnHeader26;
+        private System.Windows.Forms.ColumnHeader columnHeader27;
+        private CCL.Controls.CContextMenuStrip cContextMenuStripMessages;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage1;
+        private CCL.Controls.CSlider cSliderRouterRPM;
+        private CCL.Controls.CButton cButtonSetRPM;
+        private CCL.Controls.CLabel cLabel10;
+        private CCL.Controls.CLabel cLabelSpindleRPM;
     }
 }

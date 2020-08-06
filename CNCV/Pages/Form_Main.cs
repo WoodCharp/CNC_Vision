@@ -9,6 +9,7 @@ using CNCV.Machines;
 using CNCV.Tools;
 
 using GRBL;
+using GRBL.Wiki;
 
 namespace CNCV.Pages
 {
@@ -42,12 +43,19 @@ namespace CNCV.Pages
             GRBLFramework.CurrentForm = this;
             //Add action to program end
             GRBLFramework.FileHasBeenSent = new Action(PgmEnd);
+            //After check action
+            GRBLFramework.CheckEndAction = new Action(CheckComplete);
             //Set console box to GRBL Framework
             GRBLFramework.ConsoleBox = cRichTextBox1;
             GRBLFramework.ShowQuery = false;
             //Set up jogging knob to GRBL Framework
             GRBLFramework.joggingKnob = joggingKnob1;
             GRBLFramework.InitializeJoggingKnob();
+            //When message is received from GRBL
+            GRBLFramework.MessageReceived = new Action(MessageReceivedAction);
+            GRBLFramework.ShowMessagesInConsole_ALARM = false;
+            GRBLFramework.ShowMessagesInConsole_ERROR = false;
+            GRBLFramework.ShowMessagesInConsole_MSG = false;
 
             //Set up timer to update UI stuff
             grblTimer = new System.Windows.Forms.Timer();
@@ -79,40 +87,41 @@ namespace CNCV.Pages
         /// </summary>
         private void LoadAppSettings()
         {
-            Manager.LoadAppSettings();
-
-            switch(Manager.CurrentSettings.SchemeID)
+            if(Manager.LoadAppSettings())
             {
-                case 0:
-                    cRadioButtonSettingsTheme1.Checked = true;
-                    SchemePreset = CSkinManager.SchemePresets.DARK_ORANGE;
-                    break;
-                case 1:
-                    cRadioButtonSettingsTheme2.Checked = true;
-                    SchemePreset = CSkinManager.SchemePresets.DARK_BLUE;
-                    break;
-                case 2:
-                    cRadioButtonSettingsTheme3.Checked = true;
-                    SchemePreset = CSkinManager.SchemePresets.LIGHT_BLUE;
-                    break;
-                case 3:
-                    cRadioButtonSettingsTheme4.Checked = true;
-                    SchemePreset = CSkinManager.SchemePresets.LIGHT_ORANGE;
-                    break;
-                case 4:
-                    cRadioButtonSettingsTheme5.Checked = true;
-                    CustomSchemeComponent = schemeComponent1;
-                    SchemePreset = CSkinManager.SchemePresets.CUSTOM;
-                    break;
-                case 5:
-                    cRadioButtonSettingsTheme6.Checked = true;
-                    CustomSchemeComponent = schemeComponent2;
-                    SchemePreset = CSkinManager.SchemePresets.CUSTOM;
-                    break;
-            }
+                switch (Manager.CurrentSettings.SchemeID)
+                {
+                    case 0:
+                        cRadioButtonSettingsTheme1.Checked = true;
+                        SchemePreset = CSkinManager.SchemePresets.DARK_ORANGE;
+                        break;
+                    case 1:
+                        cRadioButtonSettingsTheme2.Checked = true;
+                        SchemePreset = CSkinManager.SchemePresets.DARK_BLUE;
+                        break;
+                    case 2:
+                        cRadioButtonSettingsTheme3.Checked = true;
+                        SchemePreset = CSkinManager.SchemePresets.LIGHT_BLUE;
+                        break;
+                    case 3:
+                        cRadioButtonSettingsTheme4.Checked = true;
+                        SchemePreset = CSkinManager.SchemePresets.LIGHT_ORANGE;
+                        break;
+                    case 4:
+                        cRadioButtonSettingsTheme5.Checked = true;
+                        CustomSchemeComponent = schemeComponent1;
+                        SchemePreset = CSkinManager.SchemePresets.CUSTOM;
+                        break;
+                    case 5:
+                        cRadioButtonSettingsTheme6.Checked = true;
+                        CustomSchemeComponent = schemeComponent2;
+                        SchemePreset = CSkinManager.SchemePresets.CUSTOM;
+                        break;
+                }
 
-            //Show current data folder path
-            cLabel_dataFolderPath.Text = Manager.GetDataFolderPath();
+                //Show current data folder path
+                cLabel_dataFolderPath.Text = Manager.GetDataFolderPath();
+            }
 
             //If there is no path, show alternative text
             if (cLabel_dataFolderPath.Text.Length <= 0)
@@ -274,9 +283,6 @@ namespace CNCV.Pages
 
                 cListView_tools.Items.Add(item);
             }
-
-            //Refresh list view paint. Must be fixed at CCL
-            cListView_tools.Invalidate();
         }
 
         
@@ -348,9 +354,6 @@ namespace CNCV.Pages
 
             //Reload files
             LoadTools();
-
-            //Refresh list view paint. Must be fixed at CCL
-            cListView_tools.Invalidate();
         }
 
         private void cButton_cancelToolSave_Click(object sender, EventArgs e)
@@ -450,9 +453,6 @@ namespace CNCV.Pages
         {
             //Add new machine to list view
             Manager.AddEmptyMachine(cListView_machines);
-
-            //Refresh list view paint. Must be fixed at CCL
-            cListView_machines.Invalidate();
         }
 
         private void duplicateMachineToolStripMenuItem_Click(object sender, EventArgs e)
@@ -471,9 +471,6 @@ namespace CNCV.Pages
 
             //Load machines, reload not needed
             LoadMachines(false);
-
-            //Refresh list view paint. Must be fixed at CCL
-            cListView_machines.Invalidate();
         }
 
         private void exportMachineToolStripMenuItem_Click(object sender, EventArgs e)
@@ -587,9 +584,19 @@ namespace CNCV.Pages
 
                 //Choosing what spindle type controls is shown
                 if (Manager.Machines[cDropDown_machineProfiles.SelectedIndex].MachineType == eMachine.Router)
-                    cTabControl_spindleLaser.SelectedIndex = 0;
-                else
+                {
                     cTabControl_spindleLaser.SelectedIndex = 1;
+                    cSliderRouterRPM.MinValue = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].GetSettingValueByID(31);
+                    cSliderRouterRPM.MaxValue = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].GetSettingValueByID(30);
+                    cSliderRouterRPM.Enabled = true;
+                    cButtonSetRPM.Enabled = true;
+                }
+                else
+                {
+                    cTabControl_spindleLaser.SelectedIndex = 2;
+                    cSliderRouterRPM.Enabled = false;
+                    cButtonSetRPM.Enabled = false;
+                }
 
                 
                 EnableControls(true);
@@ -599,6 +606,10 @@ namespace CNCV.Pages
             }
             else //Close serial port
             {
+                cSliderRouterRPM.Enabled = false;
+                cButtonSetRPM.Enabled = false;
+                cTabControl_spindleLaser.SelectedIndex = 0;
+
                 //Stop timer, updating UI stuff is no longer needed
                 grblTimer.Stop();
                 //Close serial port
@@ -813,7 +824,9 @@ namespace CNCV.Pages
 
         private void cButton_touchThePlate_Click(object sender, EventArgs e)
         {
-            GRBLFramework.ToutchThePlate(-100, 100, Manager.Machines[cDropDown_machineProfiles.SelectedIndex].TouchPlateHeight);
+            GRBLFramework.ToutchThePlate(-100, 100,
+                Manager.Machines[cDropDown_machineProfiles.SelectedIndex].TouchPlateHeight,
+                Manager.Machines[cDropDown_machineProfiles.SelectedIndex].MoveUpDistance);
         }
 
         private void cSwitch_enableSpindle_Click(object sender, EventArgs e)
@@ -882,6 +895,7 @@ namespace CNCV.Pages
             cLabel_wcoZ.Text = GRBLFramework.WCO.Z.ToString();
 
             cLabel_fs.Text = GRBLFramework.CurrentFeedRate.ToString();
+            cLabelSpindleRPM.Text = GRBLFramework.currentSpindleSpeed.ToString();
 
             cLabel_machineState.Text = GRBLFramework.MachineState.ToString();
 
@@ -889,8 +903,13 @@ namespace CNCV.Pages
             cLabel_overrideSpindle.Text = GRBLFramework.OverrideSpindle.ToString();
             cLabel_overrideRapid.Text = GRBLFramework.OverrideRapid.ToString();
 
+            //If spindle is on and not set to on, power it off.
+            if (GRBLFramework.currentSpindleSpeed > 0 && !cSwitch_enableSpindle.IsOn)
+                GRBLFramework.PowerOffSpindle();
+
             //If tool has to be changed
-            if (GRBLFramework.DoToolChange && GRBLFramework.MachineState == eMachineState.Idle && !ToolChangeWindowVisible)
+            if (GRBLFramework.DoToolChange && GRBLFramework.MachineState == eMachineState.Idle
+                && !ToolChangeWindowVisible && !GRBLFramework.CheckInProgress)
             {
                 ToolChangeWindow.RouterTool = null;
 
@@ -955,6 +974,9 @@ namespace CNCV.Pages
             cButton_openFile.Enabled = true;
             cButton_sendFile.Enabled = true;
             cButton_stopFile.Enabled = false;
+            cButtonCheckMode.Enabled = true;
+
+            GRBLFramework.SendingFile = false;
         }
 
         /// <summary>
@@ -1012,7 +1034,7 @@ namespace CNCV.Pages
                         item.SubItems.Add(ct.SD.ToString());
 
                         if(toolsCount == 0)
-                            item.SubItems.Add("Next");
+                            item.SubItems.Add("First");
                         else
                             item.SubItems.Add("Queue");
 
@@ -1032,7 +1054,7 @@ namespace CNCV.Pages
                     item.SubItems.Add("?");
 
                     if (toolsCount == 0)
-                        item.SubItems.Add("Next");
+                        item.SubItems.Add("First");
                     else
                         item.SubItems.Add("Queue");
 
@@ -1041,11 +1063,10 @@ namespace CNCV.Pages
                 }
             }
 
-            //Refresh list view paint. Must be fixed at CCL
-            cListView_fileTools.Invalidate();
-
             cButton_sendFile.Enabled = true;
+            cButtonCheckMode.Enabled = true;
 
+            /*
             //Calculate approximate machining time in seconds
             double seconds = MachiningTimeCalculator.GetMachiningTimeInSeconds(GRBLFramework.FileLines,
                 Manager.Machines[cDropDown_machineProfiles.SelectedIndex],
@@ -1056,19 +1077,26 @@ namespace CNCV.Pages
 
             //Set approximate label text
             TimeSpan ts = TimeSpan.FromSeconds(seconds);
-            cLabel_approximate.Text = string.Format("Approximate machining time: {0}", ts.ToString("mm\\:ss"));
+            cLabel_approximate.Text = string.Format("Approximate machining time: {0}", ts.ToString("mm\\:ss"));*/
         }
 
         private void cButton_sendFile_Click(object sender, EventArgs e)
         {
-            //Send file to GRBL
-            GRBLFramework.SendFile();
+            if(GRBLFramework.MachineState == eMachineState.Check)
+            {
+                GRBLFramework.StartCheck();
+            }
+            else
+            {
+                //Send file to GRBL
+                GRBLFramework.SendFile();
+            }
             //Show progress
             ProgressVisible(true);
-
             cButton_openFile.Enabled = false;
             cButton_sendFile.Enabled = false;
             cButton_stopFile.Enabled = true;
+            cButtonCheckMode.Enabled = false;
 
             //Set start time
             StartTime = DateTime.Now.ToLocalTime();
@@ -1088,11 +1116,28 @@ namespace CNCV.Pages
             cButton_openFile.Enabled = true;
             cButton_sendFile.Enabled = true;
             cButton_stopFile.Enabled = false;
+            cButtonCheckMode.Enabled = true;
 
             //Set end time
             EndTime = DateTime.Now.ToLocalTime();
             //Update time labels
             UpdateTime();
+        }
+
+
+        private void CheckComplete()
+        {
+            PgmEnd();
+
+            using (Form_CheckFile cf = new Form_CheckFile())
+            {
+                cf.ShowDialog();
+            }
+        }
+
+        private void cButtonCheckMode_Click(object sender, EventArgs e)
+        {
+            GRBLFramework.CheckMode();
         }
 
 
@@ -1103,16 +1148,85 @@ namespace CNCV.Pages
         {
             for (int i = 0; i < cListView_fileTools.Items.Count; i++)
             {
-                if (i == ToolChangeIndex)
+                if (i == GRBLFramework.CurrentToolID)
                     cListView_fileTools.Items[i].SubItems[4].Text = "Current"; //Current tool
                 else if (i < ToolChangeIndex)
                     cListView_fileTools.Items[i].SubItems[4].Text = "X"; //Already used tool
                 else
                     cListView_fileTools.Items[i].SubItems[4].Text = "Queue"; //To be used tool
             }
+        }
 
-            //Refresh list view paint. Must be fixed at CCL
-            cListView_fileTools.Invalidate();
+        #endregion
+
+        #region Messages
+
+        private void MessageReceivedAction()
+        {
+            cListViewMessages.Items.Clear();
+
+            foreach (MessageInfo mi in GRBLFramework.MessagesList)
+            {
+                ListViewItem item = new ListViewItem(mi.Type);
+                item.SubItems.Add(mi.ID);
+                item.SubItems.Add(mi.Message);
+                cListViewMessages.Items.Add(item);
+            }
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cListViewMessages.SelectedItem == null)
+                return;
+
+            MessageBox.Show(cListViewMessages.Items[cListViewMessages.SelectedItem.Y_Index].SubItems[2].Text,
+                cListViewMessages.Items[cListViewMessages.SelectedItem.Y_Index].SubItems[0].Text + " " +
+                cListViewMessages.Items[cListViewMessages.SelectedItem.Y_Index].SubItems[1].Text);
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cListViewMessages.SelectedItem == null)
+                return;
+
+            cListViewMessages.Items.RemoveAt(cListViewMessages.SelectedItem.Y_Index);
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cListViewMessages.Items.Clear();
+            GRBLFramework.MessagesList.Clear();
+        }
+
+        #endregion
+
+        #region Spindle Controls
+
+        private void cSliderRouterRPM_ValueChanged(object sender, EventArgs e)
+        {
+            cLabelSliderSpindleRPM.Text = cSliderRouterRPM.Value.ToString();
+        }
+
+        private void cButtonSetRPM_Click(object sender, EventArgs e)
+        {
+            GRBLFramework.SetSpindleRPM((int)cSliderRouterRPM.Value);
+        }
+
+
+
+        private void cButton_showLaserArea_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nope");
+        }
+
+        private void cSwitch_enableStrongLaser_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nope");
+        }
+
+        private void cSwitch_enableWeakLaser_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nope");
         }
 
         #endregion

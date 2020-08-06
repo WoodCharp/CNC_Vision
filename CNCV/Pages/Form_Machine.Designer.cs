@@ -38,6 +38,7 @@
             this.cTextBox_name = new CCL.Controls.CTextBox();
             this.cDropDown_type = new CCL.Controls.CDropDown();
             this.cGroupBox3 = new CCL.Controls.CGroupBox();
+            this.cButton_sendSettings = new CCL.Controls.CButton();
             this.cButton_refreshSerialPorts = new CCL.Controls.CButton();
             this.cLabel_opt = new CCL.Controls.CLabel();
             this.cLabel_version = new CCL.Controls.CLabel();
@@ -56,13 +57,28 @@
             this.cLabel3 = new CCL.Controls.CLabel();
             this.cTextBox_touchPlateHeight = new CCL.Controls.CTextBox();
             this.cLabel4 = new CCL.Controls.CLabel();
-            this.cButton_sendSettings = new CCL.Controls.CButton();
+            this.cTabControl1 = new CCL.Controls.CTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cLabel7 = new CCL.Controls.CLabel();
+            this.cTextBoxJoggingInterval = new CCL.Controls.CTextBox();
+            this.cLabel6 = new CCL.Controls.CLabel();
+            this.cTextBoxJoggingFeedRate = new CCL.Controls.CTextBox();
+            this.cLabel5 = new CCL.Controls.CLabel();
+            this.cTextBoxJoggingDistance = new CCL.Controls.CTextBox();
+            this.cTabSelector1 = new CCL.Controls.CTabSelector();
+            this.cLabel8 = new CCL.Controls.CLabel();
+            this.cTextBoxMoveUp = new CCL.Controls.CTextBox();
             this.cGroupBox3.SuspendLayout();
+            this.cTabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cListView_grblSettings
             // 
-            this.cListView_grblSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cListView_grblSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cListView_grblSettings.ColumnHeaderTextStyle = CCL.eTextStyle.Normal;
             this.cListView_grblSettings.ColumnHeight = 24;
@@ -72,18 +88,20 @@
             this.cListView_grblSettings.ContentTextStyle = CCL.eTextStyle.Normal;
             this.cListView_grblSettings.DrawBorder = false;
             this.cListView_grblSettings.EnableItemEdit = true;
+            this.cListView_grblSettings.FullRowHoverEffect = false;
             this.cListView_grblSettings.HorizontalLines = true;
             this.cListView_grblSettings.ItemHeight = 24;
             this.cListView_grblSettings.ItemHoverEffect = true;
-            this.cListView_grblSettings.Location = new System.Drawing.Point(263, 30);
+            this.cListView_grblSettings.Location = new System.Drawing.Point(0, 0);
             this.cListView_grblSettings.MinColumnWidth = 20;
             this.cListView_grblSettings.Name = "cListView_grblSettings";
+            this.cListView_grblSettings.NoItemsToShowText = "No Items To Show.";
             this.cListView_grblSettings.NonEditableColumns.Add("0");
             this.cListView_grblSettings.NonEditableColumns.Add("2");
-            this.cListView_grblSettings.Size = new System.Drawing.Size(298, 430);
+            this.cListView_grblSettings.NothingToShowText = "Nothing To Show.";
+            this.cListView_grblSettings.Size = new System.Drawing.Size(290, 442);
             this.cListView_grblSettings.TabIndex = 0;
-            this.cListView_grblSettings.Text = "cListView1";
-            this.cListView_grblSettings.TitleText = "GRBL Settings";
+            this.cListView_grblSettings.Text = "GRBL SETTINGS";
             this.cListView_grblSettings.TitleTextStyle = CCL.eTextStyle.Title3;
             this.cListView_grblSettings.VerticalLines = false;
             // 
@@ -189,6 +207,20 @@
             this.cGroupBox3.TextAlignment = System.Drawing.StringAlignment.Center;
             this.cGroupBox3.TextStyle = CCL.eTextStyle.Medium;
             // 
+            // cButton_sendSettings
+            // 
+            this.cButton_sendSettings.DrawBorder = true;
+            this.cButton_sendSettings.Enabled = false;
+            this.cButton_sendSettings.Font = new System.Drawing.Font("Armata", 10F);
+            this.cButton_sendSettings.Location = new System.Drawing.Point(9, 171);
+            this.cButton_sendSettings.Name = "cButton_sendSettings";
+            this.cButton_sendSettings.Size = new System.Drawing.Size(230, 24);
+            this.cButton_sendSettings.TabIndex = 24;
+            this.cButton_sendSettings.Text = "Send GRBL Settings";
+            this.cButton_sendSettings.TextStyle = CCL.eTextStyle.Normal;
+            this.cButton_sendSettings.UseVisualStyleBackColor = true;
+            this.cButton_sendSettings.Click += new System.EventHandler(this.cButton_sendSettings_Click);
+            // 
             // cButton_refreshSerialPorts
             // 
             this.cButton_refreshSerialPorts.BackgroundImage = global::CNCV.Properties.Resources.Refresh001;
@@ -210,11 +242,13 @@
             this.cLabel_opt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLabel_opt.Location = new System.Drawing.Point(9, 347);
             this.cLabel_opt.Name = "cLabel_opt";
+            this.cLabel_opt.OverrideFontSize = 12F;
             this.cLabel_opt.Size = new System.Drawing.Size(230, 19);
             this.cLabel_opt.TabIndex = 23;
             this.cLabel_opt.Text = "OPT ***";
             this.cLabel_opt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cLabel_opt.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel_opt.UseFontSizeOverride = false;
             // 
             // cLabel_version
             // 
@@ -223,11 +257,13 @@
             this.cLabel_version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLabel_version.Location = new System.Drawing.Point(9, 314);
             this.cLabel_version.Name = "cLabel_version";
+            this.cLabel_version.OverrideFontSize = 12F;
             this.cLabel_version.Size = new System.Drawing.Size(230, 19);
             this.cLabel_version.TabIndex = 22;
             this.cLabel_version.Text = "VERSION ***";
             this.cLabel_version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cLabel_version.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel_version.UseFontSizeOverride = false;
             // 
             // cLabel_machineStatus
             // 
@@ -236,11 +272,13 @@
             this.cLabel_machineStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLabel_machineStatus.Location = new System.Drawing.Point(9, 232);
             this.cLabel_machineStatus.Name = "cLabel_machineStatus";
+            this.cLabel_machineStatus.OverrideFontSize = 12F;
             this.cLabel_machineStatus.Size = new System.Drawing.Size(230, 41);
             this.cLabel_machineStatus.TabIndex = 21;
             this.cLabel_machineStatus.Text = "No Connection";
             this.cLabel_machineStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cLabel_machineStatus.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel_machineStatus.UseFontSizeOverride = false;
             // 
             // cButton_getSettings
             // 
@@ -327,10 +365,12 @@
             this.cLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLabel2.Location = new System.Drawing.Point(6, 57);
             this.cLabel2.Name = "cLabel2";
+            this.cLabel2.OverrideFontSize = 12F;
             this.cLabel2.Size = new System.Drawing.Size(77, 18);
             this.cLabel2.TabIndex = 15;
             this.cLabel2.Text = "Baud rate";
             this.cLabel2.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel2.UseFontSizeOverride = false;
             // 
             // cLabel1
             // 
@@ -340,10 +380,12 @@
             this.cLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLabel1.Location = new System.Drawing.Point(6, 33);
             this.cLabel1.Name = "cLabel1";
+            this.cLabel1.OverrideFontSize = 12F;
             this.cLabel1.Size = new System.Drawing.Size(83, 18);
             this.cLabel1.TabIndex = 14;
             this.cLabel1.Text = "Serial port";
             this.cLabel1.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel1.UseFontSizeOverride = false;
             // 
             // cDropDown_serialPorts
             // 
@@ -379,7 +421,7 @@
             this.cTextBox_toolChangeTime.Font = new System.Drawing.Font("Armata", 10F);
             this.cTextBox_toolChangeTime.Hint = "";
             this.cTextBox_toolChangeTime.LineHeight = 1;
-            this.cTextBox_toolChangeTime.Location = new System.Drawing.Point(410, 504);
+            this.cTextBox_toolChangeTime.Location = new System.Drawing.Point(173, 154);
             this.cTextBox_toolChangeTime.MaxLength = 32767;
             this.cTextBox_toolChangeTime.MouseState = CCL.MouseState.HOVER;
             this.cTextBox_toolChangeTime.Name = "cTextBox_toolChangeTime";
@@ -401,12 +443,14 @@
             this.cLabel3.BackColor = System.Drawing.Color.Transparent;
             this.cLabel3.Font = new System.Drawing.Font("Armata", 10F);
             this.cLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel3.Location = new System.Drawing.Point(263, 492);
+            this.cLabel3.Location = new System.Drawing.Point(6, 142);
             this.cLabel3.Name = "cLabel3";
+            this.cLabel3.OverrideFontSize = 12F;
             this.cLabel3.Size = new System.Drawing.Size(131, 36);
             this.cLabel3.TabIndex = 17;
             this.cLabel3.Text = "Tool change time\r\nin seconds";
             this.cLabel3.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel3.UseFontSizeOverride = false;
             // 
             // cTextBox_touchPlateHeight
             // 
@@ -414,7 +458,7 @@
             this.cTextBox_touchPlateHeight.Font = new System.Drawing.Font("Armata", 10F);
             this.cTextBox_touchPlateHeight.Hint = "";
             this.cTextBox_touchPlateHeight.LineHeight = 1;
-            this.cTextBox_touchPlateHeight.Location = new System.Drawing.Point(410, 466);
+            this.cTextBox_touchPlateHeight.Location = new System.Drawing.Point(173, 100);
             this.cTextBox_touchPlateHeight.MaxLength = 32767;
             this.cTextBox_touchPlateHeight.MouseState = CCL.MouseState.HOVER;
             this.cTextBox_touchPlateHeight.Name = "cTextBox_touchPlateHeight";
@@ -436,26 +480,219 @@
             this.cLabel4.BackColor = System.Drawing.Color.Transparent;
             this.cLabel4.Font = new System.Drawing.Font("Armata", 10F);
             this.cLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel4.Location = new System.Drawing.Point(263, 466);
+            this.cLabel4.Location = new System.Drawing.Point(6, 100);
             this.cLabel4.Name = "cLabel4";
+            this.cLabel4.OverrideFontSize = 12F;
             this.cLabel4.Size = new System.Drawing.Size(141, 18);
             this.cLabel4.TabIndex = 19;
             this.cLabel4.Text = "Touch plate height";
             this.cLabel4.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel4.UseFontSizeOverride = false;
             // 
-            // cButton_sendSettings
+            // cTabControl1
             // 
-            this.cButton_sendSettings.DrawBorder = true;
-            this.cButton_sendSettings.Enabled = false;
-            this.cButton_sendSettings.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_sendSettings.Location = new System.Drawing.Point(9, 171);
-            this.cButton_sendSettings.Name = "cButton_sendSettings";
-            this.cButton_sendSettings.Size = new System.Drawing.Size(230, 24);
-            this.cButton_sendSettings.TabIndex = 24;
-            this.cButton_sendSettings.Text = "Send GRBL Settings";
-            this.cButton_sendSettings.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_sendSettings.UseVisualStyleBackColor = true;
-            this.cButton_sendSettings.Click += new System.EventHandler(this.cButton_sendSettings_Click);
+            this.cTabControl1.Controls.Add(this.tabPage1);
+            this.cTabControl1.Controls.Add(this.tabPage2);
+            this.cTabControl1.Location = new System.Drawing.Point(263, 60);
+            this.cTabControl1.Name = "cTabControl1";
+            this.cTabControl1.SelectedIndex = 0;
+            this.cTabControl1.Size = new System.Drawing.Size(298, 468);
+            this.cTabControl1.TabIndex = 21;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.cListView_grblSettings);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(290, 442);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "GRBL";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage2.Controls.Add(this.cLabel8);
+            this.tabPage2.Controls.Add(this.cTextBoxMoveUp);
+            this.tabPage2.Controls.Add(this.cLabel7);
+            this.tabPage2.Controls.Add(this.cTextBoxJoggingInterval);
+            this.tabPage2.Controls.Add(this.cLabel6);
+            this.tabPage2.Controls.Add(this.cTextBoxJoggingFeedRate);
+            this.tabPage2.Controls.Add(this.cLabel5);
+            this.tabPage2.Controls.Add(this.cTextBoxJoggingDistance);
+            this.tabPage2.Controls.Add(this.cLabel4);
+            this.tabPage2.Controls.Add(this.cTextBox_touchPlateHeight);
+            this.tabPage2.Controls.Add(this.cLabel3);
+            this.tabPage2.Controls.Add(this.cTextBox_toolChangeTime);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(290, 442);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Other";
+            // 
+            // cLabel7
+            // 
+            this.cLabel7.AutoSize = true;
+            this.cLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel7.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel7.Location = new System.Drawing.Point(6, 51);
+            this.cLabel7.Name = "cLabel7";
+            this.cLabel7.OverrideFontSize = 12F;
+            this.cLabel7.Size = new System.Drawing.Size(161, 18);
+            this.cLabel7.TabIndex = 25;
+            this.cLabel7.Text = "Jogging interval (ms)";
+            this.cLabel7.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel7.UseFontSizeOverride = false;
+            // 
+            // cTextBoxJoggingInterval
+            // 
+            this.cTextBoxJoggingInterval.Depth = 0;
+            this.cTextBoxJoggingInterval.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBoxJoggingInterval.Hint = "";
+            this.cTextBoxJoggingInterval.LineHeight = 1;
+            this.cTextBoxJoggingInterval.Location = new System.Drawing.Point(173, 51);
+            this.cTextBoxJoggingInterval.MaxLength = 32767;
+            this.cTextBoxJoggingInterval.MouseState = CCL.MouseState.HOVER;
+            this.cTextBoxJoggingInterval.Name = "cTextBoxJoggingInterval";
+            this.cTextBoxJoggingInterval.PasswordChar = '\0';
+            this.cTextBoxJoggingInterval.SelectedText = "";
+            this.cTextBoxJoggingInterval.SelectionLength = 0;
+            this.cTextBoxJoggingInterval.SelectionStart = 0;
+            this.cTextBoxJoggingInterval.Size = new System.Drawing.Size(45, 18);
+            this.cTextBoxJoggingInterval.TabIndex = 26;
+            this.cTextBoxJoggingInterval.TabStop = false;
+            this.cTextBoxJoggingInterval.Text = "500";
+            this.cTextBoxJoggingInterval.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBoxJoggingInterval.UseSystemPasswordChar = false;
+            // 
+            // cLabel6
+            // 
+            this.cLabel6.AutoSize = true;
+            this.cLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel6.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel6.Location = new System.Drawing.Point(6, 27);
+            this.cLabel6.Name = "cLabel6";
+            this.cLabel6.OverrideFontSize = 12F;
+            this.cLabel6.Size = new System.Drawing.Size(133, 18);
+            this.cLabel6.TabIndex = 23;
+            this.cLabel6.Text = "Jogging feed rate";
+            this.cLabel6.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel6.UseFontSizeOverride = false;
+            // 
+            // cTextBoxJoggingFeedRate
+            // 
+            this.cTextBoxJoggingFeedRate.Depth = 0;
+            this.cTextBoxJoggingFeedRate.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBoxJoggingFeedRate.Hint = "";
+            this.cTextBoxJoggingFeedRate.LineHeight = 1;
+            this.cTextBoxJoggingFeedRate.Location = new System.Drawing.Point(173, 27);
+            this.cTextBoxJoggingFeedRate.MaxLength = 32767;
+            this.cTextBoxJoggingFeedRate.MouseState = CCL.MouseState.HOVER;
+            this.cTextBoxJoggingFeedRate.Name = "cTextBoxJoggingFeedRate";
+            this.cTextBoxJoggingFeedRate.PasswordChar = '\0';
+            this.cTextBoxJoggingFeedRate.SelectedText = "";
+            this.cTextBoxJoggingFeedRate.SelectionLength = 0;
+            this.cTextBoxJoggingFeedRate.SelectionStart = 0;
+            this.cTextBoxJoggingFeedRate.Size = new System.Drawing.Size(45, 18);
+            this.cTextBoxJoggingFeedRate.TabIndex = 24;
+            this.cTextBoxJoggingFeedRate.TabStop = false;
+            this.cTextBoxJoggingFeedRate.Text = "500";
+            this.cTextBoxJoggingFeedRate.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBoxJoggingFeedRate.UseSystemPasswordChar = false;
+            // 
+            // cLabel5
+            // 
+            this.cLabel5.AutoSize = true;
+            this.cLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel5.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel5.Location = new System.Drawing.Point(6, 3);
+            this.cLabel5.Name = "cLabel5";
+            this.cLabel5.OverrideFontSize = 12F;
+            this.cLabel5.Size = new System.Drawing.Size(130, 18);
+            this.cLabel5.TabIndex = 21;
+            this.cLabel5.Text = "Jogging distance";
+            this.cLabel5.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel5.UseFontSizeOverride = false;
+            // 
+            // cTextBoxJoggingDistance
+            // 
+            this.cTextBoxJoggingDistance.Depth = 0;
+            this.cTextBoxJoggingDistance.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBoxJoggingDistance.Hint = "";
+            this.cTextBoxJoggingDistance.LineHeight = 1;
+            this.cTextBoxJoggingDistance.Location = new System.Drawing.Point(173, 3);
+            this.cTextBoxJoggingDistance.MaxLength = 32767;
+            this.cTextBoxJoggingDistance.MouseState = CCL.MouseState.HOVER;
+            this.cTextBoxJoggingDistance.Name = "cTextBoxJoggingDistance";
+            this.cTextBoxJoggingDistance.PasswordChar = '\0';
+            this.cTextBoxJoggingDistance.SelectedText = "";
+            this.cTextBoxJoggingDistance.SelectionLength = 0;
+            this.cTextBoxJoggingDistance.SelectionStart = 0;
+            this.cTextBoxJoggingDistance.Size = new System.Drawing.Size(45, 18);
+            this.cTextBoxJoggingDistance.TabIndex = 22;
+            this.cTextBoxJoggingDistance.TabStop = false;
+            this.cTextBoxJoggingDistance.Text = "1,5";
+            this.cTextBoxJoggingDistance.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBoxJoggingDistance.UseSystemPasswordChar = false;
+            // 
+            // cTabSelector1
+            // 
+            this.cTabSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.cTabSelector1.BaseTabControl = this.cTabControl1;
+            this.cTabSelector1.DrawLineAllTheWay = true;
+            this.cTabSelector1.Font = new System.Drawing.Font("Armata", 8F);
+            this.cTabSelector1.IndicatorHeight = 4;
+            this.cTabSelector1.LineHeight = 1;
+            this.cTabSelector1.Location = new System.Drawing.Point(263, 30);
+            this.cTabSelector1.Name = "cTabSelector1";
+            this.cTabSelector1.SelectorHeight = 24;
+            this.cTabSelector1.SelectorPadding = 10;
+            this.cTabSelector1.Size = new System.Drawing.Size(298, 24);
+            this.cTabSelector1.TabIndex = 22;
+            this.cTabSelector1.TabsAlignment = CCL.Controls.CTabSelector.eTabsAlignment.Left;
+            this.cTabSelector1.Text = "cTabSelector1";
+            this.cTabSelector1.TextStyle = CCL.eTextStyle.Small;
+            // 
+            // cLabel8
+            // 
+            this.cLabel8.AutoSize = true;
+            this.cLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel8.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel8.Location = new System.Drawing.Point(6, 124);
+            this.cLabel8.Name = "cLabel8";
+            this.cLabel8.OverrideFontSize = 12F;
+            this.cLabel8.Size = new System.Drawing.Size(136, 18);
+            this.cLabel8.TabIndex = 27;
+            this.cLabel8.Text = "Move Up distance";
+            this.cLabel8.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel8.UseFontSizeOverride = false;
+            // 
+            // cTextBoxMoveUp
+            // 
+            this.cTextBoxMoveUp.Depth = 0;
+            this.cTextBoxMoveUp.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBoxMoveUp.Hint = "";
+            this.cTextBoxMoveUp.LineHeight = 1;
+            this.cTextBoxMoveUp.Location = new System.Drawing.Point(173, 124);
+            this.cTextBoxMoveUp.MaxLength = 32767;
+            this.cTextBoxMoveUp.MouseState = CCL.MouseState.HOVER;
+            this.cTextBoxMoveUp.Name = "cTextBoxMoveUp";
+            this.cTextBoxMoveUp.PasswordChar = '\0';
+            this.cTextBoxMoveUp.SelectedText = "";
+            this.cTextBoxMoveUp.SelectionLength = 0;
+            this.cTextBoxMoveUp.SelectionStart = 0;
+            this.cTextBoxMoveUp.Size = new System.Drawing.Size(45, 18);
+            this.cTextBoxMoveUp.TabIndex = 28;
+            this.cTextBoxMoveUp.TabStop = false;
+            this.cTextBoxMoveUp.Text = "10";
+            this.cTextBoxMoveUp.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBoxMoveUp.UseSystemPasswordChar = false;
             // 
             // Form_Machine
             // 
@@ -463,16 +700,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 540);
             this.ControlBox = false;
-            this.Controls.Add(this.cTextBox_touchPlateHeight);
-            this.Controls.Add(this.cLabel4);
-            this.Controls.Add(this.cTextBox_toolChangeTime);
-            this.Controls.Add(this.cLabel3);
+            this.Controls.Add(this.cTabSelector1);
+            this.Controls.Add(this.cTabControl1);
             this.Controls.Add(this.cTextBox_name);
             this.Controls.Add(this.cDropDown_type);
             this.Controls.Add(this.cGroupBox3);
             this.Controls.Add(this.cButton_cancel);
             this.Controls.Add(this.cButton_ok);
-            this.Controls.Add(this.cListView_grblSettings);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Machine";
@@ -482,8 +716,11 @@
             this.Load += new System.EventHandler(this.Form_Machine_Load);
             this.cGroupBox3.ResumeLayout(false);
             this.cGroupBox3.PerformLayout();
+            this.cTabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -517,5 +754,17 @@
         private CCL.Controls.CTextBox cTextBox_touchPlateHeight;
         private CCL.Controls.CLabel cLabel4;
         private CCL.Controls.CButton cButton_sendSettings;
+        private CCL.Controls.CTabControl cTabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private CCL.Controls.CLabel cLabel7;
+        private CCL.Controls.CTextBox cTextBoxJoggingInterval;
+        private CCL.Controls.CLabel cLabel6;
+        private CCL.Controls.CTextBox cTextBoxJoggingFeedRate;
+        private CCL.Controls.CLabel cLabel5;
+        private CCL.Controls.CTextBox cTextBoxJoggingDistance;
+        private CCL.Controls.CTabSelector cTabSelector1;
+        private CCL.Controls.CLabel cLabel8;
+        private CCL.Controls.CTextBox cTextBoxMoveUp;
     }
 }

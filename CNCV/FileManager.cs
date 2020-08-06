@@ -73,6 +73,17 @@ namespace CNCV
             return false;
         }
 
+
+        public void CreateMachinesDirectory()
+        {
+            Directory.CreateDirectory(MachinesFolder);
+        }
+
+        public void CreateToolsDirectory()
+        {
+            Directory.CreateDirectory(ToolsFolder);
+        }
+
         #endregion
 
         /// <summary>
@@ -116,7 +127,6 @@ namespace CNCV
         /// <param name="file">File path</param>
         public void Save(object obj, string file)
         {
-            //Save
             using(StreamWriter sw = new StreamWriter(file, false))
             {
                 sw.Write(JsonConvert.SerializeObject(obj));

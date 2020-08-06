@@ -9,6 +9,7 @@ namespace CNCV.Machines
         public string VER { get; set; } = "VER*";
         public string OPT { get; set; } = "OPT*";
         public string Name { get; set; } = "NewMachine";
+
         public eMachine MachineType { get; set; } = eMachine.Router;
 
         /// <summary>
@@ -16,6 +17,11 @@ namespace CNCV.Machines
         /// </summary>
         public int ToolChangeTime { get; set; } = 30;
         public float TouchPlateHeight { get; set; } = 10.0f;
+        public float MoveUpDistance { get; set; } = 10.0f;
+
+        public int JoggingInterval { get; set; } = 500;
+        public float JoggingAmmount { get; set; } = 1.5f;
+        public int JoggingFeedRate { get; set; } = 500;
 
         public PortData PortData { get; set; } = new PortData();
         public List<GRBLSetting> GRBLSettings { get; set; } = new List<GRBLSetting>();
@@ -29,6 +35,15 @@ namespace CNCV.Machines
             MachineType = duplicate.MachineType;
             PortData = duplicate.PortData;
             GRBLSettings = duplicate.GRBLSettings;
+            VER = duplicate.VER;
+            OPT = duplicate.OPT;
+
+            ToolChangeTime = duplicate.ToolChangeTime;
+            TouchPlateHeight = duplicate.TouchPlateHeight;
+
+            JoggingAmmount = duplicate.JoggingAmmount;
+            JoggingFeedRate = duplicate.JoggingFeedRate;
+            JoggingInterval = duplicate.JoggingInterval;
         }
 
         public float GetSettingValueByID(int SettingID)
