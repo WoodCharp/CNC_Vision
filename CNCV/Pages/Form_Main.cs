@@ -909,6 +909,7 @@ namespace CNCV.Pages
                 && !ToolChangeWindowVisible && !GRBLFramework.CheckInProgress)
             {
                 ToolChangeWindow.RouterTool = null;
+                ToolChangeWindow.CurrentMachine = Manager.Machines[cDropDown_machineProfiles.SelectedIndex];
 
                 //Loop tools to find the correct tool
                 foreach (CNCTool tool in Manager.CNCTools)

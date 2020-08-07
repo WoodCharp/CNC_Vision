@@ -307,6 +307,7 @@
             this.cButton_touchThePlate.Text = "Touch the plate";
             this.cButton_touchThePlate.TextStyle = CCL.eTextStyle.Title5;
             this.cButton_touchThePlate.UseVisualStyleBackColor = true;
+            this.cButton_touchThePlate.Click += new System.EventHandler(this.cButton_touchThePlate_Click);
             // 
             // cLabelName
             // 

@@ -3,6 +3,7 @@ using System;
 
 using CCL.Controls;
 using GRBL;
+using CNCV.Machines;
 
 namespace CNCV.Pages
 {
@@ -12,6 +13,7 @@ namespace CNCV.Pages
         public GRBLManager GRBLFramework => GRBLManager.Instance;
 
         public CNCTool RouterTool { get; set; }
+        public Machine CurrentMachine { get; set; }
 
         public Form_ToolChangeWindow()
         {
@@ -99,6 +101,13 @@ namespace CNCV.Pages
         private void cButtonToolChanged_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cButton_touchThePlate_Click(object sender, EventArgs e)
+        {
+            GRBLFramework.ToutchThePlate(-100, 100,
+            CurrentMachine.TouchPlateHeight,
+            CurrentMachine.MoveUpDistance);
         }
     }
 }
