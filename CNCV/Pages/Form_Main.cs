@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
-using System.Linq.Expressions;
 using System.Windows.Forms;
 
 using CCL;
@@ -75,10 +74,10 @@ namespace CNCV.Pages
             LoadMachines(true);
 
             //Show splash screen
-            /*using (Form_SplashScreen ss = new Form_SplashScreen())
+            using (Form_SplashScreen ss = new Form_SplashScreen())
             {
                 ss.ShowDialog();
-            }*/
+            }
         }
 
         #region Preferences
@@ -88,8 +87,10 @@ namespace CNCV.Pages
         /// </summary>
         private void LoadAppSettings()
         {
+            //If app settings are loaded
             if(Manager.LoadAppSettings())
             {
+                //Select settings theme
                 switch (Manager.CurrentSettings.SchemeID)
                 {
                     case 0:
@@ -202,7 +203,6 @@ namespace CNCV.Pages
         }
 
 
-
         private void cButton_saveAppSettings_Click(object sender, EventArgs e)
         {
             AppSetting appSetting = new AppSetting();
@@ -239,8 +239,6 @@ namespace CNCV.Pages
 
             //Save settings
             Manager.SaveNewSettings(appSetting);
-
-            //move already saved files to new directory
         }
 
         private void cButton_cancelAppSettings_Click(object sender, EventArgs e)
@@ -598,7 +596,6 @@ namespace CNCV.Pages
                     cSliderRouterRPM.Enabled = false;
                     cButtonSetRPM.Enabled = false;
                 }
-
                 
                 EnableControls(true);
 
@@ -760,72 +757,83 @@ namespace CNCV.Pages
                 e.Handled = true;
         }
 
+
         private void cButton_Xp_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+            if(cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Xm_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Yp_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Ym_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_XmYp_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
-                -float.Parse(cTextBox_distance.Text),
-                float.Parse(cTextBox_distance.Text),
-                int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                    -float.Parse(cTextBox_distance.Text),
+                    float.Parse(cTextBox_distance.Text),
+                    int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_XpYp_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
-                float.Parse(cTextBox_distance.Text),
-                float.Parse(cTextBox_distance.Text),
-                int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                    float.Parse(cTextBox_distance.Text),
+                    float.Parse(cTextBox_distance.Text),
+                    int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_XmYm_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
-                -float.Parse(cTextBox_distance.Text),
-                -float.Parse(cTextBox_distance.Text),
-                int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                    GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                    -float.Parse(cTextBox_distance.Text),
+                    -float.Parse(cTextBox_distance.Text),
+                    int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_XpYm_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
-                float.Parse(cTextBox_distance.Text),
-                -float.Parse(cTextBox_distance.Text),
-                int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                    float.Parse(cTextBox_distance.Text),
+                    -float.Parse(cTextBox_distance.Text),
+                    int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Zp_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Zm_Click(object sender, EventArgs e)
         {
-            GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+            if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
+                GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
 
         private void cButton_touchThePlate_Click(object sender, EventArgs e)
         {
-            GRBLFramework.ToutchThePlate(-100, 100,
+            GRBLFramework.ToutchThePlate(-50, 200,
                 Manager.Machines[cDropDown_machineProfiles.SelectedIndex].TouchPlateHeight,
                 Manager.Machines[cDropDown_machineProfiles.SelectedIndex].MoveUpDistance);
         }
@@ -1062,6 +1070,9 @@ namespace CNCV.Pages
                         cListView_fileTools.Items.Add(item);
                     }
                 }
+
+                if(toolsCount > 0)
+                    cListView_fileTools.Invalidate();
             }
             catch(Exception ex)
             {
@@ -1078,12 +1089,19 @@ namespace CNCV.Pages
                     Manager.Machines[cDropDown_machineProfiles.SelectedIndex],
                     GRBLFramework.WPos.X, GRBLFramework.WPos.Y, GRBLFramework.WPos.Z);
 
-                //Adding tool change time
-                seconds += Manager.Machines[cDropDown_machineProfiles.SelectedIndex].ToolChangeTime * (toolsCount + 1);
+                if(seconds != 0)
+                {
+                    //Adding tool change time
+                    seconds += Manager.Machines[cDropDown_machineProfiles.SelectedIndex].ToolChangeTime * (toolsCount + 1);
 
-                //Set approximate label text
-                TimeSpan ts = TimeSpan.FromSeconds(seconds);
-                cLabel_approximate.Text = string.Format("Approximate machining time: {0}", ts.ToString("mm\\:ss"));
+                    //Set approximate label text
+                    TimeSpan ts = TimeSpan.FromSeconds(seconds);
+                    cLabel_approximate.Text = string.Format("Approximate machining time: {0}", ts.ToString("mm\\:ss"));
+                }
+                else
+                {
+                    cLabel_approximate.Text = "Approximate machining time: Dunno";
+                }
             }
             catch(Exception ex)
             {
@@ -1093,15 +1111,13 @@ namespace CNCV.Pages
 
         private void cButton_sendFile_Click(object sender, EventArgs e)
         {
-            if(GRBLFramework.MachineState == eMachineState.Check)
-            {
+            ToolChangeIndex = 0;
+
+            if (GRBLFramework.MachineState == eMachineState.Check)
                 GRBLFramework.StartCheck();
-            }
             else
-            {
-                //Send file to GRBL
                 GRBLFramework.SendFile();
-            }
+
             //Show progress
             ProgressVisible(true);
             cButton_openFile.Enabled = false;
@@ -1159,14 +1175,17 @@ namespace CNCV.Pages
         {
             try
             {
+                if (cListView_fileTools.Items.Count <= 0)
+                    return;
+
                 for (int i = 0; i < cListView_fileTools.Items.Count; i++)
                 {
-                    if (i == GRBLFramework.CurrentToolID)
-                        cListView_fileTools.Items[i].SubItems[4].Text = "Current"; //Current tool
-                    else if (i < ToolChangeIndex)
-                        cListView_fileTools.Items[i].SubItems[4].Text = "X"; //Already used tool
-                    else
-                        cListView_fileTools.Items[i].SubItems[4].Text = "Queue"; //To be used tool
+                    if(i < ToolChangeIndex)
+                        cListView_fileTools.Items[i].SubItems[4].Text = "X";
+                    else if(i > ToolChangeIndex)
+                        cListView_fileTools.Items[i].SubItems[4].Text = "Queue";
+                    else if(i == ToolChangeIndex)
+                        cListView_fileTools.Items[i].SubItems[4].Text = "Current";
                 }
 
                 cListView_fileTools.Invalidate();
@@ -1192,6 +1211,8 @@ namespace CNCV.Pages
                 item.SubItems.Add(mi.Message);
                 cListViewMessages.Items.Add(item);
             }
+
+            cListViewMessages.Invalidate();
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)

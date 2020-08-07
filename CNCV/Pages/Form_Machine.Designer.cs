@@ -55,8 +55,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.cTextBox_toolChangeTime = new CCL.Controls.CTextBox();
             this.cLabel3 = new CCL.Controls.CLabel();
-            this.cTextBox_touchPlateHeight = new CCL.Controls.CTextBox();
-            this.cLabel4 = new CCL.Controls.CLabel();
             this.cTabControl1 = new CCL.Controls.CTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -67,12 +65,16 @@
             this.cLabel5 = new CCL.Controls.CLabel();
             this.cTextBoxJoggingDistance = new CCL.Controls.CTextBox();
             this.cTabSelector1 = new CCL.Controls.CTabSelector();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cLabel8 = new CCL.Controls.CLabel();
             this.cTextBoxMoveUp = new CCL.Controls.CTextBox();
+            this.cLabel4 = new CCL.Controls.CLabel();
+            this.cTextBox_touchPlateHeight = new CCL.Controls.CTextBox();
             this.cGroupBox3.SuspendLayout();
             this.cTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // cListView_grblSettings
@@ -99,7 +101,7 @@
             this.cListView_grblSettings.NonEditableColumns.Add("0");
             this.cListView_grblSettings.NonEditableColumns.Add("2");
             this.cListView_grblSettings.NothingToShowText = "Nothing To Show.";
-            this.cListView_grblSettings.Size = new System.Drawing.Size(290, 442);
+            this.cListView_grblSettings.Size = new System.Drawing.Size(307, 442);
             this.cListView_grblSettings.TabIndex = 0;
             this.cListView_grblSettings.Text = "GRBL SETTINGS";
             this.cListView_grblSettings.TitleTextStyle = CCL.eTextStyle.Title3;
@@ -117,7 +119,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Setting";
-            this.columnHeader3.Width = 120;
+            this.columnHeader3.Width = 180;
             // 
             // cButton_cancel
             // 
@@ -421,7 +423,7 @@
             this.cTextBox_toolChangeTime.Font = new System.Drawing.Font("Armata", 10F);
             this.cTextBox_toolChangeTime.Hint = "";
             this.cTextBox_toolChangeTime.LineHeight = 1;
-            this.cTextBox_toolChangeTime.Location = new System.Drawing.Point(173, 154);
+            this.cTextBox_toolChangeTime.Location = new System.Drawing.Point(173, 102);
             this.cTextBox_toolChangeTime.MaxLength = 32767;
             this.cTextBox_toolChangeTime.MouseState = CCL.MouseState.HOVER;
             this.cTextBox_toolChangeTime.Name = "cTextBox_toolChangeTime";
@@ -443,7 +445,7 @@
             this.cLabel3.BackColor = System.Drawing.Color.Transparent;
             this.cLabel3.Font = new System.Drawing.Font("Armata", 10F);
             this.cLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel3.Location = new System.Drawing.Point(6, 142);
+            this.cLabel3.Location = new System.Drawing.Point(6, 90);
             this.cLabel3.Name = "cLabel3";
             this.cLabel3.OverrideFontSize = 12F;
             this.cLabel3.Size = new System.Drawing.Size(131, 36);
@@ -452,51 +454,18 @@
             this.cLabel3.TextStyle = CCL.eTextStyle.Normal;
             this.cLabel3.UseFontSizeOverride = false;
             // 
-            // cTextBox_touchPlateHeight
-            // 
-            this.cTextBox_touchPlateHeight.Depth = 0;
-            this.cTextBox_touchPlateHeight.Font = new System.Drawing.Font("Armata", 10F);
-            this.cTextBox_touchPlateHeight.Hint = "";
-            this.cTextBox_touchPlateHeight.LineHeight = 1;
-            this.cTextBox_touchPlateHeight.Location = new System.Drawing.Point(173, 100);
-            this.cTextBox_touchPlateHeight.MaxLength = 32767;
-            this.cTextBox_touchPlateHeight.MouseState = CCL.MouseState.HOVER;
-            this.cTextBox_touchPlateHeight.Name = "cTextBox_touchPlateHeight";
-            this.cTextBox_touchPlateHeight.PasswordChar = '\0';
-            this.cTextBox_touchPlateHeight.SelectedText = "";
-            this.cTextBox_touchPlateHeight.SelectionLength = 0;
-            this.cTextBox_touchPlateHeight.SelectionStart = 0;
-            this.cTextBox_touchPlateHeight.Size = new System.Drawing.Size(45, 18);
-            this.cTextBox_touchPlateHeight.TabIndex = 20;
-            this.cTextBox_touchPlateHeight.TabStop = false;
-            this.cTextBox_touchPlateHeight.Text = "10";
-            this.cTextBox_touchPlateHeight.TextStyle = CCL.eTextStyle.Normal;
-            this.cTextBox_touchPlateHeight.UseSystemPasswordChar = false;
-            this.cTextBox_touchPlateHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cTextBox_touchPlateHeight_KeyPress);
-            // 
-            // cLabel4
-            // 
-            this.cLabel4.AutoSize = true;
-            this.cLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel4.Font = new System.Drawing.Font("Armata", 10F);
-            this.cLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel4.Location = new System.Drawing.Point(6, 100);
-            this.cLabel4.Name = "cLabel4";
-            this.cLabel4.OverrideFontSize = 12F;
-            this.cLabel4.Size = new System.Drawing.Size(141, 18);
-            this.cLabel4.TabIndex = 19;
-            this.cLabel4.Text = "Touch plate height";
-            this.cLabel4.TextStyle = CCL.eTextStyle.Normal;
-            this.cLabel4.UseFontSizeOverride = false;
-            // 
             // cTabControl1
             // 
+            this.cTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cTabControl1.Controls.Add(this.tabPage1);
+            this.cTabControl1.Controls.Add(this.tabPage3);
             this.cTabControl1.Controls.Add(this.tabPage2);
             this.cTabControl1.Location = new System.Drawing.Point(263, 60);
             this.cTabControl1.Name = "cTabControl1";
             this.cTabControl1.SelectedIndex = 0;
-            this.cTabControl1.Size = new System.Drawing.Size(298, 468);
+            this.cTabControl1.Size = new System.Drawing.Size(315, 468);
             this.cTabControl1.TabIndex = 21;
             // 
             // tabPage1
@@ -505,7 +474,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(290, 442);
+            this.tabPage1.Size = new System.Drawing.Size(307, 442);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GRBL";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -513,22 +482,18 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
-            this.tabPage2.Controls.Add(this.cLabel8);
-            this.tabPage2.Controls.Add(this.cTextBoxMoveUp);
             this.tabPage2.Controls.Add(this.cLabel7);
             this.tabPage2.Controls.Add(this.cTextBoxJoggingInterval);
             this.tabPage2.Controls.Add(this.cLabel6);
             this.tabPage2.Controls.Add(this.cTextBoxJoggingFeedRate);
             this.tabPage2.Controls.Add(this.cLabel5);
             this.tabPage2.Controls.Add(this.cTextBoxJoggingDistance);
-            this.tabPage2.Controls.Add(this.cLabel4);
-            this.tabPage2.Controls.Add(this.cTextBox_touchPlateHeight);
             this.tabPage2.Controls.Add(this.cLabel3);
             this.tabPage2.Controls.Add(this.cTextBox_toolChangeTime);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(290, 442);
+            this.tabPage2.Size = new System.Drawing.Size(307, 442);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Other";
             // 
@@ -642,6 +607,8 @@
             // 
             // cTabSelector1
             // 
+            this.cTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cTabSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.cTabSelector1.BaseTabControl = this.cTabControl1;
             this.cTabSelector1.DrawLineAllTheWay = true;
@@ -652,11 +619,24 @@
             this.cTabSelector1.Name = "cTabSelector1";
             this.cTabSelector1.SelectorHeight = 24;
             this.cTabSelector1.SelectorPadding = 10;
-            this.cTabSelector1.Size = new System.Drawing.Size(298, 24);
+            this.cTabSelector1.Size = new System.Drawing.Size(315, 24);
             this.cTabSelector1.TabIndex = 22;
             this.cTabSelector1.TabsAlignment = CCL.Controls.CTabSelector.eTabsAlignment.Left;
             this.cTabSelector1.Text = "cTabSelector1";
             this.cTabSelector1.TextStyle = CCL.eTextStyle.Small;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Silver;
+            this.tabPage3.Controls.Add(this.cLabel8);
+            this.tabPage3.Controls.Add(this.cTextBoxMoveUp);
+            this.tabPage3.Controls.Add(this.cLabel4);
+            this.tabPage3.Controls.Add(this.cTextBox_touchPlateHeight);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(307, 442);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Probe";
             // 
             // cLabel8
             // 
@@ -664,12 +644,12 @@
             this.cLabel8.BackColor = System.Drawing.Color.Transparent;
             this.cLabel8.Font = new System.Drawing.Font("Armata", 10F);
             this.cLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel8.Location = new System.Drawing.Point(6, 124);
+            this.cLabel8.Location = new System.Drawing.Point(6, 27);
             this.cLabel8.Name = "cLabel8";
             this.cLabel8.OverrideFontSize = 12F;
-            this.cLabel8.Size = new System.Drawing.Size(136, 18);
-            this.cLabel8.TabIndex = 27;
-            this.cLabel8.Text = "Move Up distance";
+            this.cLabel8.Size = new System.Drawing.Size(93, 36);
+            this.cLabel8.TabIndex = 55;
+            this.cLabel8.Text = "Final Move\r\nUp distance";
             this.cLabel8.TextStyle = CCL.eTextStyle.Normal;
             this.cLabel8.UseFontSizeOverride = false;
             // 
@@ -679,7 +659,7 @@
             this.cTextBoxMoveUp.Font = new System.Drawing.Font("Armata", 10F);
             this.cTextBoxMoveUp.Hint = "";
             this.cTextBoxMoveUp.LineHeight = 1;
-            this.cTextBoxMoveUp.Location = new System.Drawing.Point(173, 124);
+            this.cTextBoxMoveUp.Location = new System.Drawing.Point(173, 27);
             this.cTextBoxMoveUp.MaxLength = 32767;
             this.cTextBoxMoveUp.MouseState = CCL.MouseState.HOVER;
             this.cTextBoxMoveUp.Name = "cTextBoxMoveUp";
@@ -688,17 +668,53 @@
             this.cTextBoxMoveUp.SelectionLength = 0;
             this.cTextBoxMoveUp.SelectionStart = 0;
             this.cTextBoxMoveUp.Size = new System.Drawing.Size(45, 18);
-            this.cTextBoxMoveUp.TabIndex = 28;
+            this.cTextBoxMoveUp.TabIndex = 56;
             this.cTextBoxMoveUp.TabStop = false;
             this.cTextBoxMoveUp.Text = "10";
             this.cTextBoxMoveUp.TextStyle = CCL.eTextStyle.Normal;
             this.cTextBoxMoveUp.UseSystemPasswordChar = false;
             // 
+            // cLabel4
+            // 
+            this.cLabel4.AutoSize = true;
+            this.cLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel4.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel4.Location = new System.Drawing.Point(6, 3);
+            this.cLabel4.Name = "cLabel4";
+            this.cLabel4.OverrideFontSize = 12F;
+            this.cLabel4.Size = new System.Drawing.Size(141, 18);
+            this.cLabel4.TabIndex = 53;
+            this.cLabel4.Text = "Touch plate height";
+            this.cLabel4.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel4.UseFontSizeOverride = false;
+            // 
+            // cTextBox_touchPlateHeight
+            // 
+            this.cTextBox_touchPlateHeight.Depth = 0;
+            this.cTextBox_touchPlateHeight.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBox_touchPlateHeight.Hint = "";
+            this.cTextBox_touchPlateHeight.LineHeight = 1;
+            this.cTextBox_touchPlateHeight.Location = new System.Drawing.Point(173, 3);
+            this.cTextBox_touchPlateHeight.MaxLength = 32767;
+            this.cTextBox_touchPlateHeight.MouseState = CCL.MouseState.HOVER;
+            this.cTextBox_touchPlateHeight.Name = "cTextBox_touchPlateHeight";
+            this.cTextBox_touchPlateHeight.PasswordChar = '\0';
+            this.cTextBox_touchPlateHeight.SelectedText = "";
+            this.cTextBox_touchPlateHeight.SelectionLength = 0;
+            this.cTextBox_touchPlateHeight.SelectionStart = 0;
+            this.cTextBox_touchPlateHeight.Size = new System.Drawing.Size(45, 18);
+            this.cTextBox_touchPlateHeight.TabIndex = 54;
+            this.cTextBox_touchPlateHeight.TabStop = false;
+            this.cTextBox_touchPlateHeight.Text = "10";
+            this.cTextBox_touchPlateHeight.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBox_touchPlateHeight.UseSystemPasswordChar = false;
+            // 
             // Form_Machine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 540);
+            this.ClientSize = new System.Drawing.Size(590, 540);
             this.ControlBox = false;
             this.Controls.Add(this.cTabSelector1);
             this.Controls.Add(this.cTabControl1);
@@ -720,6 +736,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -751,8 +769,6 @@
         private System.Windows.Forms.Timer timer1;
         private CCL.Controls.CTextBox cTextBox_toolChangeTime;
         private CCL.Controls.CLabel cLabel3;
-        private CCL.Controls.CTextBox cTextBox_touchPlateHeight;
-        private CCL.Controls.CLabel cLabel4;
         private CCL.Controls.CButton cButton_sendSettings;
         private CCL.Controls.CTabControl cTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -764,7 +780,10 @@
         private CCL.Controls.CLabel cLabel5;
         private CCL.Controls.CTextBox cTextBoxJoggingDistance;
         private CCL.Controls.CTabSelector cTabSelector1;
+        private System.Windows.Forms.TabPage tabPage3;
         private CCL.Controls.CLabel cLabel8;
         private CCL.Controls.CTextBox cTextBoxMoveUp;
+        private CCL.Controls.CLabel cLabel4;
+        private CCL.Controls.CTextBox cTextBox_touchPlateHeight;
     }
 }

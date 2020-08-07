@@ -96,6 +96,9 @@ namespace CNCV
                 }
             }
 
+            if (double.IsInfinity(totalTime))
+                totalTime = 0;
+
             return totalTime;
         }
 
