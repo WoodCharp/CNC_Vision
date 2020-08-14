@@ -57,6 +57,11 @@
             this.cLabel3 = new CCL.Controls.CLabel();
             this.cTabControl1 = new CCL.Controls.CTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cLabel8 = new CCL.Controls.CLabel();
+            this.cTextBoxMoveUp = new CCL.Controls.CTextBox();
+            this.cLabel4 = new CCL.Controls.CLabel();
+            this.cTextBox_touchPlateHeight = new CCL.Controls.CTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cLabel7 = new CCL.Controls.CLabel();
             this.cTextBoxJoggingInterval = new CCL.Controls.CTextBox();
@@ -65,16 +70,13 @@
             this.cLabel5 = new CCL.Controls.CLabel();
             this.cTextBoxJoggingDistance = new CCL.Controls.CTextBox();
             this.cTabSelector1 = new CCL.Controls.CTabSelector();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cLabel8 = new CCL.Controls.CLabel();
-            this.cTextBoxMoveUp = new CCL.Controls.CTextBox();
-            this.cLabel4 = new CCL.Controls.CLabel();
-            this.cTextBox_touchPlateHeight = new CCL.Controls.CTextBox();
+            this.cRichTextBoxProbeSteps = new CCL.Controls.CRichTextBox();
+            this.cLabel9 = new CCL.Controls.CLabel();
             this.cGroupBox3.SuspendLayout();
             this.cTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cListView_grblSettings
@@ -479,6 +481,93 @@
             this.tabPage1.Text = "GRBL";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Silver;
+            this.tabPage3.Controls.Add(this.cLabel9);
+            this.tabPage3.Controls.Add(this.cRichTextBoxProbeSteps);
+            this.tabPage3.Controls.Add(this.cLabel8);
+            this.tabPage3.Controls.Add(this.cTextBoxMoveUp);
+            this.tabPage3.Controls.Add(this.cLabel4);
+            this.tabPage3.Controls.Add(this.cTextBox_touchPlateHeight);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(307, 442);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Probe";
+            // 
+            // cLabel8
+            // 
+            this.cLabel8.AutoSize = true;
+            this.cLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel8.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel8.Location = new System.Drawing.Point(6, 27);
+            this.cLabel8.Name = "cLabel8";
+            this.cLabel8.OverrideFontSize = 12F;
+            this.cLabel8.Size = new System.Drawing.Size(93, 36);
+            this.cLabel8.TabIndex = 55;
+            this.cLabel8.Text = "Final Move\r\nUp distance";
+            this.cLabel8.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel8.UseFontSizeOverride = false;
+            // 
+            // cTextBoxMoveUp
+            // 
+            this.cTextBoxMoveUp.Depth = 0;
+            this.cTextBoxMoveUp.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBoxMoveUp.Hint = "";
+            this.cTextBoxMoveUp.LineHeight = 1;
+            this.cTextBoxMoveUp.Location = new System.Drawing.Point(173, 27);
+            this.cTextBoxMoveUp.MaxLength = 32767;
+            this.cTextBoxMoveUp.MouseState = CCL.MouseState.HOVER;
+            this.cTextBoxMoveUp.Name = "cTextBoxMoveUp";
+            this.cTextBoxMoveUp.PasswordChar = '\0';
+            this.cTextBoxMoveUp.SelectedText = "";
+            this.cTextBoxMoveUp.SelectionLength = 0;
+            this.cTextBoxMoveUp.SelectionStart = 0;
+            this.cTextBoxMoveUp.Size = new System.Drawing.Size(45, 18);
+            this.cTextBoxMoveUp.TabIndex = 56;
+            this.cTextBoxMoveUp.TabStop = false;
+            this.cTextBoxMoveUp.Text = "10";
+            this.cTextBoxMoveUp.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBoxMoveUp.UseSystemPasswordChar = false;
+            // 
+            // cLabel4
+            // 
+            this.cLabel4.AutoSize = true;
+            this.cLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel4.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel4.Location = new System.Drawing.Point(6, 3);
+            this.cLabel4.Name = "cLabel4";
+            this.cLabel4.OverrideFontSize = 12F;
+            this.cLabel4.Size = new System.Drawing.Size(141, 18);
+            this.cLabel4.TabIndex = 53;
+            this.cLabel4.Text = "Touch plate height";
+            this.cLabel4.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel4.UseFontSizeOverride = false;
+            // 
+            // cTextBox_touchPlateHeight
+            // 
+            this.cTextBox_touchPlateHeight.Depth = 0;
+            this.cTextBox_touchPlateHeight.Font = new System.Drawing.Font("Armata", 10F);
+            this.cTextBox_touchPlateHeight.Hint = "";
+            this.cTextBox_touchPlateHeight.LineHeight = 1;
+            this.cTextBox_touchPlateHeight.Location = new System.Drawing.Point(173, 3);
+            this.cTextBox_touchPlateHeight.MaxLength = 32767;
+            this.cTextBox_touchPlateHeight.MouseState = CCL.MouseState.HOVER;
+            this.cTextBox_touchPlateHeight.Name = "cTextBox_touchPlateHeight";
+            this.cTextBox_touchPlateHeight.PasswordChar = '\0';
+            this.cTextBox_touchPlateHeight.SelectedText = "";
+            this.cTextBox_touchPlateHeight.SelectionLength = 0;
+            this.cTextBox_touchPlateHeight.SelectionStart = 0;
+            this.cTextBox_touchPlateHeight.Size = new System.Drawing.Size(45, 18);
+            this.cTextBox_touchPlateHeight.TabIndex = 54;
+            this.cTextBox_touchPlateHeight.TabStop = false;
+            this.cTextBox_touchPlateHeight.Text = "10";
+            this.cTextBox_touchPlateHeight.TextStyle = CCL.eTextStyle.Normal;
+            this.cTextBox_touchPlateHeight.UseSystemPasswordChar = false;
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
@@ -625,90 +714,33 @@
             this.cTabSelector1.Text = "cTabSelector1";
             this.cTabSelector1.TextStyle = CCL.eTextStyle.Small;
             // 
-            // tabPage3
+            // cRichTextBoxProbeSteps
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.Silver;
-            this.tabPage3.Controls.Add(this.cLabel8);
-            this.tabPage3.Controls.Add(this.cTextBoxMoveUp);
-            this.tabPage3.Controls.Add(this.cLabel4);
-            this.tabPage3.Controls.Add(this.cTextBox_touchPlateHeight);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(307, 442);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Probe";
+            this.cRichTextBoxProbeSteps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.cRichTextBoxProbeSteps.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cRichTextBoxProbeSteps.Font = new System.Drawing.Font("Armata", 10F);
+            this.cRichTextBoxProbeSteps.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cRichTextBoxProbeSteps.Location = new System.Drawing.Point(3, 127);
+            this.cRichTextBoxProbeSteps.Name = "cRichTextBoxProbeSteps";
+            this.cRichTextBoxProbeSteps.Size = new System.Drawing.Size(301, 149);
+            this.cRichTextBoxProbeSteps.TabIndex = 57;
+            this.cRichTextBoxProbeSteps.Text = "";
+            this.cRichTextBoxProbeSteps.TextStyle = CCL.eTextStyle.Normal;
             // 
-            // cLabel8
+            // cLabel9
             // 
-            this.cLabel8.AutoSize = true;
-            this.cLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel8.Font = new System.Drawing.Font("Armata", 10F);
-            this.cLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel8.Location = new System.Drawing.Point(6, 27);
-            this.cLabel8.Name = "cLabel8";
-            this.cLabel8.OverrideFontSize = 12F;
-            this.cLabel8.Size = new System.Drawing.Size(93, 36);
-            this.cLabel8.TabIndex = 55;
-            this.cLabel8.Text = "Final Move\r\nUp distance";
-            this.cLabel8.TextStyle = CCL.eTextStyle.Normal;
-            this.cLabel8.UseFontSizeOverride = false;
-            // 
-            // cTextBoxMoveUp
-            // 
-            this.cTextBoxMoveUp.Depth = 0;
-            this.cTextBoxMoveUp.Font = new System.Drawing.Font("Armata", 10F);
-            this.cTextBoxMoveUp.Hint = "";
-            this.cTextBoxMoveUp.LineHeight = 1;
-            this.cTextBoxMoveUp.Location = new System.Drawing.Point(173, 27);
-            this.cTextBoxMoveUp.MaxLength = 32767;
-            this.cTextBoxMoveUp.MouseState = CCL.MouseState.HOVER;
-            this.cTextBoxMoveUp.Name = "cTextBoxMoveUp";
-            this.cTextBoxMoveUp.PasswordChar = '\0';
-            this.cTextBoxMoveUp.SelectedText = "";
-            this.cTextBoxMoveUp.SelectionLength = 0;
-            this.cTextBoxMoveUp.SelectionStart = 0;
-            this.cTextBoxMoveUp.Size = new System.Drawing.Size(45, 18);
-            this.cTextBoxMoveUp.TabIndex = 56;
-            this.cTextBoxMoveUp.TabStop = false;
-            this.cTextBoxMoveUp.Text = "10";
-            this.cTextBoxMoveUp.TextStyle = CCL.eTextStyle.Normal;
-            this.cTextBoxMoveUp.UseSystemPasswordChar = false;
-            // 
-            // cLabel4
-            // 
-            this.cLabel4.AutoSize = true;
-            this.cLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel4.Font = new System.Drawing.Font("Armata", 10F);
-            this.cLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel4.Location = new System.Drawing.Point(6, 3);
-            this.cLabel4.Name = "cLabel4";
-            this.cLabel4.OverrideFontSize = 12F;
-            this.cLabel4.Size = new System.Drawing.Size(141, 18);
-            this.cLabel4.TabIndex = 53;
-            this.cLabel4.Text = "Touch plate height";
-            this.cLabel4.TextStyle = CCL.eTextStyle.Normal;
-            this.cLabel4.UseFontSizeOverride = false;
-            // 
-            // cTextBox_touchPlateHeight
-            // 
-            this.cTextBox_touchPlateHeight.Depth = 0;
-            this.cTextBox_touchPlateHeight.Font = new System.Drawing.Font("Armata", 10F);
-            this.cTextBox_touchPlateHeight.Hint = "";
-            this.cTextBox_touchPlateHeight.LineHeight = 1;
-            this.cTextBox_touchPlateHeight.Location = new System.Drawing.Point(173, 3);
-            this.cTextBox_touchPlateHeight.MaxLength = 32767;
-            this.cTextBox_touchPlateHeight.MouseState = CCL.MouseState.HOVER;
-            this.cTextBox_touchPlateHeight.Name = "cTextBox_touchPlateHeight";
-            this.cTextBox_touchPlateHeight.PasswordChar = '\0';
-            this.cTextBox_touchPlateHeight.SelectedText = "";
-            this.cTextBox_touchPlateHeight.SelectionLength = 0;
-            this.cTextBox_touchPlateHeight.SelectionStart = 0;
-            this.cTextBox_touchPlateHeight.Size = new System.Drawing.Size(45, 18);
-            this.cTextBox_touchPlateHeight.TabIndex = 54;
-            this.cTextBox_touchPlateHeight.TabStop = false;
-            this.cTextBox_touchPlateHeight.Text = "10";
-            this.cTextBox_touchPlateHeight.TextStyle = CCL.eTextStyle.Normal;
-            this.cTextBox_touchPlateHeight.UseSystemPasswordChar = false;
+            this.cLabel9.AutoSize = true;
+            this.cLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel9.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel9.Location = new System.Drawing.Point(6, 106);
+            this.cLabel9.Name = "cLabel9";
+            this.cLabel9.OverrideFontSize = 12F;
+            this.cLabel9.Size = new System.Drawing.Size(93, 18);
+            this.cLabel9.TabIndex = 58;
+            this.cLabel9.Text = "Probe steps";
+            this.cLabel9.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel9.UseFontSizeOverride = false;
             // 
             // Form_Machine
             // 
@@ -734,10 +766,10 @@
             this.cGroupBox3.PerformLayout();
             this.cTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -785,5 +817,7 @@
         private CCL.Controls.CTextBox cTextBoxMoveUp;
         private CCL.Controls.CLabel cLabel4;
         private CCL.Controls.CTextBox cTextBox_touchPlateHeight;
+        private CCL.Controls.CLabel cLabel9;
+        private CCL.Controls.CRichTextBox cRichTextBoxProbeSteps;
     }
 }

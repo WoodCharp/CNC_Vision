@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CCL;
 using CCL.Controls;
 using CNCV.Machines;
 using GRBL;
@@ -26,6 +26,10 @@ namespace CNCV.Pages
         public Form_Machine(int index)
         {
             InitializeComponent();
+
+            var skinmanager = CSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
+
             SelectedMachineIndex = index;
 
             cTextBoxMoveUp.KeyPress += new KeyPressEventHandler(cTextBox_touchPlateHeight_KeyPress);
@@ -40,6 +44,7 @@ namespace CNCV.Pages
         private void Form_Machine_FormClosing(object sender, FormClosingEventArgs e)
         {
             GRBLFramework.CloseSerialPort();
+            CSkinManager.Instance.RemoveFormToManage(this);
         }
 
         private void Form_Machine_Load(object sender, EventArgs e)
@@ -74,6 +79,12 @@ namespace CNCV.Pages
                 item.SubItems.Add(setting.Value.ToString());
                 item.SubItems.Add(WikiSettings.GetIDDescription(setting.ID));
                 cListView_grblSettings.Items.Add(item);
+            }
+
+            foreach(string line in CurMachine.ProbeSteps)
+            {
+                if (!string.IsNullOrEmpty(line))
+                    cRichTextBoxProbeSteps.AppendText(string.Format("{0}\n", line));
             }
         }
 
@@ -112,6 +123,14 @@ namespace CNCV.Pages
                 case 1:
                     CurMachine.MachineType = eMachine.Laser;
                     break;
+            }
+
+            CurMachine.ProbeSteps.Clear();
+
+            foreach (string line in cRichTextBoxProbeSteps.Lines)
+            {
+                if (!string.IsNullOrEmpty(line))
+                    CurMachine.ProbeSteps.Add(line);
             }
 
             Manager.Machines[SelectedMachineIndex] = CurMachine;

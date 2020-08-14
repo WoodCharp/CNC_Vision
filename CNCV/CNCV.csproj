@@ -56,6 +56,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSetting.cs" />
+    <Compile Include="Controls\CADDrawer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\GCodeViewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PointPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PointPicker.Designer.cs">
+      <DependentUpon>PointPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\CAD\CadObj.cs" />
+    <Compile Include="Generator\Form_Generator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generator\Form_Generator.Designer.cs">
+      <DependentUpon>Form_Generator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\GCodeParser.cs" />
+    <Compile Include="Generator\ShapeTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FileManager.cs" />
     <Compile Include="GetVersionInfo.cs" />
     <Compile Include="IManager.cs" />
@@ -97,6 +120,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\LaserTool.cs" />
     <Compile Include="Tools\CNCTool.cs" />
+    <EmbeddedResource Include="Controls\PointPicker.resx">
+      <DependentUpon>PointPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generator\Form_Generator.resx">
+      <DependentUpon>Form_Generator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Form_CheckFile.resx">
       <DependentUpon>Form_CheckFile.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,9 +179,11 @@
     <Content Include="Images\Control Icons\ArrowUpRight.png" />
     <Content Include="Images\Control Icons\ZeroSmall.png" />
     <Content Include="Images\Icons\Controls.png" />
+    <Content Include="Images\Icons\GC.png" />
     <Content Include="Images\Icons\Gear001.png" />
     <Content Include="Images\Icons\Refresh001.png" />
     <Content Include="Images\Machine Icons\Machines.png" />
+    <Content Include="Generator\Icons\ShapeTemplate_Rectangle.png" />
     <Content Include="Images\Tool Icons\Tools.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,4 +18,6 @@ D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Deb
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.csproj.CopyComplete
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.exe
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.pdb
+D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.Controls.PointPicker.resources
+D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.Generator.Form_Generator.resources
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.csprojAssemblyReference.cache

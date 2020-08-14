@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
 using CCL;
 using CCL.Controls;
+using CNCV.Generator;
 using CNCV.Machines;
 using CNCV.Tools;
 
@@ -24,6 +26,9 @@ namespace CNCV.Pages
         private Form_ToolChangeWindow ToolChangeWindow;
         private int ToolChangeIndex = 0;
 
+        private bool PositioningAutoSet = true, PositioningDropaDownSet = false;
+        private ePositioning CurPositioning = ePositioning.Absolute;
+
         public Form_Main()
         {
             InitializeComponent();
@@ -37,6 +42,7 @@ namespace CNCV.Pages
             tabPanelSelector1.Icons.Add(Properties.Resources.Controls);
             tabPanelSelector1.Icons.Add(Properties.Resources.Machines);
             tabPanelSelector1.Icons.Add(Properties.Resources.Tools);
+            //tabPanelSelector1.Icons.Add(Properties.Resources.GC);
             tabPanelSelector1.Icons.Add(Properties.Resources.Gear001);
 
             //Set active form to GRBL Framework
@@ -74,10 +80,10 @@ namespace CNCV.Pages
             LoadMachines(true);
 
             //Show splash screen
-            using (Form_SplashScreen ss = new Form_SplashScreen())
+            /*using (Form_SplashScreen ss = new Form_SplashScreen())
             {
                 ss.ShowDialog();
-            }
+            }*/
         }
 
         #region Preferences
@@ -599,6 +605,8 @@ namespace CNCV.Pages
                 
                 EnableControls(true);
 
+                cDropDownPositioning.SelectedIndex = 0;
+
                 //Setting OPT value to GRBL framework. It reads the buffer size from it.
                 GRBLFramework.ScannedOPT = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].OPT;
             }
@@ -761,31 +769,31 @@ namespace CNCV.Pages
         private void cButton_Xp_Click(object sender, EventArgs e)
         {
             if(cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+                GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, true, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Xm_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+                GRBLFramework.MoveSingleAxis(eAxis.X, cRadioButton_g0.Checked, true, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Yp_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+                GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, true, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Ym_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+                GRBLFramework.MoveSingleAxis(eAxis.Y, cRadioButton_g0.Checked, true, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_XmYp_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked, true,
                     -float.Parse(cTextBox_distance.Text),
                     float.Parse(cTextBox_distance.Text),
                     int.Parse(cTextBox_feedRate.Text));
@@ -794,7 +802,7 @@ namespace CNCV.Pages
         private void cButton_XpYp_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked, true,
                     float.Parse(cTextBox_distance.Text),
                     float.Parse(cTextBox_distance.Text),
                     int.Parse(cTextBox_feedRate.Text));
@@ -803,7 +811,7 @@ namespace CNCV.Pages
         private void cButton_XmYm_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                    GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                    GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked, true,
                     -float.Parse(cTextBox_distance.Text),
                     -float.Parse(cTextBox_distance.Text),
                     int.Parse(cTextBox_feedRate.Text));
@@ -812,7 +820,7 @@ namespace CNCV.Pages
         private void cButton_XpYm_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked,
+                GRBLFramework.MoveTwoAxis(cRadioButton_g0.Checked, true,
                     float.Parse(cTextBox_distance.Text),
                     -float.Parse(cTextBox_distance.Text),
                     int.Parse(cTextBox_feedRate.Text));
@@ -821,20 +829,19 @@ namespace CNCV.Pages
         private void cButton_Zp_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+                GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, true, float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
         private void cButton_Zm_Click(object sender, EventArgs e)
         {
             if (cTextBox_distance.Text.Length > 0 && cTextBox_feedRate.Text.Length > 0)
-                GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
+                GRBLFramework.MoveSingleAxis(eAxis.Z, cRadioButton_g0.Checked, true, -float.Parse(cTextBox_distance.Text), int.Parse(cTextBox_feedRate.Text));
         }
 
 
         private void cButton_touchThePlate_Click(object sender, EventArgs e)
         {
-            GRBLFramework.ToutchThePlate(-50, 200,
-                Manager.Machines[cDropDown_machineProfiles.SelectedIndex].TouchPlateHeight,
+            GRBLFramework.ToutchThePlate(Manager.Machines[cDropDown_machineProfiles.SelectedIndex].TouchPlateHeight,
                 Manager.Machines[cDropDown_machineProfiles.SelectedIndex].MoveUpDistance);
         }
 
@@ -886,6 +893,7 @@ namespace CNCV.Pages
                 GRBLFramework.RapidOverride(2);
         }
 
+
         #endregion
 
         //Update UI stuff
@@ -911,6 +919,23 @@ namespace CNCV.Pages
             cLabel_overrideFeed.Text = GRBLFramework.OverrideFeedRate.ToString();
             cLabel_overrideSpindle.Text = GRBLFramework.OverrideSpindle.ToString();
             cLabel_overrideRapid.Text = GRBLFramework.OverrideRapid.ToString();
+
+            if(CurPositioning != GRBLFramework.Positioning)
+            {
+                CurPositioning = GRBLFramework.Positioning;
+
+                if (!PositioningDropaDownSet)
+                {
+                    PositioningAutoSet = true;
+
+                    if (CurPositioning == ePositioning.Absolute)
+                        cDropDownPositioning.SelectedIndex = 0;
+                    else
+                        cDropDownPositioning.SelectedIndex = 1;
+                }
+                else
+                    PositioningDropaDownSet = false;
+            }
 
             //If tool has to be changed
             if (GRBLFramework.DoToolChange && GRBLFramework.MachineState == eMachineState.Idle
@@ -955,6 +980,26 @@ namespace CNCV.Pages
                 cProgressBar1.Value = (int)GRBLFramework.FileSentPercentage;
                 //Update time labels
                 UpdateTime();
+            }
+        }
+
+        private void cDropDownPositioning_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PositioningAutoSet)
+            {
+                PositioningAutoSet = false;
+                return;
+            }
+
+            if (cDropDownPositioning.SelectedIndex == 0)
+            {
+                PositioningDropaDownSet = true;
+                GRBLFramework.AbsoluteMode();
+            }
+            else
+            {
+                PositioningDropaDownSet = true;
+                GRBLFramework.IncrementalMode();
             }
         }
 
@@ -1268,6 +1313,17 @@ namespace CNCV.Pages
         private void cSwitch_enableWeakLaser_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Nope");
+        }
+
+        #endregion
+
+        #region G-Code Generator
+
+        private void cButtonGCodeGenerator_Click(object sender, EventArgs e)
+        {
+            //Not yet
+            //Form_Generator generator = new Form_Generator();
+            //generator.Show();
         }
 
         #endregion

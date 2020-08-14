@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CCL.Controls;
+using CCL;
 using GRBL;
 
 namespace CNCV.Pages
@@ -24,6 +25,10 @@ namespace CNCV.Pages
         public Form_CheckFile()
         {
             InitializeComponent();
+
+            //Setting up theme
+            var skinmanager = CSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
         }
 
         private void Form_CheckFile_Load(object sender, EventArgs e)
@@ -77,6 +82,11 @@ namespace CNCV.Pages
 
             if (Canceled)
                 cRichTextBox_NotOk.AppendText("Process was canceled !");
+        }
+
+        private void Form_CheckFile_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CSkinManager.Instance.RemoveFormToManage(this);
         }
 
         private void RefreshValues()

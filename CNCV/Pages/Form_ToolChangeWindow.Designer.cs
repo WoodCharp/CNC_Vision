@@ -51,6 +51,8 @@
             this.cLabelSD = new CCL.Controls.CLabel();
             this.cButtonToolChanged = new CCL.Controls.CButton();
             this.cLabelType = new CCL.Controls.CLabel();
+            this.cLabel14 = new CCL.Controls.CLabel();
+            this.cDropDownPositioning = new CCL.Controls.CDropDown();
             this.SuspendLayout();
             // 
             // cRadioButton_g1
@@ -400,11 +402,41 @@
             this.cLabelType.TextStyle = CCL.eTextStyle.Normal;
             this.cLabelType.UseFontSizeOverride = true;
             // 
+            // cLabel14
+            // 
+            this.cLabel14.AutoSize = true;
+            this.cLabel14.BackColor = System.Drawing.Color.Transparent;
+            this.cLabel14.Font = new System.Drawing.Font("Armata", 10F);
+            this.cLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.cLabel14.Location = new System.Drawing.Point(41, 319);
+            this.cLabel14.Name = "cLabel14";
+            this.cLabel14.OverrideFontSize = 12F;
+            this.cLabel14.Size = new System.Drawing.Size(108, 18);
+            this.cLabel14.TabIndex = 66;
+            this.cLabel14.Text = "Continue with";
+            this.cLabel14.TextStyle = CCL.eTextStyle.Normal;
+            this.cLabel14.UseFontSizeOverride = false;
+            // 
+            // cDropDownPositioning
+            // 
+            this.cDropDownPositioning.Font = new System.Drawing.Font("Armata", 10F);
+            this.cDropDownPositioning.Items.Add("Absolute");
+            this.cDropDownPositioning.Items.Add("Incremental");
+            this.cDropDownPositioning.Location = new System.Drawing.Point(153, 316);
+            this.cDropDownPositioning.Name = "cDropDownPositioning";
+            this.cDropDownPositioning.SelectedIndex = -1;
+            this.cDropDownPositioning.Size = new System.Drawing.Size(138, 25);
+            this.cDropDownPositioning.TabIndex = 65;
+            this.cDropDownPositioning.Text = "cDropDown1";
+            this.cDropDownPositioning.TextStyle = CCL.eTextStyle.Normal;
+            // 
             // Form_ToolChangeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 412);
+            this.Controls.Add(this.cLabel14);
+            this.Controls.Add(this.cDropDownPositioning);
             this.Controls.Add(this.cLabelType);
             this.Controls.Add(this.cButtonToolChanged);
             this.Controls.Add(this.cLabelSD);
@@ -431,6 +463,7 @@
             this.Name = "Form_ToolChangeWindow";
             this.Sizable = false;
             this.Text = "Tool Change";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_ToolChangeWindow_FormClosing);
             this.Load += new System.EventHandler(this.Form_ToolChangeWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -462,5 +495,7 @@
         private CCL.Controls.CLabel cLabelSD;
         private CCL.Controls.CButton cButtonToolChanged;
         private CCL.Controls.CLabel cLabelType;
+        private CCL.Controls.CLabel cLabel14;
+        private CCL.Controls.CDropDown cDropDownPositioning;
     }
 }

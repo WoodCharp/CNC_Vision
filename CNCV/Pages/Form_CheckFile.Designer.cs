@@ -192,6 +192,7 @@
             this.Controls.Add(this.cRichTextBox_ok);
             this.Name = "Form_CheckFile";
             this.Text = "File Check";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_CheckFile_FormClosing);
             this.Load += new System.EventHandler(this.Form_CheckFile_Load);
             this.cPanel1.ResumeLayout(false);
             this.cPanel1.PerformLayout();
