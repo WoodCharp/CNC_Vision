@@ -125,7 +125,7 @@ namespace CNCV.Pages
 
         private void cButton_touchThePlate_Click(object sender, EventArgs e)
         {
-            GRBLFramework.ToutchThePlate(CurrentMachine.TouchPlateHeight, CurrentMachine.MoveUpDistance);
+            //GRBLFramework.ToutchThePlate(CurrentMachine.TouchPlateHeight, CurrentMachine.MoveUpDistance);
         }
 
         private void cTextBox_distance_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)

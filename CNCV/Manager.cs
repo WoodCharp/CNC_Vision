@@ -25,6 +25,7 @@ namespace CNCV
         public List<CNCTool> CNCTools { get; set; }
 
         public List<Machine> Machines { get; set; }
+        public Machine CurrentMachine { get; set; }
 
         public Manager()
         {

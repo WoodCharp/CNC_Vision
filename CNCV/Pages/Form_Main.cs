@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CCL;
@@ -73,6 +74,8 @@ namespace CNCV.Pages
 
             //Tool change window, shows tool info and continues machining
             ToolChangeWindow = new Form_ToolChangeWindow();
+
+            GRBLFramework.ProbeResultAction = new Action(ProbeResultAction);
 
             //Load stuff
             LoadAppSettings();
@@ -580,15 +583,17 @@ namespace CNCV.Pages
                     return;
                 }
 
+                Manager.CurrentMachine = Manager.Machines[cDropDown_machineProfiles.SelectedIndex];
+
                 //GRBL Framework sets workspace to G54 at serial open
                 cDropDown_workSpace.SelectedIndex = 0;
                 //Open serial port
-                GRBLFramework.OpenSerialPort(Manager.Machines[cDropDown_machineProfiles.SelectedIndex].PortData);
+                GRBLFramework.OpenSerialPort(Manager.CurrentMachine.PortData);
                 //Start timer to update UI stuff
                 grblTimer.Start();
 
                 //Choosing what spindle type controls is shown
-                if (Manager.Machines[cDropDown_machineProfiles.SelectedIndex].MachineType == eMachine.Router)
+                if (Manager.CurrentMachine.MachineType == eMachine.Router)
                 {
                     cTabControl_spindleLaser.SelectedIndex = 1;
                     cSliderRouterRPM.MinValue = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].GetSettingValueByID(31);
@@ -608,10 +613,7 @@ namespace CNCV.Pages
                 cDropDownPositioning.SelectedIndex = 0;
 
                 //Setting OPT value to GRBL framework. It reads the buffer size from it.
-                GRBLFramework.ScannedOPT = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].OPT;
-
-                GRBLFramework.ProbeSteps.Clear();
-                GRBLFramework.ProbeSteps = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].ProbeSteps;
+                GRBLFramework.ScannedOPT = Manager.CurrentMachine.OPT;
             }
             else //Close serial port
             {
@@ -630,7 +632,6 @@ namespace CNCV.Pages
                 EnableControls(false);
             }
         }
-
 
         private void cDropDown_workSpace_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -842,11 +843,6 @@ namespace CNCV.Pages
         }
 
 
-        private void cButton_touchThePlate_Click(object sender, EventArgs e)
-        {
-            GRBLFramework.ToutchThePlate(Manager.Machines[cDropDown_machineProfiles.SelectedIndex].TouchPlateHeight,
-                Manager.Machines[cDropDown_machineProfiles.SelectedIndex].MoveUpDistance);
-        }
 
         private void cSwitch_enableSpindle_Click(object sender, EventArgs e)
         {
@@ -1005,6 +1001,37 @@ namespace CNCV.Pages
                 GRBLFramework.IncrementalMode();
             }
         }
+
+        #region Probe
+
+        private int ProbeCount = 0;
+        private void cButton_touchThePlate_Click(object sender, EventArgs e)
+        {
+            GRBLFramework.SendLine(Manager.CurrentMachine.ProbeSteps[0], true);
+        }
+
+        private void ProbeResultAction()
+        {
+            if(ProbeCount < Manager.CurrentMachine.ProbeSteps.Count)
+            {
+                ProbeCount++;
+
+                Task.Delay(250).Wait();
+                GRBLFramework.SendLine(Manager.CurrentMachine.ProbeSteps[ProbeCount], true);
+            }
+            else
+            {
+                Task.Delay(250).Wait();
+                GRBLFramework.SendLine(string.Format("G10L20{0}Z{1}", GRBLFramework.CurrentWCS.ToString(),
+                    Converters.DotToGRBL(Manager.CurrentMachine.TouchPlateHeight)), true);
+                Task.Delay(250).Wait();
+                GRBLFramework.SendLine(string.Format("G1G90Z{0}F300", 
+                    Converters.DotToGRBL((Manager.CurrentMachine.TouchPlateHeight + Manager.CurrentMachine.MoveUpDistance))
+                    ), true);
+            }
+        }
+
+        #endregion
 
         #region File
 

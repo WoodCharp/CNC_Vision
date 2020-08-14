@@ -18,14 +18,7 @@ namespace CNCV.Machines
         public int ToolChangeTime { get; set; } = 30;
         public float TouchPlateHeight { get; set; } = 10.0f;
         public float MoveUpDistance { get; set; } = 10.0f;
-        public List<string> ProbeSteps { get; set; } = new List<string>() 
-        {
-            "G38.2 Z-10 F100",
-            "G38.4 Z2 F100",
-            "G38.2 Z-4 F50",
-            "G38.4 Z1 F50",
-            "G38.2 Z-2 F20"
-        };
+        public List<string> ProbeSteps { get; set; } = new List<string>();
 
         public int JoggingInterval { get; set; } = 500;
         public float JoggingAmmount { get; set; } = 1.5f;
