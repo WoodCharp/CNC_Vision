@@ -609,6 +609,9 @@ namespace CNCV.Pages
 
                 //Setting OPT value to GRBL framework. It reads the buffer size from it.
                 GRBLFramework.ScannedOPT = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].OPT;
+
+                GRBLFramework.ProbeSteps.Clear();
+                GRBLFramework.ProbeSteps = Manager.Machines[cDropDown_machineProfiles.SelectedIndex].ProbeSteps;
             }
             else //Close serial port
             {
