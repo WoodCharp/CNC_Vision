@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 using CCL;
 using CCL.Controls;
-using CNCV.Generator;
 using CNCV.Machines;
 using CNCV.Tools;
 
@@ -37,14 +36,6 @@ namespace CNCV.Pages
             //Setting up theme
             var skinmanager = CSkinManager.Instance;
             skinmanager.AddFormToManage(this);
-            skinmanager.SchemePreset = SchemePreset;
-
-            //Adding icons to tab panel selector
-            tabPanelSelector1.Icons.Add(Properties.Resources.Controls);
-            tabPanelSelector1.Icons.Add(Properties.Resources.Machines);
-            tabPanelSelector1.Icons.Add(Properties.Resources.Tools);
-            //tabPanelSelector1.Icons.Add(Properties.Resources.GC);
-            tabPanelSelector1.Icons.Add(Properties.Resources.Gear001);
 
             //Set active form to GRBL Framework
             GRBLFramework.CurrentForm = this;
@@ -78,9 +69,17 @@ namespace CNCV.Pages
             GRBLFramework.ProbeResultAction = new Action(ProbeResultAction);
 
             //Load stuff
-            LoadAppSettings();
-            LoadTools();
-            LoadMachines(true);
+            LoadTheme();
+            Manager.ReloadToolsList();
+            Manager.ReloadMachinesList();
+
+            if(Manager.Machines.Count > 0)
+            {
+                for (int i = 0; i < Manager.Machines.Count; i++)
+                {
+                    cDropDown_machineProfiles.Items.Add(Manager.Machines[i].Name);
+                }
+            }
 
             //Show splash screen
             /*using (Form_SplashScreen ss = new Form_SplashScreen())
@@ -89,431 +88,80 @@ namespace CNCV.Pages
             }*/
         }
 
-        #region Preferences
+        #region MenuStrip
 
-        /// <summary>
-        /// Load settings to settings tab
-        /// </summary>
-        private void LoadAppSettings()
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Form_Settings fs = new Form_Settings())
+            {
+                fs.ShowDialog();
+                LoadTheme();
+            }
+        }
+        private void LoadTheme()
         {
             //If app settings are loaded
-            if(Manager.LoadAppSettings())
+            if (Manager.LoadAppSettings())
             {
                 //Select settings theme
                 switch (Manager.CurrentSettings.SchemeID)
                 {
                     case 0:
-                        cRadioButtonSettingsTheme1.Checked = true;
                         SchemePreset = CSkinManager.SchemePresets.DARK_ORANGE;
                         break;
                     case 1:
-                        cRadioButtonSettingsTheme2.Checked = true;
                         SchemePreset = CSkinManager.SchemePresets.DARK_BLUE;
                         break;
                     case 2:
-                        cRadioButtonSettingsTheme3.Checked = true;
                         SchemePreset = CSkinManager.SchemePresets.LIGHT_BLUE;
                         break;
                     case 3:
-                        cRadioButtonSettingsTheme4.Checked = true;
                         SchemePreset = CSkinManager.SchemePresets.LIGHT_ORANGE;
                         break;
                     case 4:
-                        cRadioButtonSettingsTheme5.Checked = true;
                         CustomSchemeComponent = schemeComponent1;
                         SchemePreset = CSkinManager.SchemePresets.CUSTOM;
                         break;
                     case 5:
-                        cRadioButtonSettingsTheme6.Checked = true;
                         CustomSchemeComponent = schemeComponent2;
                         SchemePreset = CSkinManager.SchemePresets.CUSTOM;
                         break;
                 }
-
-                //Show current data folder path
-                cLabel_dataFolderPath.Text = Manager.GetDataFolderPath();
             }
-
-            //If there is no path, show alternative text
-            if (cLabel_dataFolderPath.Text.Length <= 0)
-                cLabel_dataFolderPath.Text = "Select folder";
         }
 
-        private void cButton_selectFolder_Click(object sender, EventArgs e)
-        {
-            //Get folder path
-            string folder = PathPicker.GetFolder();
-            //Set file path
-            string file = folder + @"\AppSettings.txt";
 
-            //If destination folder already contains settings file, ask if user wants to use the old one
-            if (Manager.FileManager.AppSettingsExist(file))
+        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Form_Tools ft = new Form_Tools())
             {
-                DialogResult res = MessageBox.Show("App settings found, use it ?", "CNC Vision", MessageBoxButtons.YesNo);
-                if(res == DialogResult.Yes)
-                {
-                    Properties.Settings.Default.DataFolder = folder;
-                    Properties.Settings.Default.Save();
-                    Properties.Settings.Default.Reload();
-                    Manager.LoadAppSettings();
-
-                    cLabel_dataFolderPath.Text = Manager.CurrentSettings.DataFolderPath;
-                    return;
-                }
+                ft.ShowDialog();
             }
+        }
 
-            //If returned string is empty, choose the one in application settings
-            if (folder.Length <= 0)
+        private void machinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (GRBLFramework.IsSerialConnected())
             {
-                //And if even the property setting is empty set nothing text else use property setting
-                if (Properties.Settings.Default.DataFolder.Length <= 0)
-                {
-                    cLabel_dataFolderPath.Text = "Nothing selected";
-                    return;
-                }
-            }
-
-            //Show data folder path
-            cLabel_dataFolderPath.Text = folder;
-        }
-
-
-        private void cRadioButtonSettingsTheme1_CheckedChanged(object sender, EventArgs e)
-        {
-            SchemePreset = CSkinManager.SchemePresets.DARK_ORANGE;
-        }
-
-        private void cRadioButtonSettingsTheme2_CheckedChanged(object sender, EventArgs e)
-        {
-            SchemePreset = CSkinManager.SchemePresets.DARK_BLUE;
-        }
-
-        private void cRadioButtonSettingsTheme3_CheckedChanged(object sender, EventArgs e)
-        {
-            SchemePreset = CSkinManager.SchemePresets.LIGHT_BLUE;
-        }
-
-        private void cRadioButtonSettingsTheme4_CheckedChanged(object sender, EventArgs e)
-        {
-            SchemePreset = CSkinManager.SchemePresets.LIGHT_ORANGE;
-        }
-
-        private void cRadioButtonSettingsTheme5_CheckedChanged(object sender, EventArgs e)
-        {
-            CustomSchemeComponent = schemeComponent1;
-            SchemePreset = CSkinManager.SchemePresets.CUSTOM;
-
-        }
-
-        private void cRadioButtonSettingsTheme6_CheckedChanged(object sender, EventArgs e)
-        {
-            CustomSchemeComponent = schemeComponent2;
-            SchemePreset = CSkinManager.SchemePresets.CUSTOM;
-        }
-
-
-        private void cButton_saveAppSettings_Click(object sender, EventArgs e)
-        {
-            AppSetting appSetting = new AppSetting();
-
-            //Check if folders exists
-            if (!Manager.FileManager.DataFolderExist())
-                Directory.CreateDirectory(cLabel_dataFolderPath.Text);
-
-            if (!Manager.FileManager.ToolsFolderExist())
-                Directory.CreateDirectory(Manager.FileManager.ToolsFolder);
-
-            if (!Manager.FileManager.MachinesFolderExist())
-                Directory.CreateDirectory(Manager.FileManager.MachinesFolder);
-
-            if (cRadioButtonSettingsTheme1.Checked)
-                appSetting.SchemeID = 0;
-            else if (cRadioButtonSettingsTheme2.Checked)
-                appSetting.SchemeID = 1;
-            else if (cRadioButtonSettingsTheme3.Checked)
-                appSetting.SchemeID = 2;
-            else if (cRadioButtonSettingsTheme4.Checked)
-                appSetting.SchemeID = 3;
-            else if (cRadioButtonSettingsTheme5.Checked)
-                appSetting.SchemeID = 4;
-            else if (cRadioButtonSettingsTheme6.Checked)
-                appSetting.SchemeID = 5;
-
-            //Save new directory to application settings
-            Properties.Settings.Default.DataFolder = cLabel_dataFolderPath.Text;
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Reload();
-
-            appSetting.DataFolderPath = Properties.Settings.Default.DataFolder;
-
-            //Save settings
-            Manager.SaveNewSettings(appSetting);
-        }
-
-        private void cButton_cancelAppSettings_Click(object sender, EventArgs e)
-        {
-            //Simply reload settings
-            LoadAppSettings();
-        }
-
-        #endregion
-
-        #region Tools
-
-        /// <summary>
-        /// Load tools to tools tab list view
-        /// </summary>
-        private void LoadTools()
-        {
-            //Clear list view items
-            cListView_tools.Items.Clear();
-
-            //Read tools folder again
-            Manager.ReloadToolsList();
-
-            //If no files found, no reason to continue
-            if (Manager.CNCTools == null || Manager.CNCTools.Count <= 0)
+                MessageBox.Show("Close connection to machine first !", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
-
-            //Loop tools and add them to list view
-            foreach (CNCTool tool in Manager.CNCTools)
-            {
-                ListViewItem item = new ListViewItem(tool.ID.ToString());
-                item.SubItems.Add(tool.Name);
-                item.SubItems.Add(tool.ToolType.ToString());
-                item.SubItems.Add(tool.CD.ToString());
-                item.SubItems.Add(tool.SD.ToString());
-                item.SubItems.Add(tool.FL.ToString());
-                item.SubItems.Add(tool.F.ToString());
-                item.SubItems.Add(tool.A.ToString());
-                item.SubItems.Add(tool.R.ToString());
-                item.SubItems.Add(tool.W.ToString());
-
-                cListView_tools.Items.Add(item);
-            }
-        }
-
-        
-        private void cContextMenuStrip_editToolValues_Opening(object sender, CancelEventArgs e)
-        {
-            //Choosing what items to show in context menu strip
-            //If no item has been selected while opening context menu, disable buttons what needs the item
-            if(cListView_tools.SelectedItem == null)
-            {
-                duplicateToolStripMenuItem.Enabled = false;
-                exportToolStripMenuItem.Enabled = false;
-                deleteToolStripMenuItem.Enabled = false;
-            }
-            else
-            {
-                duplicateToolStripMenuItem.Enabled = true;
-                exportToolStripMenuItem.Enabled = true;
-                deleteToolStripMenuItem.Enabled = true;
-            }
-        }
-
-        private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Add new tool to list view
-            Manager.AddEmptyTool(cListView_tools);
-        }
-
-        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Duplicates selected item on list view
-            Manager.DuplicateTool(cListView_tools);
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Remove tool from list view and delete tool file
-            Manager.DeleteTool(cListView_tools);
-        }
-
-        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //This is to easily share tool files or move to another computer
-            MessageBox.Show("Not yet.");
-        }
-
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //This is to easily add shared or moved tool from another computer
-            MessageBox.Show("Not yet.");
-        }
-
-        private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Reload tool files again and add them to list view
-            LoadTools();
-        }
-
-
-        private void cCheckBox_editToolValues_CheckedChanged(object sender, EventArgs e)
-        {
-            //Enable value editing at list view
-            cListView_tools.EnableItemEdit = cCheckBox_editToolValues.Checked;
-        }
-
-        private void cButton_saveTools_Click(object sender, EventArgs e)
-        {
-            //Save tools in list
-            Manager.SaveToolsList(cListView_tools);
-
-            //Reload files
-            LoadTools();
-        }
-
-        private void cButton_cancelToolSave_Click(object sender, EventArgs e)
-        {
-            //Simply reload tools
-            LoadTools();
-        }
-
-        #endregion
-
-        #region Machine
-
-        /// <summary>
-        /// Load machine profiles to list view
-        /// </summary>
-        /// <param name="reload">If reading files again is needed</param>
-        private void LoadMachines(bool reload)
-        {
-            //Clear profiles drop down box
-            cDropDown_machineProfiles.Items.Clear();
-
-            //Clear machines list view
-            cListView_machines.Items.Clear();
-
-            //If reload is needed, reads saved files again
-            if (reload)
-                Manager.ReloadMachinesList();
-
-            //If no machines in manager machines list, nothingto show
-            if (Manager.Machines == null || Manager.Machines.Count <= 0)
-                return;
-
-            //Loop all machines and add items to list view
-            foreach (Machine machine in Manager.Machines)
-            {
-                ListViewItem item = new ListViewItem(machine.ID.ToString());
-                item.SubItems.Add(machine.Name);
-                item.SubItems.Add(machine.MachineType.ToString());
-                item.SubItems.Add(machine.GetSettingValueByID(130).ToString());
-                item.SubItems.Add(machine.GetSettingValueByID(131).ToString());
-                item.SubItems.Add(machine.GetSettingValueByID(132).ToString());
-                item.SubItems.Add(machine.VER);
-                item.SubItems.Add(machine.OPT);
-
-                cListView_machines.Items.Add(item);
             }
 
-            //Update list view paint
-            cListView_machines.Invalidate();
-
-            //Add items to machine profiles drop down box if there is profiles at manager
-            if(Manager.Machines.Count > 0)
-            {
-                foreach(Machine machine in Manager.Machines)
-                {
-                    cDropDown_machineProfiles.Items.Add(machine.Name);
-                }
-            }
-        }
-
-        private void cButton_saveMachines_Click(object sender, EventArgs e)
-        {
-            //Save machine profiles
-            Manager.SaveMachinesList();
-
-            //Load machine profiles again, no need to read files again. Machine editing differs from tool editing
-            LoadMachines(false);
-        }
-
-        private void cButton_cancelMachineSave_Click(object sender, EventArgs e)
-        {
-            //Simply reload machines
-            LoadMachines(true);
-        }
-
-
-
-        private void cContextMenuStrip_editMachine_Opening(object sender, CancelEventArgs e)
-        {
-            //Choosing what items to show in context menu strip
-            //If no item has been selected while opening context menu, disable buttons what needs the item
-            if (cListView_machines.SelectedItem == null)
-            {
-                duplicateMachineToolStripMenuItem.Enabled = false;
-                exportMachineToolStripMenuItem.Enabled = false;
-                deleteMachineToolStripMenuItem.Enabled = false;
-            }
-            else
-            {
-                duplicateMachineToolStripMenuItem.Enabled = true;
-                exportMachineToolStripMenuItem.Enabled = true;
-                deleteMachineToolStripMenuItem.Enabled = true;
-            }
-        }
-
-        private void toolStripMenuItem_addNewMachine_Click(object sender, EventArgs e)
-        {
-            //Add new machine to list view
-            Manager.AddEmptyMachine(cListView_machines);
-        }
-
-        private void duplicateMachineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Duplicate selected item in list view
-            Manager.DuplicateMachine(cListView_machines.SelectedItem.Y_Index);
-
-            //Load machines, reload not needed
-            LoadMachines(false);
-        }
-
-        private void deleteMachineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Remove machine from list view and delete file
-            Manager.DeleteMachine(cListView_machines);
-
-            //Load machines, reload not needed
-            LoadMachines(false);
-        }
-
-        private void exportMachineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //This is to easily share tool files or move to another computer
-            MessageBox.Show("Not yet.");
-        }
-
-        private void importMachineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //This is to easily add shared or moved tool from another computer
-            MessageBox.Show("Not yet.");
-        }
-
-        private void reloadMachinesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Simply reload machines
-            LoadMachines(true);
-        }
-
-        private void editMachineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Get machine index
-            int index = cListView_machines.SelectedItem.Y_Index;
-            //Show machine editing window and pass down index
-            using(Form_Machine fm = new Form_Machine(index))
+            using (Form_Machines fm = new Form_Machines())
             {
                 fm.ShowDialog();
+                GRBLFramework.CurrentForm = this;
+
+                cDropDown_machineProfiles.Items.Clear();
+
+                if (Manager.Machines.Count > 0)
+                {
+                    for (int i = 0; i < Manager.Machines.Count; i++)
+                    {
+                        cDropDown_machineProfiles.Items.Add(Manager.Machines[i].Name);
+                    }
+                }
             }
-
-            //Load machines, reload not needed
-            LoadMachines(false);
-
-            //Machine editing uses GRBL Framework to get GRBL setting. Setting this form again to GRBL Framework.
-            GRBLFramework.CurrentForm = this;
         }
 
         #endregion
@@ -959,6 +607,7 @@ namespace CNCV.Pages
 
                 //Show tool change window
                 ToolChangeWindowVisible = true;
+                ProbeCount = 0;
                 ToolChangeWindow.ShowDialog();
 
                 //Tell GRBL Framework to continue machining
@@ -1351,9 +1000,7 @@ namespace CNCV.Pages
 
         private void cButtonGCodeGenerator_Click(object sender, EventArgs e)
         {
-            //Not yet
-            //Form_Generator generator = new Form_Generator();
-            //generator.Show();
+
         }
 
         #endregion

@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
-            this.cTabControl1 = new CCL.Controls.CTabControl();
-            this.tabPage_Controls = new System.Windows.Forms.TabPage();
             this.cLabel10 = new CCL.Controls.CLabel();
             this.cLabelSpindleRPM = new CCL.Controls.CLabel();
             this.cButton_clear = new CCL.Controls.CButton();
@@ -155,10 +153,6 @@
             this.cLabel3 = new CCL.Controls.CLabel();
             this.cSwitch_openPort = new CCL.Controls.CSwitch();
             this.cDropDown_machineProfiles = new CCL.Controls.CDropDown();
-            this.tabPage_Machines = new System.Windows.Forms.TabPage();
-            this.cButton_cancelMachineSave = new CCL.Controls.CButton();
-            this.cButton_saveMachines = new CCL.Controls.CButton();
-            this.cListView_machines = new CCL.Controls.CListView();
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -167,7 +161,6 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cContextMenuStrip_editMachine = new CCL.Controls.CContextMenuStrip();
             this.addMachineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateMachineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -178,12 +171,6 @@
             this.reloadMachinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.editMachineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_Tools = new System.Windows.Forms.TabPage();
-            this.cButton_cancelToolSave = new CCL.Controls.CButton();
-            this.cButton_saveTools = new CCL.Controls.CButton();
-            this.cLabel1 = new CCL.Controls.CLabel();
-            this.cCheckBox_editToolValues = new CCL.Controls.CCheckBox();
-            this.cListView_tools = new CCL.Controls.CListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -194,7 +181,6 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cContextMenuStrip_editToolValues = new CCL.Controls.CContextMenuStrip();
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -203,23 +189,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_Settings = new System.Windows.Forms.TabPage();
-            this.cButtonGCodeGenerator = new CCL.Controls.CButton();
-            this.cGroupBox2 = new CCL.Controls.CGroupBox();
-            this.cRadioButtonSettingsTheme6 = new CCL.Controls.CRadioButton();
-            this.cRadioButtonSettingsTheme5 = new CCL.Controls.CRadioButton();
-            this.cRadioButtonSettingsTheme4 = new CCL.Controls.CRadioButton();
-            this.cRadioButtonSettingsTheme3 = new CCL.Controls.CRadioButton();
-            this.cRadioButtonSettingsTheme2 = new CCL.Controls.CRadioButton();
-            this.cRadioButtonSettingsTheme1 = new CCL.Controls.CRadioButton();
-            this.cButton_cancelAppSettings = new CCL.Controls.CButton();
-            this.cButton_saveAppSettings = new CCL.Controls.CButton();
-            this.cGroupBox1 = new CCL.Controls.CGroupBox();
-            this.cLabel2 = new CCL.Controls.CLabel();
-            this.cLabel_dataFolderPath = new CCL.Controls.CLabel();
-            this.cButton_selectFolder = new CCL.Controls.CButton();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPanelSelector1 = new CCL.Controls.TabPanelSelector();
             this.ch_Tool_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_Tool_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_Tool_Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -232,8 +202,12 @@
             this.ch_Tool_W = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.schemeComponent1 = new CCL.SchemeComponent(this.components);
             this.schemeComponent2 = new CCL.SchemeComponent(this.components);
-            this.cTabControl1.SuspendLayout();
-            this.tabPage_Controls.SuspendLayout();
+            this.cMenuStrip1 = new CCL.Controls.CMenuStrip();
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.machinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cTabSelector2 = new CCL.Controls.CTabSelector();
             this.cTabControl2.SuspendLayout();
             this.tabPage_move.SuspendLayout();
             this.cPanel_manualMove.SuspendLayout();
@@ -247,77 +221,8 @@
             this.cGroupBox_overrideFeed.SuspendLayout();
             this.tabPage_file.SuspendLayout();
             this.cContextMenuStripMessages.SuspendLayout();
-            this.tabPage_Machines.SuspendLayout();
-            this.cContextMenuStrip_editMachine.SuspendLayout();
-            this.tabPage_Tools.SuspendLayout();
-            this.cContextMenuStrip_editToolValues.SuspendLayout();
-            this.tabPage_Settings.SuspendLayout();
-            this.cGroupBox2.SuspendLayout();
-            this.cGroupBox1.SuspendLayout();
+            this.cMenuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cTabControl1
-            // 
-            this.cTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cTabControl1.Controls.Add(this.tabPage_Controls);
-            this.cTabControl1.Controls.Add(this.tabPage_Machines);
-            this.cTabControl1.Controls.Add(this.tabPage_Tools);
-            this.cTabControl1.Controls.Add(this.tabPage_Settings);
-            this.cTabControl1.Location = new System.Drawing.Point(45, 25);
-            this.cTabControl1.Name = "cTabControl1";
-            this.cTabControl1.SelectedIndex = 0;
-            this.cTabControl1.Size = new System.Drawing.Size(813, 663);
-            this.cTabControl1.TabIndex = 0;
-            // 
-            // tabPage_Controls
-            // 
-            this.tabPage_Controls.BackColor = System.Drawing.Color.Silver;
-            this.tabPage_Controls.Controls.Add(this.cLabel10);
-            this.tabPage_Controls.Controls.Add(this.cLabelSpindleRPM);
-            this.tabPage_Controls.Controls.Add(this.cButton_clear);
-            this.tabPage_Controls.Controls.Add(this.cLabel_wcoZ);
-            this.tabPage_Controls.Controls.Add(this.cLabel_wcoY);
-            this.tabPage_Controls.Controls.Add(this.cLabel_wcoX);
-            this.tabPage_Controls.Controls.Add(this.cLabel8);
-            this.tabPage_Controls.Controls.Add(this.cCheckBox_showQuery);
-            this.tabPage_Controls.Controls.Add(this.cButton_sendCommand);
-            this.tabPage_Controls.Controls.Add(this.cTextBox_command);
-            this.tabPage_Controls.Controls.Add(this.cRichTextBox1);
-            this.tabPage_Controls.Controls.Add(this.cLabel_machineState);
-            this.tabPage_Controls.Controls.Add(this.cTabControl2);
-            this.tabPage_Controls.Controls.Add(this.cTabSelector1);
-            this.tabPage_Controls.Controls.Add(this.cButton_hold);
-            this.tabPage_Controls.Controls.Add(this.cButton_startResume);
-            this.tabPage_Controls.Controls.Add(this.cLabel15);
-            this.tabPage_Controls.Controls.Add(this.cLabel_fs);
-            this.tabPage_Controls.Controls.Add(this.cButton_home);
-            this.tabPage_Controls.Controls.Add(this.cButton_unlock);
-            this.tabPage_Controls.Controls.Add(this.cButton_reset);
-            this.tabPage_Controls.Controls.Add(this.cLinkLabel_zeroAll);
-            this.tabPage_Controls.Controls.Add(this.cLinkLabel_zeroZ);
-            this.tabPage_Controls.Controls.Add(this.cLinkLabel_zeroY);
-            this.tabPage_Controls.Controls.Add(this.cLinkLabel_zeroX);
-            this.tabPage_Controls.Controls.Add(this.cLabel13);
-            this.tabPage_Controls.Controls.Add(this.cLabel12);
-            this.tabPage_Controls.Controls.Add(this.cLabel11);
-            this.tabPage_Controls.Controls.Add(this.cLabel_mposZ);
-            this.tabPage_Controls.Controls.Add(this.cLabel_mposY);
-            this.tabPage_Controls.Controls.Add(this.cLabel_mposX);
-            this.tabPage_Controls.Controls.Add(this.cLabel_wposZ);
-            this.tabPage_Controls.Controls.Add(this.cLabel_wposY);
-            this.tabPage_Controls.Controls.Add(this.cLabel_wposX);
-            this.tabPage_Controls.Controls.Add(this.cLabel4);
-            this.tabPage_Controls.Controls.Add(this.cLabel3);
-            this.tabPage_Controls.Controls.Add(this.cSwitch_openPort);
-            this.tabPage_Controls.Controls.Add(this.cDropDown_machineProfiles);
-            this.tabPage_Controls.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Controls.Name = "tabPage_Controls";
-            this.tabPage_Controls.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Controls.Size = new System.Drawing.Size(805, 637);
-            this.tabPage_Controls.TabIndex = 0;
-            this.tabPage_Controls.Text = "Controls";
             // 
             // cLabel10
             // 
@@ -325,7 +230,7 @@
             this.cLabel10.BackColor = System.Drawing.Color.Transparent;
             this.cLabel10.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel10.Location = new System.Drawing.Point(172, 190);
+            this.cLabel10.Location = new System.Drawing.Point(178, 235);
             this.cLabel10.Name = "cLabel10";
             this.cLabel10.OverrideFontSize = 12F;
             this.cLabel10.Size = new System.Drawing.Size(106, 27);
@@ -340,7 +245,7 @@
             this.cLabelSpindleRPM.BackColor = System.Drawing.Color.Transparent;
             this.cLabelSpindleRPM.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabelSpindleRPM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabelSpindleRPM.Location = new System.Drawing.Point(276, 195);
+            this.cLabelSpindleRPM.Location = new System.Drawing.Point(282, 240);
             this.cLabelSpindleRPM.Name = "cLabelSpindleRPM";
             this.cLabelSpindleRPM.OverrideFontSize = 12F;
             this.cLabelSpindleRPM.Size = new System.Drawing.Size(85, 20);
@@ -354,7 +259,7 @@
             this.cButton_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cButton_clear.DrawBorder = true;
             this.cButton_clear.Font = new System.Drawing.Font("Armata", 12F);
-            this.cButton_clear.Location = new System.Drawing.Point(318, 587);
+            this.cButton_clear.Location = new System.Drawing.Point(377, 645);
             this.cButton_clear.Name = "cButton_clear";
             this.cButton_clear.Size = new System.Drawing.Size(92, 21);
             this.cButton_clear.TabIndex = 42;
@@ -369,7 +274,7 @@
             this.cLabel_wcoZ.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_wcoZ.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_wcoZ.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_wcoZ.Location = new System.Drawing.Point(325, 168);
+            this.cLabel_wcoZ.Location = new System.Drawing.Point(331, 213);
             this.cLabel_wcoZ.Name = "cLabel_wcoZ";
             this.cLabel_wcoZ.OverrideFontSize = 12F;
             this.cLabel_wcoZ.Size = new System.Drawing.Size(85, 20);
@@ -384,7 +289,7 @@
             this.cLabel_wcoY.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_wcoY.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_wcoY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_wcoY.Location = new System.Drawing.Point(325, 141);
+            this.cLabel_wcoY.Location = new System.Drawing.Point(331, 186);
             this.cLabel_wcoY.Name = "cLabel_wcoY";
             this.cLabel_wcoY.OverrideFontSize = 12F;
             this.cLabel_wcoY.Size = new System.Drawing.Size(85, 20);
@@ -399,7 +304,7 @@
             this.cLabel_wcoX.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_wcoX.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_wcoX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_wcoX.Location = new System.Drawing.Point(325, 116);
+            this.cLabel_wcoX.Location = new System.Drawing.Point(331, 161);
             this.cLabel_wcoX.Name = "cLabel_wcoX";
             this.cLabel_wcoX.OverrideFontSize = 12F;
             this.cLabel_wcoX.Size = new System.Drawing.Size(85, 20);
@@ -414,7 +319,7 @@
             this.cLabel8.BackColor = System.Drawing.Color.Transparent;
             this.cLabel8.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel8.Location = new System.Drawing.Point(324, 82);
+            this.cLabel8.Location = new System.Drawing.Point(330, 127);
             this.cLabel8.Name = "cLabel8";
             this.cLabel8.OverrideFontSize = 12F;
             this.cLabel8.Size = new System.Drawing.Size(66, 27);
@@ -430,7 +335,7 @@
             this.cCheckBox_showQuery.CheckBoxHeight = 18;
             this.cCheckBox_showQuery.Enabled = false;
             this.cCheckBox_showQuery.Font = new System.Drawing.Font("Armata", 10F);
-            this.cCheckBox_showQuery.Location = new System.Drawing.Point(6, 609);
+            this.cCheckBox_showQuery.Location = new System.Drawing.Point(12, 666);
             this.cCheckBox_showQuery.Name = "cCheckBox_showQuery";
             this.cCheckBox_showQuery.Size = new System.Drawing.Size(111, 22);
             this.cCheckBox_showQuery.TabIndex = 37;
@@ -448,7 +353,7 @@
             this.cButton_sendCommand.DrawBorder = true;
             this.cButton_sendCommand.Enabled = false;
             this.cButton_sendCommand.Font = new System.Drawing.Font("Armata", 12F);
-            this.cButton_sendCommand.Location = new System.Drawing.Point(220, 587);
+            this.cButton_sendCommand.Location = new System.Drawing.Point(279, 645);
             this.cButton_sendCommand.Name = "cButton_sendCommand";
             this.cButton_sendCommand.Size = new System.Drawing.Size(92, 21);
             this.cButton_sendCommand.TabIndex = 36;
@@ -466,7 +371,7 @@
             this.cTextBox_command.Font = new System.Drawing.Font("Armata", 12F);
             this.cTextBox_command.Hint = "Command...";
             this.cTextBox_command.LineHeight = 1;
-            this.cTextBox_command.Location = new System.Drawing.Point(6, 587);
+            this.cTextBox_command.Location = new System.Drawing.Point(12, 644);
             this.cTextBox_command.MaxLength = 32767;
             this.cTextBox_command.MouseState = CCL.MouseState.HOVER;
             this.cTextBox_command.Name = "cTextBox_command";
@@ -474,7 +379,7 @@
             this.cTextBox_command.SelectedText = "";
             this.cTextBox_command.SelectionLength = 0;
             this.cTextBox_command.SelectionStart = 0;
-            this.cTextBox_command.Size = new System.Drawing.Size(208, 21);
+            this.cTextBox_command.Size = new System.Drawing.Size(261, 21);
             this.cTextBox_command.TabIndex = 35;
             this.cTextBox_command.TabStop = false;
             this.cTextBox_command.TextStyle = CCL.eTextStyle.Medium;
@@ -490,10 +395,10 @@
             this.cRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cRichTextBox1.Font = new System.Drawing.Font("Armata", 10F);
             this.cRichTextBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cRichTextBox1.Location = new System.Drawing.Point(6, 395);
+            this.cRichTextBox1.Location = new System.Drawing.Point(12, 443);
             this.cRichTextBox1.Name = "cRichTextBox1";
             this.cRichTextBox1.ReadOnly = true;
-            this.cRichTextBox1.Size = new System.Drawing.Size(404, 186);
+            this.cRichTextBox1.Size = new System.Drawing.Size(457, 195);
             this.cRichTextBox1.TabIndex = 34;
             this.cRichTextBox1.Text = "";
             this.cRichTextBox1.TextStyle = CCL.eTextStyle.Normal;
@@ -503,7 +408,7 @@
             this.cLabel_machineState.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_machineState.Font = new System.Drawing.Font("Armata", 20F, System.Drawing.FontStyle.Bold);
             this.cLabel_machineState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_machineState.Location = new System.Drawing.Point(6, 34);
+            this.cLabel_machineState.Location = new System.Drawing.Point(12, 79);
             this.cLabel_machineState.Name = "cLabel_machineState";
             this.cLabel_machineState.OverrideFontSize = 12F;
             this.cLabel_machineState.Size = new System.Drawing.Size(404, 48);
@@ -521,10 +426,10 @@
             this.cTabControl2.Controls.Add(this.tabPage_spindle);
             this.cTabControl2.Controls.Add(this.tabPage_override);
             this.cTabControl2.Controls.Add(this.tabPage_file);
-            this.cTabControl2.Location = new System.Drawing.Point(416, 34);
+            this.cTabControl2.Location = new System.Drawing.Point(475, 82);
             this.cTabControl2.Name = "cTabControl2";
             this.cTabControl2.SelectedIndex = 0;
-            this.cTabControl2.Size = new System.Drawing.Size(383, 597);
+            this.cTabControl2.Size = new System.Drawing.Size(383, 606);
             this.cTabControl2.TabIndex = 29;
             // 
             // tabPage_move
@@ -534,7 +439,7 @@
             this.tabPage_move.Location = new System.Drawing.Point(4, 22);
             this.tabPage_move.Name = "tabPage_move";
             this.tabPage_move.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_move.Size = new System.Drawing.Size(375, 571);
+            this.tabPage_move.Size = new System.Drawing.Size(375, 580);
             this.tabPage_move.TabIndex = 0;
             this.tabPage_move.Text = "Move";
             // 
@@ -959,7 +864,7 @@
             this.tabPage_spindle.Controls.Add(this.cTabControl_spindleLaser);
             this.tabPage_spindle.Location = new System.Drawing.Point(4, 22);
             this.tabPage_spindle.Name = "tabPage_spindle";
-            this.tabPage_spindle.Size = new System.Drawing.Size(375, 571);
+            this.tabPage_spindle.Size = new System.Drawing.Size(375, 580);
             this.tabPage_spindle.TabIndex = 2;
             this.tabPage_spindle.Text = "Spindle";
             // 
@@ -974,14 +879,14 @@
             this.cTabControl_spindleLaser.Location = new System.Drawing.Point(3, 3);
             this.cTabControl_spindleLaser.Name = "cTabControl_spindleLaser";
             this.cTabControl_spindleLaser.SelectedIndex = 0;
-            this.cTabControl_spindleLaser.Size = new System.Drawing.Size(369, 565);
+            this.cTabControl_spindleLaser.Size = new System.Drawing.Size(369, 574);
             this.cTabControl_spindleLaser.TabIndex = 22;
             // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(361, 539);
+            this.tabPage1.Size = new System.Drawing.Size(361, 548);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -998,7 +903,7 @@
             this.tabPage_spindleControls.Location = new System.Drawing.Point(4, 22);
             this.tabPage_spindleControls.Name = "tabPage_spindleControls";
             this.tabPage_spindleControls.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_spindleControls.Size = new System.Drawing.Size(361, 539);
+            this.tabPage_spindleControls.Size = new System.Drawing.Size(361, 548);
             this.tabPage_spindleControls.TabIndex = 0;
             this.tabPage_spindleControls.Text = "Spindle";
             // 
@@ -1106,7 +1011,7 @@
             this.tabPage_laserControls.Location = new System.Drawing.Point(4, 22);
             this.tabPage_laserControls.Name = "tabPage_laserControls";
             this.tabPage_laserControls.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_laserControls.Size = new System.Drawing.Size(361, 539);
+            this.tabPage_laserControls.Size = new System.Drawing.Size(361, 548);
             this.tabPage_laserControls.TabIndex = 1;
             this.tabPage_laserControls.Text = "Laser";
             // 
@@ -1171,7 +1076,7 @@
             this.tabPage_override.Controls.Add(this.cGroupBox_overrideFeed);
             this.tabPage_override.Location = new System.Drawing.Point(4, 22);
             this.tabPage_override.Name = "tabPage_override";
-            this.tabPage_override.Size = new System.Drawing.Size(375, 571);
+            this.tabPage_override.Size = new System.Drawing.Size(375, 580);
             this.tabPage_override.TabIndex = 3;
             this.tabPage_override.Text = "Override";
             // 
@@ -1464,7 +1369,7 @@
             this.tabPage_file.Controls.Add(this.cLabel_percentage);
             this.tabPage_file.Location = new System.Drawing.Point(4, 22);
             this.tabPage_file.Name = "tabPage_file";
-            this.tabPage_file.Size = new System.Drawing.Size(375, 571);
+            this.tabPage_file.Size = new System.Drawing.Size(375, 580);
             this.tabPage_file.TabIndex = 4;
             this.tabPage_file.Text = "File";
             // 
@@ -1490,7 +1395,7 @@
             this.cListViewMessages.Name = "cListViewMessages";
             this.cListViewMessages.NoItemsToShowText = "No Items To Show.";
             this.cListViewMessages.NothingToShowText = "Nothing To Show.";
-            this.cListViewMessages.Size = new System.Drawing.Size(372, 237);
+            this.cListViewMessages.Size = new System.Drawing.Size(372, 319);
             this.cListViewMessages.TabIndex = 52;
             this.cListViewMessages.Text = "MESSAGES";
             this.cListViewMessages.TitleTextStyle = CCL.eTextStyle.Title3;
@@ -1759,11 +1664,11 @@
             this.cTabSelector1.Font = new System.Drawing.Font("Armata", 10F);
             this.cTabSelector1.IndicatorHeight = 4;
             this.cTabSelector1.LineHeight = 1;
-            this.cTabSelector1.Location = new System.Drawing.Point(416, 7);
+            this.cTabSelector1.Location = new System.Drawing.Point(1095, 52);
             this.cTabSelector1.Name = "cTabSelector1";
             this.cTabSelector1.SelectorHeight = 24;
             this.cTabSelector1.SelectorPadding = 10;
-            this.cTabSelector1.Size = new System.Drawing.Size(383, 24);
+            this.cTabSelector1.Size = new System.Drawing.Size(0, 59);
             this.cTabSelector1.TabIndex = 28;
             this.cTabSelector1.TabsAlignment = CCL.Controls.CTabSelector.eTabsAlignment.Left;
             this.cTabSelector1.Text = "cTabSelector1";
@@ -1774,7 +1679,7 @@
             this.cButton_hold.DrawBorder = true;
             this.cButton_hold.Enabled = false;
             this.cButton_hold.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton_hold.Location = new System.Drawing.Point(221, 308);
+            this.cButton_hold.Location = new System.Drawing.Point(227, 353);
             this.cButton_hold.Name = "cButton_hold";
             this.cButton_hold.Size = new System.Drawing.Size(140, 76);
             this.cButton_hold.TabIndex = 27;
@@ -1788,7 +1693,7 @@
             this.cButton_startResume.DrawBorder = true;
             this.cButton_startResume.Enabled = false;
             this.cButton_startResume.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton_startResume.Location = new System.Drawing.Point(55, 308);
+            this.cButton_startResume.Location = new System.Drawing.Point(61, 353);
             this.cButton_startResume.Name = "cButton_startResume";
             this.cButton_startResume.Size = new System.Drawing.Size(140, 76);
             this.cButton_startResume.TabIndex = 26;
@@ -1803,7 +1708,7 @@
             this.cLabel15.BackColor = System.Drawing.Color.Transparent;
             this.cLabel15.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel15.Location = new System.Drawing.Point(1, 190);
+            this.cLabel15.Location = new System.Drawing.Point(7, 235);
             this.cLabel15.Name = "cLabel15";
             this.cLabel15.OverrideFontSize = 12F;
             this.cLabel15.Size = new System.Drawing.Size(74, 27);
@@ -1818,7 +1723,7 @@
             this.cLabel_fs.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_fs.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_fs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_fs.Location = new System.Drawing.Point(81, 195);
+            this.cLabel_fs.Location = new System.Drawing.Point(87, 240);
             this.cLabel_fs.Name = "cLabel_fs";
             this.cLabel_fs.OverrideFontSize = 12F;
             this.cLabel_fs.Size = new System.Drawing.Size(85, 20);
@@ -1832,7 +1737,7 @@
             this.cButton_home.DrawBorder = true;
             this.cButton_home.Enabled = false;
             this.cButton_home.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton_home.Location = new System.Drawing.Point(55, 267);
+            this.cButton_home.Location = new System.Drawing.Point(61, 312);
             this.cButton_home.Name = "cButton_home";
             this.cButton_home.Size = new System.Drawing.Size(306, 35);
             this.cButton_home.TabIndex = 22;
@@ -1846,7 +1751,7 @@
             this.cButton_unlock.DrawBorder = true;
             this.cButton_unlock.Enabled = false;
             this.cButton_unlock.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton_unlock.Location = new System.Drawing.Point(221, 226);
+            this.cButton_unlock.Location = new System.Drawing.Point(227, 271);
             this.cButton_unlock.Name = "cButton_unlock";
             this.cButton_unlock.Size = new System.Drawing.Size(140, 35);
             this.cButton_unlock.TabIndex = 20;
@@ -1860,7 +1765,7 @@
             this.cButton_reset.DrawBorder = true;
             this.cButton_reset.Enabled = false;
             this.cButton_reset.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cButton_reset.Location = new System.Drawing.Point(55, 226);
+            this.cButton_reset.Location = new System.Drawing.Point(61, 271);
             this.cButton_reset.Name = "cButton_reset";
             this.cButton_reset.Size = new System.Drawing.Size(140, 35);
             this.cButton_reset.TabIndex = 19;
@@ -1876,7 +1781,7 @@
             this.cLinkLabel_zeroAll.Font = new System.Drawing.Font("Armata", 10F);
             this.cLinkLabel_zeroAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLinkLabel_zeroAll.LineHeight = 2;
-            this.cLinkLabel_zeroAll.Location = new System.Drawing.Point(258, 90);
+            this.cLinkLabel_zeroAll.Location = new System.Drawing.Point(264, 135);
             this.cLinkLabel_zeroAll.MaximumSize = new System.Drawing.Size(60, 20);
             this.cLinkLabel_zeroAll.MinimumSize = new System.Drawing.Size(60, 20);
             this.cLinkLabel_zeroAll.Name = "cLinkLabel_zeroAll";
@@ -1893,7 +1798,7 @@
             this.cLinkLabel_zeroZ.Font = new System.Drawing.Font("Armata", 10F);
             this.cLinkLabel_zeroZ.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLinkLabel_zeroZ.LineHeight = 2;
-            this.cLinkLabel_zeroZ.Location = new System.Drawing.Point(268, 168);
+            this.cLinkLabel_zeroZ.Location = new System.Drawing.Point(274, 213);
             this.cLinkLabel_zeroZ.MaximumSize = new System.Drawing.Size(38, 20);
             this.cLinkLabel_zeroZ.MinimumSize = new System.Drawing.Size(38, 20);
             this.cLinkLabel_zeroZ.Name = "cLinkLabel_zeroZ";
@@ -1910,7 +1815,7 @@
             this.cLinkLabel_zeroY.Font = new System.Drawing.Font("Armata", 10F);
             this.cLinkLabel_zeroY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLinkLabel_zeroY.LineHeight = 2;
-            this.cLinkLabel_zeroY.Location = new System.Drawing.Point(268, 141);
+            this.cLinkLabel_zeroY.Location = new System.Drawing.Point(274, 186);
             this.cLinkLabel_zeroY.MaximumSize = new System.Drawing.Size(38, 20);
             this.cLinkLabel_zeroY.MinimumSize = new System.Drawing.Size(38, 20);
             this.cLinkLabel_zeroY.Name = "cLinkLabel_zeroY";
@@ -1927,7 +1832,7 @@
             this.cLinkLabel_zeroX.Font = new System.Drawing.Font("Armata", 10F);
             this.cLinkLabel_zeroX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cLinkLabel_zeroX.LineHeight = 2;
-            this.cLinkLabel_zeroX.Location = new System.Drawing.Point(268, 116);
+            this.cLinkLabel_zeroX.Location = new System.Drawing.Point(274, 161);
             this.cLinkLabel_zeroX.MaximumSize = new System.Drawing.Size(38, 20);
             this.cLinkLabel_zeroX.MinimumSize = new System.Drawing.Size(38, 20);
             this.cLinkLabel_zeroX.Name = "cLinkLabel_zeroX";
@@ -1943,7 +1848,7 @@
             this.cLabel13.BackColor = System.Drawing.Color.Transparent;
             this.cLabel13.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel13.Location = new System.Drawing.Point(6, 163);
+            this.cLabel13.Location = new System.Drawing.Point(12, 208);
             this.cLabel13.Name = "cLabel13";
             this.cLabel13.OverrideFontSize = 12F;
             this.cLabel13.Size = new System.Drawing.Size(26, 27);
@@ -1958,7 +1863,7 @@
             this.cLabel12.BackColor = System.Drawing.Color.Transparent;
             this.cLabel12.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel12.Location = new System.Drawing.Point(6, 136);
+            this.cLabel12.Location = new System.Drawing.Point(12, 181);
             this.cLabel12.Name = "cLabel12";
             this.cLabel12.OverrideFontSize = 12F;
             this.cLabel12.Size = new System.Drawing.Size(26, 27);
@@ -1973,7 +1878,7 @@
             this.cLabel11.BackColor = System.Drawing.Color.Transparent;
             this.cLabel11.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel11.Location = new System.Drawing.Point(6, 109);
+            this.cLabel11.Location = new System.Drawing.Point(12, 154);
             this.cLabel11.Name = "cLabel11";
             this.cLabel11.OverrideFontSize = 12F;
             this.cLabel11.Size = new System.Drawing.Size(28, 27);
@@ -1988,7 +1893,7 @@
             this.cLabel_mposZ.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_mposZ.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_mposZ.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_mposZ.Location = new System.Drawing.Point(157, 168);
+            this.cLabel_mposZ.Location = new System.Drawing.Point(163, 213);
             this.cLabel_mposZ.Name = "cLabel_mposZ";
             this.cLabel_mposZ.OverrideFontSize = 12F;
             this.cLabel_mposZ.Size = new System.Drawing.Size(85, 20);
@@ -2003,7 +1908,7 @@
             this.cLabel_mposY.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_mposY.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_mposY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_mposY.Location = new System.Drawing.Point(157, 141);
+            this.cLabel_mposY.Location = new System.Drawing.Point(163, 186);
             this.cLabel_mposY.Name = "cLabel_mposY";
             this.cLabel_mposY.OverrideFontSize = 12F;
             this.cLabel_mposY.Size = new System.Drawing.Size(85, 20);
@@ -2018,7 +1923,7 @@
             this.cLabel_mposX.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_mposX.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_mposX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_mposX.Location = new System.Drawing.Point(157, 116);
+            this.cLabel_mposX.Location = new System.Drawing.Point(163, 161);
             this.cLabel_mposX.Name = "cLabel_mposX";
             this.cLabel_mposX.OverrideFontSize = 12F;
             this.cLabel_mposX.Size = new System.Drawing.Size(85, 20);
@@ -2033,7 +1938,7 @@
             this.cLabel_wposZ.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_wposZ.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_wposZ.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_wposZ.Location = new System.Drawing.Point(40, 168);
+            this.cLabel_wposZ.Location = new System.Drawing.Point(46, 213);
             this.cLabel_wposZ.Name = "cLabel_wposZ";
             this.cLabel_wposZ.OverrideFontSize = 12F;
             this.cLabel_wposZ.Size = new System.Drawing.Size(85, 20);
@@ -2048,7 +1953,7 @@
             this.cLabel_wposY.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_wposY.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_wposY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_wposY.Location = new System.Drawing.Point(40, 141);
+            this.cLabel_wposY.Location = new System.Drawing.Point(46, 186);
             this.cLabel_wposY.Name = "cLabel_wposY";
             this.cLabel_wposY.OverrideFontSize = 12F;
             this.cLabel_wposY.Size = new System.Drawing.Size(85, 20);
@@ -2063,7 +1968,7 @@
             this.cLabel_wposX.BackColor = System.Drawing.Color.Transparent;
             this.cLabel_wposX.Font = new System.Drawing.Font("Armata", 12F);
             this.cLabel_wposX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_wposX.Location = new System.Drawing.Point(40, 114);
+            this.cLabel_wposX.Location = new System.Drawing.Point(46, 159);
             this.cLabel_wposX.Name = "cLabel_wposX";
             this.cLabel_wposX.OverrideFontSize = 12F;
             this.cLabel_wposX.Size = new System.Drawing.Size(85, 20);
@@ -2078,7 +1983,7 @@
             this.cLabel4.BackColor = System.Drawing.Color.Transparent;
             this.cLabel4.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel4.Location = new System.Drawing.Point(156, 82);
+            this.cLabel4.Location = new System.Drawing.Point(162, 127);
             this.cLabel4.Name = "cLabel4";
             this.cLabel4.OverrideFontSize = 12F;
             this.cLabel4.Size = new System.Drawing.Size(82, 27);
@@ -2093,7 +1998,7 @@
             this.cLabel3.BackColor = System.Drawing.Color.Transparent;
             this.cLabel3.Font = new System.Drawing.Font("Armata", 16F, System.Drawing.FontStyle.Bold);
             this.cLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel3.Location = new System.Drawing.Point(39, 82);
+            this.cLabel3.Location = new System.Drawing.Point(45, 127);
             this.cLabel3.Name = "cLabel3";
             this.cLabel3.OverrideFontSize = 12F;
             this.cLabel3.Size = new System.Drawing.Size(82, 27);
@@ -2109,7 +2014,7 @@
             this.cSwitch_openPort.Font = new System.Drawing.Font("Armata", 10F);
             this.cSwitch_openPort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cSwitch_openPort.IsOn = false;
-            this.cSwitch_openPort.Location = new System.Drawing.Point(280, 6);
+            this.cSwitch_openPort.Location = new System.Drawing.Point(286, 51);
             this.cSwitch_openPort.Name = "cSwitch_openPort";
             this.cSwitch_openPort.OffIcon = ((System.Drawing.Image)(resources.GetObject("cSwitch_openPort.OffIcon")));
             this.cSwitch_openPort.OnIcon = ((System.Drawing.Image)(resources.GetObject("cSwitch_openPort.OnIcon")));
@@ -2124,88 +2029,13 @@
             // cDropDown_machineProfiles
             // 
             this.cDropDown_machineProfiles.Font = new System.Drawing.Font("Armata", 10F);
-            this.cDropDown_machineProfiles.Location = new System.Drawing.Point(6, 6);
+            this.cDropDown_machineProfiles.Location = new System.Drawing.Point(12, 52);
             this.cDropDown_machineProfiles.Name = "cDropDown_machineProfiles";
             this.cDropDown_machineProfiles.SelectedIndex = -1;
             this.cDropDown_machineProfiles.Size = new System.Drawing.Size(268, 25);
             this.cDropDown_machineProfiles.TabIndex = 0;
             this.cDropDown_machineProfiles.Text = "cDropDown1";
             this.cDropDown_machineProfiles.TextStyle = CCL.eTextStyle.Normal;
-            // 
-            // tabPage_Machines
-            // 
-            this.tabPage_Machines.BackColor = System.Drawing.Color.Silver;
-            this.tabPage_Machines.Controls.Add(this.cButton_cancelMachineSave);
-            this.tabPage_Machines.Controls.Add(this.cButton_saveMachines);
-            this.tabPage_Machines.Controls.Add(this.cListView_machines);
-            this.tabPage_Machines.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Machines.Name = "tabPage_Machines";
-            this.tabPage_Machines.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Machines.Size = new System.Drawing.Size(805, 637);
-            this.tabPage_Machines.TabIndex = 1;
-            this.tabPage_Machines.Text = "Machines";
-            // 
-            // cButton_cancelMachineSave
-            // 
-            this.cButton_cancelMachineSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cButton_cancelMachineSave.DrawBorder = true;
-            this.cButton_cancelMachineSave.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_cancelMachineSave.Location = new System.Drawing.Point(699, 596);
-            this.cButton_cancelMachineSave.Name = "cButton_cancelMachineSave";
-            this.cButton_cancelMachineSave.Size = new System.Drawing.Size(100, 35);
-            this.cButton_cancelMachineSave.TabIndex = 7;
-            this.cButton_cancelMachineSave.Text = "Cancel";
-            this.cButton_cancelMachineSave.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_cancelMachineSave.UseVisualStyleBackColor = true;
-            this.cButton_cancelMachineSave.Click += new System.EventHandler(this.cButton_cancelMachineSave_Click);
-            // 
-            // cButton_saveMachines
-            // 
-            this.cButton_saveMachines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cButton_saveMachines.DrawBorder = true;
-            this.cButton_saveMachines.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_saveMachines.Location = new System.Drawing.Point(593, 596);
-            this.cButton_saveMachines.Name = "cButton_saveMachines";
-            this.cButton_saveMachines.Size = new System.Drawing.Size(100, 35);
-            this.cButton_saveMachines.TabIndex = 6;
-            this.cButton_saveMachines.Text = "Save";
-            this.cButton_saveMachines.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_saveMachines.UseVisualStyleBackColor = true;
-            this.cButton_saveMachines.Click += new System.EventHandler(this.cButton_saveMachines_Click);
-            // 
-            // cListView_machines
-            // 
-            this.cListView_machines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cListView_machines.ColumnHeaderTextStyle = CCL.eTextStyle.Normal;
-            this.cListView_machines.ColumnHeight = 24;
-            this.cListView_machines.Columns.Add(this.columnHeader19);
-            this.cListView_machines.Columns.Add(this.columnHeader12);
-            this.cListView_machines.Columns.Add(this.columnHeader18);
-            this.cListView_machines.Columns.Add(this.columnHeader14);
-            this.cListView_machines.Columns.Add(this.columnHeader15);
-            this.cListView_machines.Columns.Add(this.columnHeader16);
-            this.cListView_machines.Columns.Add(this.columnHeader13);
-            this.cListView_machines.Columns.Add(this.columnHeader17);
-            this.cListView_machines.ContentTextStyle = CCL.eTextStyle.Normal;
-            this.cListView_machines.ContextMenuStrip = this.cContextMenuStrip_editMachine;
-            this.cListView_machines.DrawBorder = false;
-            this.cListView_machines.EnableItemEdit = false;
-            this.cListView_machines.FullRowHoverEffect = true;
-            this.cListView_machines.HorizontalLines = true;
-            this.cListView_machines.ItemHeight = 24;
-            this.cListView_machines.ItemHoverEffect = true;
-            this.cListView_machines.Location = new System.Drawing.Point(3, 3);
-            this.cListView_machines.MinColumnWidth = 20;
-            this.cListView_machines.Name = "cListView_machines";
-            this.cListView_machines.NoItemsToShowText = "No Items To Show.";
-            this.cListView_machines.NothingToShowText = "Nothing To Show.";
-            this.cListView_machines.Size = new System.Drawing.Size(796, 587);
-            this.cListView_machines.TabIndex = 0;
-            this.cListView_machines.Text = "MACHINES";
-            this.cListView_machines.TitleTextStyle = CCL.eTextStyle.Title3;
-            this.cListView_machines.VerticalLines = false;
             // 
             // columnHeader19
             // 
@@ -2243,201 +2073,55 @@
             this.columnHeader17.Text = "OPT";
             this.columnHeader17.Width = 100;
             // 
-            // cContextMenuStrip_editMachine
-            // 
-            this.cContextMenuStrip_editMachine.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addMachineToolStripMenuItem,
-            this.duplicateMachineToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.exportMachineToolStripMenuItem,
-            this.importMachineToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.deleteMachineToolStripMenuItem,
-            this.reloadMachinesToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.editMachineToolStripMenuItem});
-            this.cContextMenuStrip_editMachine.Name = "cContextMenuStrip_editToolValues";
-            this.cContextMenuStrip_editMachine.Size = new System.Drawing.Size(125, 176);
-            this.cContextMenuStrip_editMachine.TextStyle = CCL.eTextStyle.Normal;
-            this.cContextMenuStrip_editMachine.Opening += new System.ComponentModel.CancelEventHandler(this.cContextMenuStrip_editMachine_Opening);
-            // 
             // addMachineToolStripMenuItem
             // 
             this.addMachineToolStripMenuItem.Name = "addMachineToolStripMenuItem";
-            this.addMachineToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.addMachineToolStripMenuItem.Text = "Add New";
-            this.addMachineToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem_addNewMachine_Click);
+            this.addMachineToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // duplicateMachineToolStripMenuItem
             // 
             this.duplicateMachineToolStripMenuItem.Name = "duplicateMachineToolStripMenuItem";
-            this.duplicateMachineToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.duplicateMachineToolStripMenuItem.Text = "Duplicate";
-            this.duplicateMachineToolStripMenuItem.Click += new System.EventHandler(this.duplicateMachineToolStripMenuItem_Click);
+            this.duplicateMachineToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 6);
             // 
             // exportMachineToolStripMenuItem
             // 
             this.exportMachineToolStripMenuItem.Name = "exportMachineToolStripMenuItem";
-            this.exportMachineToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.exportMachineToolStripMenuItem.Text = "Export";
-            this.exportMachineToolStripMenuItem.Click += new System.EventHandler(this.exportMachineToolStripMenuItem_Click);
+            this.exportMachineToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // importMachineToolStripMenuItem
             // 
             this.importMachineToolStripMenuItem.Name = "importMachineToolStripMenuItem";
-            this.importMachineToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.importMachineToolStripMenuItem.Text = "Import";
-            this.importMachineToolStripMenuItem.Click += new System.EventHandler(this.importMachineToolStripMenuItem_Click);
+            this.importMachineToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 6);
             // 
             // deleteMachineToolStripMenuItem
             // 
             this.deleteMachineToolStripMenuItem.Name = "deleteMachineToolStripMenuItem";
-            this.deleteMachineToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.deleteMachineToolStripMenuItem.Text = "Delete";
-            this.deleteMachineToolStripMenuItem.Click += new System.EventHandler(this.deleteMachineToolStripMenuItem_Click);
+            this.deleteMachineToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // reloadMachinesToolStripMenuItem
             // 
             this.reloadMachinesToolStripMenuItem.Name = "reloadMachinesToolStripMenuItem";
-            this.reloadMachinesToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.reloadMachinesToolStripMenuItem.Text = "Reload";
-            this.reloadMachinesToolStripMenuItem.Click += new System.EventHandler(this.reloadMachinesToolStripMenuItem_Click);
+            this.reloadMachinesToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 6);
             // 
             // editMachineToolStripMenuItem
             // 
             this.editMachineToolStripMenuItem.Name = "editMachineToolStripMenuItem";
-            this.editMachineToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.editMachineToolStripMenuItem.Text = "Edit";
-            this.editMachineToolStripMenuItem.Click += new System.EventHandler(this.editMachineToolStripMenuItem_Click);
-            // 
-            // tabPage_Tools
-            // 
-            this.tabPage_Tools.BackColor = System.Drawing.Color.Silver;
-            this.tabPage_Tools.Controls.Add(this.cButton_cancelToolSave);
-            this.tabPage_Tools.Controls.Add(this.cButton_saveTools);
-            this.tabPage_Tools.Controls.Add(this.cLabel1);
-            this.tabPage_Tools.Controls.Add(this.cCheckBox_editToolValues);
-            this.tabPage_Tools.Controls.Add(this.cListView_tools);
-            this.tabPage_Tools.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Tools.Name = "tabPage_Tools";
-            this.tabPage_Tools.Size = new System.Drawing.Size(805, 637);
-            this.tabPage_Tools.TabIndex = 2;
-            this.tabPage_Tools.Text = "Tools";
-            // 
-            // cButton_cancelToolSave
-            // 
-            this.cButton_cancelToolSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cButton_cancelToolSave.DrawBorder = true;
-            this.cButton_cancelToolSave.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_cancelToolSave.Location = new System.Drawing.Point(702, 599);
-            this.cButton_cancelToolSave.Name = "cButton_cancelToolSave";
-            this.cButton_cancelToolSave.Size = new System.Drawing.Size(100, 35);
-            this.cButton_cancelToolSave.TabIndex = 4;
-            this.cButton_cancelToolSave.Text = "Cancel";
-            this.cButton_cancelToolSave.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_cancelToolSave.UseVisualStyleBackColor = true;
-            this.cButton_cancelToolSave.Click += new System.EventHandler(this.cButton_cancelToolSave_Click);
-            // 
-            // cButton_saveTools
-            // 
-            this.cButton_saveTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cButton_saveTools.DrawBorder = true;
-            this.cButton_saveTools.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_saveTools.Location = new System.Drawing.Point(596, 599);
-            this.cButton_saveTools.Name = "cButton_saveTools";
-            this.cButton_saveTools.Size = new System.Drawing.Size(100, 35);
-            this.cButton_saveTools.TabIndex = 3;
-            this.cButton_saveTools.Text = "Save";
-            this.cButton_saveTools.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_saveTools.UseVisualStyleBackColor = true;
-            this.cButton_saveTools.Click += new System.EventHandler(this.cButton_saveTools_Click);
-            // 
-            // cLabel1
-            // 
-            this.cLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel1.Font = new System.Drawing.Font("Armata", 10F);
-            this.cLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel1.Location = new System.Drawing.Point(3, 571);
-            this.cLabel1.Name = "cLabel1";
-            this.cLabel1.OverrideFontSize = 12F;
-            this.cLabel1.Size = new System.Drawing.Size(492, 63);
-            this.cLabel1.TabIndex = 2;
-            this.cLabel1.Text = "INFO\r\nCD = Cutting Diameter SD = Shank Diameter FL = Flute Lenght\r\nF = Flutes A =" +
-    " Angle R = Radius W = Watts";
-            this.cLabel1.TextStyle = CCL.eTextStyle.Normal;
-            this.cLabel1.UseFontSizeOverride = false;
-            // 
-            // cCheckBox_editToolValues
-            // 
-            this.cCheckBox_editToolValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cCheckBox_editToolValues.AutoSize = true;
-            this.cCheckBox_editToolValues.CheckBoxHeight = 18;
-            this.cCheckBox_editToolValues.Font = new System.Drawing.Font("Armata", 10F);
-            this.cCheckBox_editToolValues.Location = new System.Drawing.Point(595, 571);
-            this.cCheckBox_editToolValues.Name = "cCheckBox_editToolValues";
-            this.cCheckBox_editToolValues.Size = new System.Drawing.Size(207, 22);
-            this.cCheckBox_editToolValues.TabIndex = 1;
-            this.cCheckBox_editToolValues.Text = "Edit values - Double Click";
-            this.cCheckBox_editToolValues.TextStyle = CCL.eTextStyle.Normal;
-            this.cCheckBox_editToolValues.TextYOffset = 0;
-            this.cCheckBox_editToolValues.Underline = true;
-            this.cCheckBox_editToolValues.UnderlineYOffset = 0;
-            this.cCheckBox_editToolValues.UseVisualStyleBackColor = true;
-            this.cCheckBox_editToolValues.CheckedChanged += new System.EventHandler(this.cCheckBox_editToolValues_CheckedChanged);
-            // 
-            // cListView_tools
-            // 
-            this.cListView_tools.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cListView_tools.ColumnHeaderTextStyle = CCL.eTextStyle.Normal;
-            this.cListView_tools.ColumnHeight = 24;
-            this.cListView_tools.Columns.Add(this.columnHeader2);
-            this.cListView_tools.Columns.Add(this.columnHeader3);
-            this.cListView_tools.Columns.Add(this.columnHeader4);
-            this.cListView_tools.Columns.Add(this.columnHeader5);
-            this.cListView_tools.Columns.Add(this.columnHeader6);
-            this.cListView_tools.Columns.Add(this.columnHeader7);
-            this.cListView_tools.Columns.Add(this.columnHeader8);
-            this.cListView_tools.Columns.Add(this.columnHeader9);
-            this.cListView_tools.Columns.Add(this.columnHeader10);
-            this.cListView_tools.Columns.Add(this.columnHeader11);
-            this.cListView_tools.ContentTextStyle = CCL.eTextStyle.Normal;
-            this.cListView_tools.ContextMenuStrip = this.cContextMenuStrip_editToolValues;
-            this.cListView_tools.DrawBorder = false;
-            this.cListView_tools.DropDownColumns.Add("2");
-            this.cListView_tools.DropDownItems.Add("Flat Ball Carving Drill Chamfer Rounding Laser");
-            this.cListView_tools.EnableItemEdit = false;
-            this.cListView_tools.FullRowHoverEffect = false;
-            this.cListView_tools.HorizontalLines = true;
-            this.cListView_tools.ItemHeight = 24;
-            this.cListView_tools.ItemHoverEffect = true;
-            this.cListView_tools.Location = new System.Drawing.Point(3, 3);
-            this.cListView_tools.MinColumnWidth = 20;
-            this.cListView_tools.Name = "cListView_tools";
-            this.cListView_tools.NoItemsToShowText = "No Items To Show.";
-            this.cListView_tools.NothingToShowText = "Nothing To Show.";
-            this.cListView_tools.Size = new System.Drawing.Size(799, 562);
-            this.cListView_tools.TabIndex = 0;
-            this.cListView_tools.Text = "TOOLS";
-            this.cListView_tools.TitleTextStyle = CCL.eTextStyle.Title3;
-            this.cListView_tools.VerticalLines = false;
+            this.editMachineToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // columnHeader2
             // 
@@ -2482,328 +2166,49 @@
             // 
             this.columnHeader11.Text = "W";
             // 
-            // cContextMenuStrip_editToolValues
-            // 
-            this.cContextMenuStrip_editToolValues.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewToolStripMenuItem,
-            this.duplicateToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.exportToolStripMenuItem,
-            this.importToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.deleteToolStripMenuItem,
-            this.reloadToolStripMenuItem});
-            this.cContextMenuStrip_editToolValues.Name = "cContextMenuStrip_editToolValues";
-            this.cContextMenuStrip_editToolValues.Size = new System.Drawing.Size(125, 148);
-            this.cContextMenuStrip_editToolValues.TextStyle = CCL.eTextStyle.Normal;
-            this.cContextMenuStrip_editToolValues.Opening += new System.ComponentModel.CancelEventHandler(this.cContextMenuStrip_editToolValues_Opening);
-            // 
             // addNewToolStripMenuItem
             // 
             this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.addNewToolStripMenuItem.Text = "Add New";
-            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // duplicateToolStripMenuItem
             // 
             this.duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
-            this.duplicateToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.duplicateToolStripMenuItem.Text = "Duplicate";
-            this.duplicateToolStripMenuItem.Click += new System.EventHandler(this.duplicateToolStripMenuItem_Click);
+            this.duplicateToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 6);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 6);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // reloadToolStripMenuItem
             // 
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.reloadToolStripMenuItem.Text = "Reload";
-            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
-            // 
-            // tabPage_Settings
-            // 
-            this.tabPage_Settings.BackColor = System.Drawing.Color.Silver;
-            this.tabPage_Settings.Controls.Add(this.cButtonGCodeGenerator);
-            this.tabPage_Settings.Controls.Add(this.cGroupBox2);
-            this.tabPage_Settings.Controls.Add(this.cButton_cancelAppSettings);
-            this.tabPage_Settings.Controls.Add(this.cButton_saveAppSettings);
-            this.tabPage_Settings.Controls.Add(this.cGroupBox1);
-            this.tabPage_Settings.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Settings.Name = "tabPage_Settings";
-            this.tabPage_Settings.Size = new System.Drawing.Size(805, 637);
-            this.tabPage_Settings.TabIndex = 3;
-            this.tabPage_Settings.Text = "Settings";
-            // 
-            // cButtonGCodeGenerator
-            // 
-            this.cButtonGCodeGenerator.DrawBorder = true;
-            this.cButtonGCodeGenerator.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButtonGCodeGenerator.Location = new System.Drawing.Point(513, 60);
-            this.cButtonGCodeGenerator.Name = "cButtonGCodeGenerator";
-            this.cButtonGCodeGenerator.Size = new System.Drawing.Size(239, 35);
-            this.cButtonGCodeGenerator.TabIndex = 7;
-            this.cButtonGCodeGenerator.Text = "G-Code Generator";
-            this.cButtonGCodeGenerator.TextStyle = CCL.eTextStyle.Normal;
-            this.cButtonGCodeGenerator.UseVisualStyleBackColor = true;
-            this.cButtonGCodeGenerator.Click += new System.EventHandler(this.cButtonGCodeGenerator_Click);
-            // 
-            // cGroupBox2
-            // 
-            this.cGroupBox2.Controls.Add(this.cRadioButtonSettingsTheme6);
-            this.cGroupBox2.Controls.Add(this.cRadioButtonSettingsTheme5);
-            this.cGroupBox2.Controls.Add(this.cRadioButtonSettingsTheme4);
-            this.cGroupBox2.Controls.Add(this.cRadioButtonSettingsTheme3);
-            this.cGroupBox2.Controls.Add(this.cRadioButtonSettingsTheme2);
-            this.cGroupBox2.Controls.Add(this.cRadioButtonSettingsTheme1);
-            this.cGroupBox2.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cGroupBox2.Location = new System.Drawing.Point(3, 153);
-            this.cGroupBox2.Name = "cGroupBox2";
-            this.cGroupBox2.Radius = 10;
-            this.cGroupBox2.Size = new System.Drawing.Size(453, 82);
-            this.cGroupBox2.TabIndex = 4;
-            this.cGroupBox2.TabStop = false;
-            this.cGroupBox2.Text = "Theme";
-            this.cGroupBox2.TextAlignment = System.Drawing.StringAlignment.Near;
-            this.cGroupBox2.TextStyle = CCL.eTextStyle.Title5;
-            // 
-            // cRadioButtonSettingsTheme6
-            // 
-            this.cRadioButtonSettingsTheme6.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme6.CheckMarkSize = 10;
-            this.cRadioButtonSettingsTheme6.Font = new System.Drawing.Font("Armata", 10F);
-            this.cRadioButtonSettingsTheme6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cRadioButtonSettingsTheme6.Location = new System.Drawing.Point(96, 50);
-            this.cRadioButtonSettingsTheme6.Name = "cRadioButtonSettingsTheme6";
-            this.cRadioButtonSettingsTheme6.RadioButtonHeight = 18;
-            this.cRadioButtonSettingsTheme6.Size = new System.Drawing.Size(88, 18);
-            this.cRadioButtonSettingsTheme6.TabIndex = 5;
-            this.cRadioButtonSettingsTheme6.Text = "Theme 6";
-            this.cRadioButtonSettingsTheme6.TextStyle = CCL.eTextStyle.Normal;
-            this.cRadioButtonSettingsTheme6.UseVisualStyleBackColor = false;
-            this.cRadioButtonSettingsTheme6.CheckedChanged += new System.EventHandler(this.cRadioButtonSettingsTheme6_CheckedChanged);
-            // 
-            // cRadioButtonSettingsTheme5
-            // 
-            this.cRadioButtonSettingsTheme5.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme5.CheckMarkSize = 10;
-            this.cRadioButtonSettingsTheme5.Font = new System.Drawing.Font("Armata", 10F);
-            this.cRadioButtonSettingsTheme5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cRadioButtonSettingsTheme5.Location = new System.Drawing.Point(6, 50);
-            this.cRadioButtonSettingsTheme5.Name = "cRadioButtonSettingsTheme5";
-            this.cRadioButtonSettingsTheme5.RadioButtonHeight = 18;
-            this.cRadioButtonSettingsTheme5.Size = new System.Drawing.Size(86, 18);
-            this.cRadioButtonSettingsTheme5.TabIndex = 4;
-            this.cRadioButtonSettingsTheme5.Text = "Theme 5";
-            this.cRadioButtonSettingsTheme5.TextStyle = CCL.eTextStyle.Normal;
-            this.cRadioButtonSettingsTheme5.UseVisualStyleBackColor = false;
-            this.cRadioButtonSettingsTheme5.CheckedChanged += new System.EventHandler(this.cRadioButtonSettingsTheme5_CheckedChanged);
-            // 
-            // cRadioButtonSettingsTheme4
-            // 
-            this.cRadioButtonSettingsTheme4.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme4.CheckMarkSize = 10;
-            this.cRadioButtonSettingsTheme4.Font = new System.Drawing.Font("Armata", 10F);
-            this.cRadioButtonSettingsTheme4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cRadioButtonSettingsTheme4.Location = new System.Drawing.Point(276, 26);
-            this.cRadioButtonSettingsTheme4.Name = "cRadioButtonSettingsTheme4";
-            this.cRadioButtonSettingsTheme4.RadioButtonHeight = 18;
-            this.cRadioButtonSettingsTheme4.Size = new System.Drawing.Size(88, 18);
-            this.cRadioButtonSettingsTheme4.TabIndex = 3;
-            this.cRadioButtonSettingsTheme4.Text = "Theme 4";
-            this.cRadioButtonSettingsTheme4.TextStyle = CCL.eTextStyle.Normal;
-            this.cRadioButtonSettingsTheme4.UseVisualStyleBackColor = false;
-            this.cRadioButtonSettingsTheme4.CheckedChanged += new System.EventHandler(this.cRadioButtonSettingsTheme4_CheckedChanged);
-            // 
-            // cRadioButtonSettingsTheme3
-            // 
-            this.cRadioButtonSettingsTheme3.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme3.CheckMarkSize = 10;
-            this.cRadioButtonSettingsTheme3.Font = new System.Drawing.Font("Armata", 10F);
-            this.cRadioButtonSettingsTheme3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cRadioButtonSettingsTheme3.Location = new System.Drawing.Point(186, 26);
-            this.cRadioButtonSettingsTheme3.Name = "cRadioButtonSettingsTheme3";
-            this.cRadioButtonSettingsTheme3.RadioButtonHeight = 18;
-            this.cRadioButtonSettingsTheme3.Size = new System.Drawing.Size(86, 18);
-            this.cRadioButtonSettingsTheme3.TabIndex = 2;
-            this.cRadioButtonSettingsTheme3.Text = "Theme 3";
-            this.cRadioButtonSettingsTheme3.TextStyle = CCL.eTextStyle.Normal;
-            this.cRadioButtonSettingsTheme3.UseVisualStyleBackColor = false;
-            this.cRadioButtonSettingsTheme3.CheckedChanged += new System.EventHandler(this.cRadioButtonSettingsTheme3_CheckedChanged);
-            // 
-            // cRadioButtonSettingsTheme2
-            // 
-            this.cRadioButtonSettingsTheme2.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme2.CheckMarkSize = 10;
-            this.cRadioButtonSettingsTheme2.Font = new System.Drawing.Font("Armata", 10F);
-            this.cRadioButtonSettingsTheme2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cRadioButtonSettingsTheme2.Location = new System.Drawing.Point(96, 26);
-            this.cRadioButtonSettingsTheme2.Name = "cRadioButtonSettingsTheme2";
-            this.cRadioButtonSettingsTheme2.RadioButtonHeight = 18;
-            this.cRadioButtonSettingsTheme2.Size = new System.Drawing.Size(86, 18);
-            this.cRadioButtonSettingsTheme2.TabIndex = 1;
-            this.cRadioButtonSettingsTheme2.Text = "Theme 2";
-            this.cRadioButtonSettingsTheme2.TextStyle = CCL.eTextStyle.Normal;
-            this.cRadioButtonSettingsTheme2.UseVisualStyleBackColor = false;
-            this.cRadioButtonSettingsTheme2.CheckedChanged += new System.EventHandler(this.cRadioButtonSettingsTheme2_CheckedChanged);
-            // 
-            // cRadioButtonSettingsTheme1
-            // 
-            this.cRadioButtonSettingsTheme1.BackColor = System.Drawing.Color.Transparent;
-            this.cRadioButtonSettingsTheme1.Checked = true;
-            this.cRadioButtonSettingsTheme1.CheckMarkSize = 10;
-            this.cRadioButtonSettingsTheme1.Font = new System.Drawing.Font("Armata", 10F);
-            this.cRadioButtonSettingsTheme1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cRadioButtonSettingsTheme1.Location = new System.Drawing.Point(6, 26);
-            this.cRadioButtonSettingsTheme1.Name = "cRadioButtonSettingsTheme1";
-            this.cRadioButtonSettingsTheme1.RadioButtonHeight = 18;
-            this.cRadioButtonSettingsTheme1.Size = new System.Drawing.Size(84, 18);
-            this.cRadioButtonSettingsTheme1.TabIndex = 0;
-            this.cRadioButtonSettingsTheme1.TabStop = true;
-            this.cRadioButtonSettingsTheme1.Text = "Theme 1";
-            this.cRadioButtonSettingsTheme1.TextStyle = CCL.eTextStyle.Normal;
-            this.cRadioButtonSettingsTheme1.UseVisualStyleBackColor = false;
-            this.cRadioButtonSettingsTheme1.CheckedChanged += new System.EventHandler(this.cRadioButtonSettingsTheme1_CheckedChanged);
-            // 
-            // cButton_cancelAppSettings
-            // 
-            this.cButton_cancelAppSettings.DrawBorder = true;
-            this.cButton_cancelAppSettings.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_cancelAppSettings.Location = new System.Drawing.Point(356, 241);
-            this.cButton_cancelAppSettings.Name = "cButton_cancelAppSettings";
-            this.cButton_cancelAppSettings.Size = new System.Drawing.Size(100, 35);
-            this.cButton_cancelAppSettings.TabIndex = 6;
-            this.cButton_cancelAppSettings.Text = "Cancel";
-            this.cButton_cancelAppSettings.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_cancelAppSettings.UseVisualStyleBackColor = true;
-            this.cButton_cancelAppSettings.Click += new System.EventHandler(this.cButton_cancelAppSettings_Click);
-            // 
-            // cButton_saveAppSettings
-            // 
-            this.cButton_saveAppSettings.DrawBorder = true;
-            this.cButton_saveAppSettings.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_saveAppSettings.Location = new System.Drawing.Point(250, 241);
-            this.cButton_saveAppSettings.Name = "cButton_saveAppSettings";
-            this.cButton_saveAppSettings.Size = new System.Drawing.Size(100, 35);
-            this.cButton_saveAppSettings.TabIndex = 5;
-            this.cButton_saveAppSettings.Text = "Save";
-            this.cButton_saveAppSettings.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_saveAppSettings.UseVisualStyleBackColor = true;
-            this.cButton_saveAppSettings.Click += new System.EventHandler(this.cButton_saveAppSettings_Click);
-            // 
-            // cGroupBox1
-            // 
-            this.cGroupBox1.Controls.Add(this.cLabel2);
-            this.cGroupBox1.Controls.Add(this.cLabel_dataFolderPath);
-            this.cGroupBox1.Controls.Add(this.cButton_selectFolder);
-            this.cGroupBox1.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.cGroupBox1.Location = new System.Drawing.Point(3, 3);
-            this.cGroupBox1.Name = "cGroupBox1";
-            this.cGroupBox1.Radius = 10;
-            this.cGroupBox1.Size = new System.Drawing.Size(453, 144);
-            this.cGroupBox1.TabIndex = 1;
-            this.cGroupBox1.TabStop = false;
-            this.cGroupBox1.Text = "Saving things here";
-            this.cGroupBox1.TextAlignment = System.Drawing.StringAlignment.Near;
-            this.cGroupBox1.TextStyle = CCL.eTextStyle.Title5;
-            // 
-            // cLabel2
-            // 
-            this.cLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel2.Font = new System.Drawing.Font("Armata", 10F);
-            this.cLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel2.Location = new System.Drawing.Point(3, 80);
-            this.cLabel2.Name = "cLabel2";
-            this.cLabel2.OverrideFontSize = 12F;
-            this.cLabel2.Size = new System.Drawing.Size(335, 61);
-            this.cLabel2.TabIndex = 3;
-            this.cLabel2.Text = "Machines and tools are saved here:\r\n...\\CNC Vision\\Machines\r\n...\\CNC Vision\\Tools" +
-    "";
-            this.cLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cLabel2.TextStyle = CCL.eTextStyle.Normal;
-            this.cLabel2.UseFontSizeOverride = false;
-            // 
-            // cLabel_dataFolderPath
-            // 
-            this.cLabel_dataFolderPath.BackColor = System.Drawing.Color.Transparent;
-            this.cLabel_dataFolderPath.Font = new System.Drawing.Font("Armata", 10F);
-            this.cLabel_dataFolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.cLabel_dataFolderPath.Location = new System.Drawing.Point(6, 23);
-            this.cLabel_dataFolderPath.Name = "cLabel_dataFolderPath";
-            this.cLabel_dataFolderPath.OverrideFontSize = 12F;
-            this.cLabel_dataFolderPath.Size = new System.Drawing.Size(441, 31);
-            this.cLabel_dataFolderPath.TabIndex = 2;
-            this.cLabel_dataFolderPath.Text = "Nothing selected";
-            this.cLabel_dataFolderPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cLabel_dataFolderPath.TextStyle = CCL.eTextStyle.Normal;
-            this.cLabel_dataFolderPath.UseFontSizeOverride = false;
-            // 
-            // cButton_selectFolder
-            // 
-            this.cButton_selectFolder.DrawBorder = true;
-            this.cButton_selectFolder.Font = new System.Drawing.Font("Armata", 10F);
-            this.cButton_selectFolder.Location = new System.Drawing.Point(6, 57);
-            this.cButton_selectFolder.Name = "cButton_selectFolder";
-            this.cButton_selectFolder.Size = new System.Drawing.Size(100, 20);
-            this.cButton_selectFolder.TabIndex = 0;
-            this.cButton_selectFolder.Text = "Select";
-            this.cButton_selectFolder.TextStyle = CCL.eTextStyle.Normal;
-            this.cButton_selectFolder.UseVisualStyleBackColor = true;
-            this.cButton_selectFolder.Click += new System.EventHandler(this.cButton_selectFolder_Click);
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Machine";
-            // 
-            // tabPanelSelector1
-            // 
-            this.tabPanelSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabPanelSelector1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.tabPanelSelector1.BaseTabControl = this.cTabControl1;
-            this.tabPanelSelector1.ButtonMargin = 5;
-            this.tabPanelSelector1.Font = new System.Drawing.Font("Armata", 12F, System.Drawing.FontStyle.Bold);
-            this.tabPanelSelector1.ItemHeight = 30;
-            this.tabPanelSelector1.LastItemsToBottom = 0;
-            this.tabPanelSelector1.Location = new System.Drawing.Point(1, 25);
-            this.tabPanelSelector1.Name = "tabPanelSelector1";
-            this.tabPanelSelector1.PanelCloseSize = 38;
-            this.tabPanelSelector1.PanelIsOpen = false;
-            this.tabPanelSelector1.PanelOpenWidth = 180;
-            this.tabPanelSelector1.Size = new System.Drawing.Size(38, 674);
-            this.tabPanelSelector1.TabIndex = 1;
-            this.tabPanelSelector1.Text = "tabPanelSelector1";
-            this.tabPanelSelector1.TextAlignment = System.Drawing.StringAlignment.Near;
-            this.tabPanelSelector1.TextStyle = CCL.eTextStyle.Title5;
             // 
             // ch_Tool_ID
             // 
@@ -2868,20 +2273,121 @@
             this.schemeComponent2.SchemeColor = System.Drawing.Color.DeepSkyBlue;
             this.schemeComponent2.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             // 
+            // cMenuStrip1
+            // 
+            this.cMenuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cMenuStrip1.AutoSize = false;
+            this.cMenuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.cMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifyToolStripMenuItem});
+            this.cMenuStrip1.Location = new System.Drawing.Point(2, 24);
+            this.cMenuStrip1.Name = "cMenuStrip1";
+            this.cMenuStrip1.Size = new System.Drawing.Size(867, 24);
+            this.cMenuStrip1.TabIndex = 3;
+            this.cMenuStrip1.Text = "cMenuStrip1";
+            this.cMenuStrip1.TextStyle = CCL.eTextStyle.Normal;
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsToolStripMenuItem,
+            this.machinesToolStripMenuItem,
+            this.settingsToolStripMenuItem});
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.modifyToolStripMenuItem.Text = "Modify";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            this.toolsToolStripMenuItem.Click += new System.EventHandler(this.toolsToolStripMenuItem_Click);
+            // 
+            // machinesToolStripMenuItem
+            // 
+            this.machinesToolStripMenuItem.Name = "machinesToolStripMenuItem";
+            this.machinesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.machinesToolStripMenuItem.Text = "Machines";
+            this.machinesToolStripMenuItem.Click += new System.EventHandler(this.machinesToolStripMenuItem_Click);
+            // 
+            // cTabSelector2
+            // 
+            this.cTabSelector2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.cTabSelector2.BaseTabControl = this.cTabControl2;
+            this.cTabSelector2.DrawLineAllTheWay = true;
+            this.cTabSelector2.Font = new System.Drawing.Font("Armata", 8F);
+            this.cTabSelector2.IndicatorHeight = 4;
+            this.cTabSelector2.LineHeight = 1;
+            this.cTabSelector2.Location = new System.Drawing.Point(475, 52);
+            this.cTabSelector2.Name = "cTabSelector2";
+            this.cTabSelector2.SelectorHeight = 24;
+            this.cTabSelector2.SelectorPadding = 10;
+            this.cTabSelector2.Size = new System.Drawing.Size(383, 24);
+            this.cTabSelector2.TabIndex = 45;
+            this.cTabSelector2.TabsAlignment = CCL.Controls.CTabSelector.eTabsAlignment.Left;
+            this.cTabSelector2.Text = "cTabSelector2";
+            this.cTabSelector2.TextStyle = CCL.eTextStyle.Small;
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 700);
-            this.Controls.Add(this.tabPanelSelector1);
-            this.Controls.Add(this.cTabControl1);
+            this.Controls.Add(this.cTabSelector2);
+            this.Controls.Add(this.cLabel10);
+            this.Controls.Add(this.cLabelSpindleRPM);
+            this.Controls.Add(this.cMenuStrip1);
+            this.Controls.Add(this.cButton_clear);
+            this.Controls.Add(this.cLabel_wcoZ);
+            this.Controls.Add(this.cDropDown_machineProfiles);
+            this.Controls.Add(this.cLabel_wcoY);
+            this.Controls.Add(this.cSwitch_openPort);
+            this.Controls.Add(this.cLabel_wcoX);
+            this.Controls.Add(this.cLabel3);
+            this.Controls.Add(this.cLabel8);
+            this.Controls.Add(this.cLabel4);
+            this.Controls.Add(this.cCheckBox_showQuery);
+            this.Controls.Add(this.cLabel_wposX);
+            this.Controls.Add(this.cButton_sendCommand);
+            this.Controls.Add(this.cLabel_wposY);
+            this.Controls.Add(this.cTextBox_command);
+            this.Controls.Add(this.cLabel_wposZ);
+            this.Controls.Add(this.cRichTextBox1);
+            this.Controls.Add(this.cLabel_mposX);
+            this.Controls.Add(this.cLabel_machineState);
+            this.Controls.Add(this.cLabel_mposY);
+            this.Controls.Add(this.cTabControl2);
+            this.Controls.Add(this.cLabel_mposZ);
+            this.Controls.Add(this.cTabSelector1);
+            this.Controls.Add(this.cLabel11);
+            this.Controls.Add(this.cButton_hold);
+            this.Controls.Add(this.cLabel12);
+            this.Controls.Add(this.cButton_startResume);
+            this.Controls.Add(this.cLabel13);
+            this.Controls.Add(this.cLabel15);
+            this.Controls.Add(this.cLinkLabel_zeroX);
+            this.Controls.Add(this.cLabel_fs);
+            this.Controls.Add(this.cLinkLabel_zeroY);
+            this.Controls.Add(this.cButton_home);
+            this.Controls.Add(this.cLinkLabel_zeroZ);
+            this.Controls.Add(this.cButton_unlock);
+            this.Controls.Add(this.cLinkLabel_zeroAll);
+            this.Controls.Add(this.cButton_reset);
             this.CustomSchemeComponent = this.schemeComponent2;
+            this.MainMenuStrip = this.cMenuStrip1;
             this.MinimumSize = new System.Drawing.Size(870, 700);
             this.Name = "Form_Main";
+            this.Sizable = false;
             this.Text = "CNC VISION";
-            this.cTabControl1.ResumeLayout(false);
-            this.tabPage_Controls.ResumeLayout(false);
-            this.tabPage_Controls.PerformLayout();
             this.cTabControl2.ResumeLayout(false);
             this.tabPage_move.ResumeLayout(false);
             this.cPanel_manualMove.ResumeLayout(false);
@@ -2901,34 +2407,14 @@
             this.tabPage_file.ResumeLayout(false);
             this.tabPage_file.PerformLayout();
             this.cContextMenuStripMessages.ResumeLayout(false);
-            this.tabPage_Machines.ResumeLayout(false);
-            this.cContextMenuStrip_editMachine.ResumeLayout(false);
-            this.tabPage_Tools.ResumeLayout(false);
-            this.tabPage_Tools.PerformLayout();
-            this.cContextMenuStrip_editToolValues.ResumeLayout(false);
-            this.tabPage_Settings.ResumeLayout(false);
-            this.cGroupBox2.ResumeLayout(false);
-            this.cGroupBox1.ResumeLayout(false);
+            this.cMenuStrip1.ResumeLayout(false);
+            this.cMenuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private CCL.Controls.CTabControl cTabControl1;
-        private System.Windows.Forms.TabPage tabPage_Controls;
-        private System.Windows.Forms.TabPage tabPage_Machines;
-        private CCL.Controls.TabPanelSelector tabPanelSelector1;
-        private System.Windows.Forms.TabPage tabPage_Tools;
-        private System.Windows.Forms.TabPage tabPage_Settings;
-        private CCL.Controls.CGroupBox cGroupBox1;
-        private CCL.Controls.CButton cButton_selectFolder;
-        private CCL.Controls.CLabel cLabel_dataFolderPath;
-        private CCL.Controls.CListView cListView_tools;
-        private CCL.Controls.CLabel cLabel1;
-        private CCL.Controls.CButton cButton_cancelToolSave;
-        private CCL.Controls.CButton cButton_saveTools;
-        private CCL.Controls.CContextMenuStrip cContextMenuStrip_editToolValues;
         private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -2936,10 +2422,6 @@
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private CCL.Controls.CCheckBox cCheckBox_editToolValues;
-        private CCL.Controls.CLabel cLabel2;
-        private CCL.Controls.CButton cButton_cancelAppSettings;
-        private CCL.Controls.CButton cButton_saveAppSettings;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader ch_Tool_ID;
@@ -2962,17 +2444,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
-        private CCL.Controls.CListView cListView_machines;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader17;
-        private CCL.Controls.CButton cButton_cancelMachineSave;
-        private CCL.Controls.CButton cButton_saveMachines;
         private System.Windows.Forms.ColumnHeader columnHeader18;
-        private CCL.Controls.CContextMenuStrip cContextMenuStrip_editMachine;
         private System.Windows.Forms.ToolStripMenuItem addMachineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem duplicateMachineToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -3089,13 +2567,6 @@
         private CCL.Controls.CLabel cLabel_overrideRapid;
         private CCL.Controls.CLabel cLabel_overrideSpindle;
         private CCL.Controls.CLabel cLabel_overrideFeed;
-        private CCL.Controls.CGroupBox cGroupBox2;
-        private CCL.Controls.CRadioButton cRadioButtonSettingsTheme6;
-        private CCL.Controls.CRadioButton cRadioButtonSettingsTheme5;
-        private CCL.Controls.CRadioButton cRadioButtonSettingsTheme4;
-        private CCL.Controls.CRadioButton cRadioButtonSettingsTheme3;
-        private CCL.Controls.CRadioButton cRadioButtonSettingsTheme2;
-        private CCL.Controls.CRadioButton cRadioButtonSettingsTheme1;
         private CCL.SchemeComponent schemeComponent1;
         private CCL.SchemeComponent schemeComponent2;
         private CCL.Controls.CButton cButtonCheckMode;
@@ -3114,8 +2585,13 @@
         private CCL.Controls.CButton cButtonSetRPM;
         private CCL.Controls.CLabel cLabel10;
         private CCL.Controls.CLabel cLabelSpindleRPM;
-        private CCL.Controls.CButton cButtonGCodeGenerator;
         private CCL.Controls.CLabel cLabel14;
         private CCL.Controls.CDropDown cDropDownPositioning;
+        private CCL.Controls.CMenuStrip cMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem machinesToolStripMenuItem;
+        private CCL.Controls.CTabSelector cTabSelector2;
     }
 }
