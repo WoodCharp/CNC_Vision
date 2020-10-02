@@ -20,5 +20,4 @@ D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Deb
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.pdb
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.Pages.Form_Settings.resources
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.Pages.Form_Tools.resources
-D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.csprojAssemblyReference.cache
 D:\Wooden Vision\WoodCharp\Code\Visual Studio\CNC Vision\CNC_Vision\CNCV\obj\Debug\CNCV.Pages.Form_Machines.resources

@@ -567,6 +567,8 @@ namespace CNCV.Pages
             cLabel_overrideSpindle.Text = GRBLFramework.OverrideSpindle.ToString();
             cLabel_overrideRapid.Text = GRBLFramework.OverrideRapid.ToString();
 
+            visualizer1.UpdatePosition(new System.Drawing.Point((int)GRBLFramework.WPos.X, (int)GRBLFramework.WPos.Y));
+
             if(CurPositioning != GRBLFramework.Positioning)
             {
                 CurPositioning = GRBLFramework.Positioning;
@@ -600,6 +602,7 @@ namespace CNCV.Pages
                         if (tool.ID == int.Parse(cListView_fileTools.Items[ToolChangeIndex].Text))
                         {
                             ToolChangeWindow.RouterTool = tool;
+                            visualizer1.ToolDiameter = (int)tool.CD;
                             break;
                         }
                     }
@@ -738,6 +741,8 @@ namespace CNCV.Pages
 
             //Prepare the file to be sent
             GRBLFramework.PrepareFile(file);
+            visualizer1.FileLines = GRBLFramework.FileLines;
+            visualizer1.ReadLines();
 
             //Get all tools ID's in the file
             int toolsCount = 0;
@@ -748,6 +753,8 @@ namespace CNCV.Pages
 
             try
             {
+                ToolChangeIndex = 0;
+
                 //Loop found tools
                 foreach (int i in GRBLFramework.GetToolIDsFromFile())
                 {
@@ -904,12 +911,12 @@ namespace CNCV.Pages
 
                 for (int i = 0; i < cListView_fileTools.Items.Count; i++)
                 {
-                    if(i < ToolChangeIndex)
-                        cListView_fileTools.Items[i].SubItems[4].Text = "X";
-                    else if(i > ToolChangeIndex)
-                        cListView_fileTools.Items[i].SubItems[4].Text = "Queue";
-                    else if(i == ToolChangeIndex)
+                    if (i == ToolChangeIndex - 1)
                         cListView_fileTools.Items[i].SubItems[4].Text = "Current";
+                    else if (i < ToolChangeIndex)
+                        cListView_fileTools.Items[i].SubItems[4].Text = "X";
+                    else
+                        cListView_fileTools.Items[i].SubItems[4].Text = "Queue";
                 }
 
                 cListView_fileTools.Invalidate();
